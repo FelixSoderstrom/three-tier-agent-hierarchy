@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System Demo - Attention Mechanism Educational Project</title>
+
+    <!-- Design System CSS - Import in this order -->
+    <link rel="stylesheet" href="variables.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="section">
+            <h1 class="text-4xl text-center mb-md">Design System Demo</h1>
+            <p class="text-center text-secondary">Comprehensive showcase of all design system components</p>
+        </header>
+
+        <!-- Color Palette -->
+        <section class="section">
+            <h2 class="text-3xl mb-lg">Color Palette</h2>
+            <div class="d-grid grid-cols-3 gap-md">
+                <div class="card">
+                    <div class="bg-primary" style="height: 100px; border-radius: var(--radius-md); margin-bottom: var(--spacing-sm);"></div>
+                    <h4>Primary (#1a1a1a)</h4>
+                    <code>--color-bg-primary</code>
+                </div>
+                <div class="card">
+                    <div class="bg-secondary" style="height: 100px; border-radius: var(--radius-md); margin-bottom: var(--spacing-sm);"></div>
+                    <h4>Secondary (#2a2a2a)</h4>
+                    <code>--color-bg-secondary</code>
+                </div>
+                <div class="card">
+                    <div class="bg-accent" style="height: 100px; border-radius: var(--radius-md); margin-bottom: var(--spacing-sm);"></div>
+                    <h4>Accent (#ff6b35)</h4>
+                    <code>--color-accent-primary</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section class="section">
+            <h2 class="text-3xl mb-lg">Typography</h2>
+            <div class="card">
+                <h1 class="mb-md">Heading 1 - 2.5rem</h1>
+                <h2 class="mb-md">Heading 2 - 2rem</h2>
+                <h3 class="mb-md">Heading 3 - 1.5rem</h3>
+                <h4 class="mb-md">Heading 4 - 1.25rem</h4>
+                <h5 class="mb-md">Heading 5 - 1.125rem</h5>
+                <h6 class="mb-md">Heading 6 - 1rem</h6>
+                <p>Body text - Regular paragraph with <strong>bold text</strong> and <em>italic text</em>.</p>
+                <code>inline code example</code>
+            </div>
+        </section>
+
+        <!-- Buttons -->
+        <section class="section">
+            <h2 class="text-3xl mb-lg">Buttons</h2>
+            <div class="card">
+                <h3 class="mb-md">Button Variants</h3>
+                <div class="d-flex gap-md mb-lg flex-wrap">
+                    <button class="btn btn-primary">Primary Button</button>
+                    <button class="btn btn-secondary">Secondary Button</button>
+                    <button class="btn btn-tertiary">Tertiary Button</button>
+                    <button class="btn btn-primary" disabled>Disabled Button</button>
+                </div>
+
+                <h3 class="mb-md">Button Sizes</h3>
+                <div class="d-flex gap-md mb-lg align-center flex-wrap">
+                    <button class="btn btn-primary btn-sm">Small</button>
+                    <button class="btn btn-primary">Default</button>
+                    <button class="btn btn-primary btn-lg">Large</button>
+                </div>
+
+                <h3 class="mb-md">Icon Buttons</h3>
+                <div class="d-flex gap-md align-center flex-wrap">
+                    <button class="btn btn-icon btn-primary">+</button>
+                    <button class="btn btn-icon btn-secondary">×</button>
+                    <button class="btn btn-icon btn-tertiary">?</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="section">
+            <h2 class="text-3xl mb-lg">Cards</h2>
+            <div class="d-grid grid-cols-2 gap-lg">
+                <div class="card">
+                    <h3>Basic Card</h3>
+                    <p>Simple card with default styling.</p>
+                </div>
+
+                <div class="card card-hover">
+                    <h3>Hover Card</h3>
+                    <p>This card lifts when you hover over it.</p>
+                </div>
+
+                <div class="card card-active">
+                    <h3>Active Card</h3>
+                    <p>Card with active state (orange border).</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="m-0">Card with Sections</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="m-0">Body content goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">Action</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forms -->
+        <section class="section">
+            <h2 class="text-3xl mb-lg">Form Elements</h2>
+            <div class="card">
+                <form>
+                    <div class="form-group">
+                        <label class="form-label form-label-required">Text Input</label>
+                        <input type="text" class="form-input" placeholder="Enter text...">
+                        <span class="form-help">This is help text</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Textarea</label>
+                        <textarea class="form-textarea" placeholder="Enter longer text..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Select Dropdown</label>
+                        <select class="form-select">
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="check1" checked>
+                            <label class="form-check-label" for="check1">Checkbox option</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="check2">
+                            <label class="form-check-label" for="check2">Another checkbox</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="radio" id="radio1" checked>
+                            <label class="form-check-label" for="radio1">Radio option 1</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="radio" id="radio2">
+                            <label class="form-check-label" for="radio2">Radio option 2</label>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-md">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <section class="section">
+            <h2 class="text-3xl mb-lg">Alerts</h2>
+            <div class="card">
+                <div class="alert alert-success">
+                    <span class="alert-icon">✓</span>
+                    <div class="alert-content">
+                        <div class="alert-title">Success!</div>
+                        <p class="m-0">Operation completed successfully.</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning">
+                    <span class="alert-icon">⚠</span>
+                    <div class="alert-content">
+                        <div class="alert-title">Warning</div>
+                        <p class="m-0">Please review your input carefully.</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-error">
+                    <span class="alert-icon">✕</span>
+                    <div class="alert-content">
+                        <div class="alert-title">Error</div>
+                        <p class="m-0">Something went wrong. Please try again.</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <span class="alert-icon">ℹ</span>
+                    <div class="alert-content">
+                        <div class="alert-title">Information</div>
+                        <p class="m-0">Here's some helpful information.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges -->
+        <section class="section">
+            <h2 class="text-3xl mb-lg">Badges</h2>
+            <div class="card">
+                <div class="d-flex gap-md flex-wrap">
+                    <span class="badge badge-primary">Primary</span>
+                    <span class="badge badge-secondary">Secondary</span>
+                    <span class="badge badge-success">Success</span>
+                    <span class="badge badge-warning">Warning</span>
+                    <span class="badge badge-error">Error</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading & Progress -->
+        <section class="section">
+            <h2 class="text-3xl mb-lg">Loading & Progress</h2>
+            <div class="card">
+                <h3 class="mb-md">Loading Spinners</h3>
+                <div class="d-flex gap-md align-center mb-lg">
+                    <div class="spinner spinner-sm"></div>
+                    <div class="spinner"></div>
+                    <div class="spinner spinner-lg"></div>
+                </div>
+
+                <h3 class="mb-md">Progress Bar</h3>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 65%"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Utility Classes -->
+        <section class="section">
+            <h2 class="text-3xl mb-lg">Utility Classes</h2>
+            <div class="card">
+                <h3 class="mb-md">Spacing</h3>
+                <div class="mb-lg">
+                    <div class="bg-accent" style="padding: var(--spacing-xs);">xs padding</div>
+                    <div class="bg-accent mt-sm" style="padding: var(--spacing-sm);">sm padding</div>
+                    <div class="bg-accent mt-sm" style="padding: var(--spacing-md);">md padding</div>
+                    <div class="bg-accent mt-sm" style="padding: var(--spacing-lg);">lg padding</div>
+                </div>
+
+                <h3 class="mb-md">Flexbox</h3>
+                <div class="d-flex justify-between align-center bg-secondary rounded-md" style="padding: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <span>Left</span>
+                    <span>Center</span>
+                    <span>Right</span>
+                </div>
+
+                <h3 class="mb-md">Grid</h3>
+                <div class="d-grid grid-cols-4 gap-sm">
+                    <div class="bg-accent rounded-md" style="padding: var(--spacing-md); text-align: center;">1</div>
+                    <div class="bg-accent rounded-md" style="padding: var(--spacing-md); text-align: center;">2</div>
+                    <div class="bg-accent rounded-md" style="padding: var(--spacing-md); text-align: center;">3</div>
+                    <div class="bg-accent rounded-md" style="padding: var(--spacing-md); text-align: center;">4</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessibility Features -->
+        <section class="section">
+            <h2 class="text-3xl mb-lg">Accessibility Features</h2>
+            <div class="card">
+                <ul style="list-style: disc; padding-left: var(--spacing-lg);">
+                    <li>All interactive elements have visible focus states (try tabbing through)</li>
+                    <li>Color contrast ratios meet WCAG 2.1 AA standards</li>
+                    <li>Reduced motion support for users with motion sensitivity</li>
+                    <li>High contrast mode support</li>
+                    <li>Semantic HTML throughout</li>
+                    <li>Screen reader friendly with ARIA labels</li>
+                </ul>
+
+                <div class="mt-md">
+                    <button class="btn btn-primary">Tab to me to see focus state</button>
+                    <button class="btn btn-secondary ml-auto">And me!</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="section text-center">
+            <div class="divider mb-lg"></div>
+            <p class="text-secondary">Design System Demo - Attention Mechanism Educational Project</p>
+            <p class="text-tertiary text-sm">All components meet WCAG 2.1 AA accessibility standards</p>
+        </footer>
+    </div>
+</body>
+</html>

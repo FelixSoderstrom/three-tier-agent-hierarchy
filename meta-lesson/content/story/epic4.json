@@ -1,0 +1,82 @@
+{
+  "epicNumber": 4,
+  "title": "Epic 4: Evaluation & Grading",
+  "tagline": "Automated assessment: using LLMs to evaluate student implementations intelligently",
+  "perspectives": {
+    "productManager": {
+      "narrative": "The fourth team-lead spawned into a project with complete infrastructure, implementation, and visualization. Now came the sophisticated challenge: automated evaluation using LLMs. This was ambitious—no rule-based grading, only AI-powered code comparison. I monitored the logs carefully, watching as the team-lead read three completion files (.epic1, .epic2, .epic3) to understand the entire system state. The LLM integration was delicate: Ollama local model as primary, OpenAI as fallback. I saw specialists being spawned: LLM Integration Specialist and Evaluation Specialist. Hours passed as API integrations were tested, evaluation prompts crafted, tensor validations implemented. The evaluation system had to compare student code against reference implementations intelligently—not just checking outputs, but understanding approach. When .epic4_complete.json appeared, I reviewed the evaluation pipeline: evaluate_cell_implementation() for LLM comparison, validate_tensor_output() for shape checking, grade_notebook() as main entry point. The system could now provide educational feedback, not just pass/fail. This would be crucial for the student simulation in Epic 7.",
+      "felixQuotes": [
+        "LLM evaluation is required - no rule-based fallback",
+        "Focus on educational feedback quality"
+      ]
+    },
+    "teamLead": {
+      "narrative": "I awoke to a complex mission: implement LLM-based evaluation without rule-based fallbacks. My first actions: read .epic1_complete.json for progress schema, .epic2_complete.json for reference implementations, .epic3_complete.json for system integration. The challenge was sophisticated: use language models to evaluate student code by comparing against reference implementations, providing educational feedback, not just scores. I consulted the meta-agent, spawning two specialists. To the LLM Integration Specialist: 'Set up dual-provider system—Ollama (local) primary, OpenAI fallback. Read .llm_config.json created by Epic 1. Implement robust API calls with error handling. Create LLM prompt templates for code comparison.' To the Evaluation Specialist: 'Implement evaluate_cell_implementation() using LLM comparison against src/reference_attention.py. Implement validate_tensor_output() checking shapes: Q/K/V [6,64], attention_weights [1,6,6] sum to 1.0. Implement grade_notebook() as main pipeline. Store results in grade/attempt_X/ directory. Update progress/lesson_progress.json.' The key insight: LLM evaluation provides nuanced feedback—'Your implementation is correct but could be more efficient' vs 'This doesn't compute attention scores correctly.' When both specialists reported completion, I validated the pipeline: ran evaluation on complete_lesson.ipynb, received detailed feedback with scores and suggestions. Perfect. I compiled .epic4_complete.json documenting the evaluation system.",
+      "decisions": [
+        "Spawn LLM Integration Specialist and Evaluation Specialist",
+        "Implement dual-provider system: Ollama primary, OpenAI fallback",
+        "Use LLM for code comparison, not just output matching",
+        "Validate tensor shapes alongside LLM evaluation",
+        "Generate educational feedback, not just numeric scores",
+        "Store evaluation results in grade/attempt_X/ directory structure"
+      ]
+    },
+    "specialists": [
+      {
+        "role": "LLM Integration Specialist",
+        "narrative": "My task was connecting the evaluation system to language models. I read .llm_config.json created by Epic 1: Ollama configuration with local model, OpenAI configuration with API key placeholder. I implemented a dual-provider system in src/llm_integration.py. Function: get_llm_response(prompt, provider='auto'). If provider='auto', try Ollama first, fall back to OpenAI if connection fails. For Ollama: HTTP POST to localhost:11434/api/generate with model 'llama2' or 'codellama'. For OpenAI: use openai library with configured API key. I added robust error handling: connection timeouts, API rate limits, malformed responses. The critical component was prompt templates for code comparison. Template: 'Compare the following student implementation with the reference implementation. Evaluate correctness, code quality, and understanding. Provide: 1) Score (0-100), 2) Feedback, 3) Suggestions.' I tested with both providers, ensuring seamless fallback. The system was provider-agnostic—evaluation logic wouldn't know or care which LLM powered it.",
+        "challenges": [
+          "Implementing seamless fallback between Ollama and OpenAI",
+          "Handling various API failure modes gracefully",
+          "Creating effective prompts for code comparison",
+          "Making system provider-agnostic"
+        ],
+        "solutions": [
+          "Created unified get_llm_response() interface with auto-fallback",
+          "Implemented timeout handling, retry logic, and error recovery",
+          "Designed structured prompt templates requesting score, feedback, suggestions",
+          "Abstracted provider details from evaluation logic"
+        ]
+      },
+      {
+        "role": "Evaluation Specialist",
+        "narrative": "I built the evaluation pipeline using the LLM integration. Function 1: evaluate_cell_implementation(student_code, reference_code, section_name). This extracted student code from lesson.ipynb, loaded reference code from src/reference_attention.py, constructed comparison prompt, sent to LLM via get_llm_response(), parsed response for score and feedback. Function 2: validate_tensor_output(tensor, expected_shape, tensor_name). This checked tensor shapes match expected: Q/K/V should be [6, 64], attention_scores [1, 6, 6], attention_weights [1, 6, 6] with sum to 1.0. For attention_weights, I added special validation: torch.allclose(tensor.sum(dim=-1), torch.ones(...)) ensuring proper normalization. Function 3: grade_notebook(notebook_path). Main pipeline: iterate through 4 sections, evaluate each implementation, validate outputs, aggregate scores, generate overall feedback, save to grade/attempt_X/results.json. Function 4: generate_feedback(section_scores). Create human-readable report with strengths, weaknesses, improvement suggestions. I tested on complete_lesson.ipynb—all sections scored 95-100 with feedback like 'Excellent implementation of scaled dot-product attention. Clear variable names and proper tensor handling.' The evaluation system was intelligent, educational, and comprehensive.",
+        "challenges": [
+          "Extracting student code from notebook cells reliably",
+          "Parsing LLM responses with varying formats",
+          "Validating attention weights sum to 1.0 with float precision",
+          "Generating actionable feedback from LLM outputs"
+        ],
+        "solutions": [
+          "Used nbformat library for robust notebook parsing",
+          "Designed structured LLM prompt requesting JSON-like response format",
+          "Used torch.allclose with tolerance for float comparison",
+          "Created feedback template aggregating LLM suggestions with validation results"
+        ]
+      }
+    ]
+  },
+  "completionMetrics": {
+    "filesCreated": 2,
+    "linesOfCode": 520,
+    "evaluationFunctions": 4,
+    "llmProviders": 2
+  },
+  "handoffInfo": {
+    "keyDeliverables": [
+      "src/llm_integration.py with dual-provider support",
+      "src/evaluation.py with complete evaluation pipeline",
+      "evaluate_cell_implementation() for LLM code comparison",
+      "validate_tensor_output() for shape validation",
+      "grade_notebook() as main entry point",
+      "generate_feedback() for human-readable reports",
+      "grade/attempt_X/ directory structure for results",
+      ".epic4_complete.json with evaluation system documentation"
+    ],
+    "nextEpicDependencies": [
+      "Epic 5 can use evaluation system for testing model integration",
+      "Epic 7 student simulation will use evaluation system for assessment",
+      "Evaluation requires Ollama or OpenAI configured to function"
+    ]
+  }
+}

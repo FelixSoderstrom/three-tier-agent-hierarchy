@@ -1,0 +1,79 @@
+{
+  "epicNumber": 1,
+  "title": "Epic 1: Notebook Infrastructure",
+  "tagline": "Building the foundation: creating the scaffolding for an interactive attention mechanism lesson",
+  "perspectives": {
+    "productManager": {
+      "narrative": "I spawned the first team-lead with a single bash command: 'cd PROJECT_PATH && echo \"/1_notebook-infrastructure\" | claude --model sonnet --output-format json --dangerously-skip-permissions'. The team-lead's mission was clear: create the foundational project structure that would support all subsequent epics. I monitored the logs as they worked, watching file operations appear in real-time. The team-lead immediately understood the importance of the completion file protocol—they would need to document everything for Epic 2. As operations progressed, I saw them spawn two specialists: an Environment Setup Specialist and a Notebook Architect. The division of labor was clean. When .epic1_complete.json appeared in the project root with 'completed: true', I verified the handoff data: cell positions documented, function signatures defined, progress schema initialized. The foundation was laid. I updated .claude/current_epic.txt to '2_attention-implementation' and prepared to spawn the next team-lead.",
+      "felixQuotes": [
+        "This is automated development - no human interaction during execution",
+        "Focus on creating structure, not implementing functionality"
+      ]
+    },
+    "teamLead": {
+      "narrative": "I was the first team-lead, awakened with the 1_notebook-infrastructure custom command. My first action was to read CLAUDE.md—no previous epic completion files existed yet, so I was starting from scratch. I analyzed the epic definition: create directory structure, environment setup, notebook scaffolding for 4 core sections. I immediately recognized this required specialized expertise I didn't possess, so I consulted the meta-agent. Within moments, two specialists were spawned: Environment Setup Specialist for cross-platform Python environments, and Notebook Architect for Jupyter structure. I delegated the environment setup script to the first specialist, emphasizing cross-platform compatibility and pinned dependencies. To the Notebook Architect, I gave the critical task: create lesson.ipynb and complete_lesson.ipynb with consistent structure for the 4 implementation sections—Linear Projections, Scaled Dot-Product Attention, Softmax & Attention Weights, and Value Aggregation. The constant example was specified: 'The cat sat on the mat', 6 tokens, 64-dimensional embeddings. I ensured they created function stubs in src/visualizations.py and initialized progress/lesson_progress.json. When all specialists reported completion, I compiled the handoff data into .epic1_complete.json, documenting cell positions, function names, and configurations. My work was complete.",
+      "decisions": [
+        "Spawn Environment Setup Specialist and Notebook Architect via meta-agent",
+        "Delegate environment setup and notebook creation as separate tasks",
+        "Specify consistent example across all sections: 'The cat sat on the mat'",
+        "Create both lesson.ipynb (student version) and complete_lesson.ipynb (reference)",
+        "Initialize progress tracking schema for future evaluation",
+        "Document all cell positions and function signatures in .epic1_complete.json"
+      ]
+    },
+    "specialists": [
+      {
+        "role": "Environment Setup Specialist",
+        "narrative": "The team-lead briefed me: create a cross-platform virtual environment setup script with pinned dependencies. I analyzed the requirements: this was an educational project needing PyTorch, matplotlib, transformers, and Jupyter. I created setup_venv.sh with Python version detection, cross-platform path handling, and dependency installation. The script would detect whether python3 or python was available, create a virtual environment in ./venv, and install from requirements.txt. I pinned specific versions to ensure reproducibility: torch==2.1.0, matplotlib==3.8.0, transformers==4.35.0. I also created .llm_config.json for the LLM evaluation system that Epic 4 would use, configuring Ollama as primary and OpenAI as fallback. The critical insight was making this work headlessly—no user prompts, automatic fallbacks, clear error messages.",
+        "challenges": [
+          "Ensuring cross-platform compatibility (Windows, Mac, Linux)",
+          "Pinning dependencies for reproducibility",
+          "Creating setup that works without user interaction"
+        ],
+        "solutions": [
+          "Created setup_venv.sh with Python version detection and platform handling",
+          "Pinned all dependencies to specific versions in requirements.txt",
+          "Configured automatic fallbacks in .llm_config.json"
+        ]
+      },
+      {
+        "role": "Notebook Architect",
+        "narrative": "My task was the cornerstone of the entire project: create the Jupyter notebook structure for the interactive lesson. I created two notebooks: lesson.ipynb with TODO cells for students, and complete_lesson.ipynb with full implementations. The structure was critical—4 core sections, each with theory explanation, implementation cell, and visualization cell. Section 1: Linear Projections (Q, K, V). Section 2: Scaled Dot-Product Attention. Section 3: Softmax & Attention Weights. Section 4: Value Aggregation. I used the specified example throughout: PROMPT_EXAMPLE = 'The cat sat on the mat', ensuring 6 tokens with 64-dimensional embeddings. For lesson.ipynb, I left implementation cells with clear TODO comments and expected output shapes. For complete_lesson.ipynb, I created placeholder cells that Epic 2 would fill. I also created src/visualizations.py with function stubs: visualize_qkv_projections(), visualize_attention_scores(), visualize_attention_weights(), visualize_attended_values(). Finally, I initialized progress/lesson_progress.json with a schema for tracking the 4 implementation sections. I documented exact cell indices in my report to the team-lead—this would be crucial for Epic 2.",
+        "challenges": [
+          "Creating clear structure for 4 distinct attention mechanism sections",
+          "Balancing educational clarity with implementation space",
+          "Documenting cell positions for future epic reference"
+        ],
+        "solutions": [
+          "Created parallel notebooks: lesson.ipynb (student) and complete_lesson.ipynb (reference)",
+          "Established consistent pattern: theory → implementation → visualization for each section",
+          "Documented cell indices and function signatures in completion file"
+        ]
+      }
+    ]
+  },
+  "completionMetrics": {
+    "filesCreated": 12,
+    "linesOfCode": 850,
+    "notebookCells": 32,
+    "functionStubs": 4
+  },
+  "handoffInfo": {
+    "keyDeliverables": [
+      "lesson.ipynb with 4 implementation sections (TODO cells)",
+      "complete_lesson.ipynb with placeholder cells for reference",
+      "setup_venv.sh for cross-platform environment setup",
+      "requirements.txt with pinned dependencies",
+      ".llm_config.json for Ollama/OpenAI integration",
+      "src/visualizations.py with 4 function stubs",
+      "progress/lesson_progress.json initialized",
+      ".epic1_complete.json with cell positions and function names"
+    ],
+    "nextEpicDependencies": [
+      "Epic 2 must read .epic1_complete.json for cell positions",
+      "Epic 2 must implement code in documented cells",
+      "Epic 2 must use PROMPT_EXAMPLE = 'The cat sat on the mat'",
+      "Epic 2 must maintain tensor shapes: Q/K/V [6,64], attention_weights [1,6,6]"
+    ]
+  }
+}

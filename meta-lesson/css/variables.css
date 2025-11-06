@@ -1,0 +1,235 @@
+/**
+ * Design System Variables
+ * Attention Mechanism Educational Project
+ *
+ * This file contains all design tokens (colors, typography, spacing, etc.)
+ * for consistent styling across the entire educational interface.
+ */
+
+:root {
+  /* ============================================
+     COLOR PALETTE
+     ============================================ */
+
+  /* Background Colors */
+  --color-bg-primary: #1a1a1a;      /* Main dark background */
+  --color-bg-secondary: #2a2a2a;    /* Card backgrounds */
+  --color-bg-tertiary: #3a3a3a;     /* Nested elements */
+
+  /* Accent Colors */
+  --color-accent-primary: #ff6b35;   /* Primary orange - buttons, highlights */
+  --color-accent-secondary: #ff8855; /* Secondary orange - hovers, gradients */
+
+  /* Text Colors */
+  --color-text-primary: #ffffff;     /* Main text */
+  --color-text-secondary: #cccccc;   /* Secondary text */
+  --color-text-tertiary: #999999;    /* Muted text, labels */
+
+  /* Border Colors */
+  --color-border: #444444;           /* Default borders */
+
+  /* Status Colors */
+  --color-success: #4caf50;          /* Success states */
+  --color-warning: #ff9800;          /* Warning states */
+  --color-error: #f44336;            /* Error states */
+
+  /* Overlay Colors */
+  --color-overlay: rgba(0, 0, 0, 0.8);           /* Modal overlay */
+  --color-overlay-light: rgba(0, 0, 0, 0.5);     /* Light overlay */
+
+  /* Gradient Colors */
+  --gradient-primary: linear-gradient(135deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 100%);
+  --gradient-background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+
+  /* Font Families */
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-family-mono: 'Courier New', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+
+  /* Font Sizes - Mobile First */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 2rem;        /* 32px */
+  --font-size-4xl: 2.5rem;      /* 40px */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+
+
+  /* ============================================
+     SPACING (8px Grid System)
+     ============================================ */
+
+  --spacing-xs: 0.5rem;     /* 8px */
+  --spacing-sm: 1rem;       /* 16px */
+  --spacing-md: 1.5rem;     /* 24px */
+  --spacing-lg: 2rem;       /* 32px */
+  --spacing-xl: 3rem;       /* 48px */
+  --spacing-2xl: 4rem;      /* 64px */
+  --spacing-3xl: 6rem;      /* 96px */
+
+
+  /* ============================================
+     BORDER RADIUS
+     ============================================ */
+
+  --radius-sm: 0.25rem;     /* 4px */
+  --radius-md: 0.5rem;      /* 8px */
+  --radius-lg: 0.75rem;     /* 12px */
+  --radius-xl: 1rem;        /* 16px */
+  --radius-2xl: 1.5rem;     /* 24px */
+  --radius-full: 9999px;    /* Fully rounded */
+
+
+  /* ============================================
+     SHADOWS
+     ============================================ */
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.25);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.3);
+
+  /* Focus Shadow (Accessibility) */
+  --shadow-focus: 0 0 0 3px rgba(255, 107, 53, 0.4);
+
+  /* Glow Effects */
+  --glow-success: 0 0 8px rgba(76, 175, 80, 0.3);
+  --glow-error: 0 0 8px rgba(244, 67, 54, 0.3);
+  --glow-warning: 0 0 8px rgba(255, 152, 0, 0.3);
+  --glow-accent: 0 0 12px rgba(255, 107, 53, 0.4);
+
+
+  /* ============================================
+     TRANSITIONS & ANIMATIONS
+     ============================================ */
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Easing Functions */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  /* ============================================
+     RESPONSIVE BREAKPOINTS
+     ============================================ */
+
+  --breakpoint-mobile: 640px;
+  --breakpoint-tablet: 1024px;
+  --breakpoint-desktop: 1280px;
+
+
+  /* ============================================
+     Z-INDEX LAYERS
+     ============================================ */
+
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-tooltip: 600;
+
+
+  /* ============================================
+     LAYOUT CONSTRAINTS
+     ============================================ */
+
+  --container-max-width: 1200px;
+  --content-max-width: 800px;
+  --sidebar-width: 280px;
+
+
+  /* ============================================
+     FORM ELEMENTS
+     ============================================ */
+
+  --input-height-sm: 2rem;      /* 32px */
+  --input-height-md: 2.5rem;    /* 40px */
+  --input-height-lg: 3rem;      /* 48px */
+
+  --input-padding-x-sm: 0.75rem;
+  --input-padding-x-md: 1rem;
+  --input-padding-x-lg: 1.25rem;
+
+
+  /* ============================================
+     BUTTON SIZES
+     ============================================ */
+
+  --button-height-sm: 2rem;     /* 32px */
+  --button-height-md: 2.5rem;   /* 40px */
+  --button-height-lg: 3rem;     /* 48px */
+
+  --button-padding-x-sm: 1rem;
+  --button-padding-x-md: 1.5rem;
+  --button-padding-x-lg: 2rem;
+}
+
+/* ============================================
+   DARK MODE ADJUSTMENTS (Optional)
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Already dark by default, but can adjust if needed */
+  }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE (Accessibility)
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  :root {
+    --color-bg-primary: #000000;
+    --color-bg-secondary: #1a1a1a;
+    --color-bg-tertiary: #333333;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #ffffff;
+    --color-text-tertiary: #cccccc;
+    --color-accent-primary: #ffaa00;
+    --color-accent-secondary: #ffcc00;
+    --color-border: #666666;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION (Accessibility)
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0.01ms;
+    --transition-base: 0.01ms;
+    --transition-slow: 0.01ms;
+  }
+}

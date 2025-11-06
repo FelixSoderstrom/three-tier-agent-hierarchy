@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Configuration wizard for building agentic workflows - Step 1">
+    <title>Workflow Configuration Builder - Step 1 | Attention Mechanism Project</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Builder-specific Styles -->
+    <link rel="stylesheet" href="css/builder.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="../index.html">Home</a> &gt;
+                    <span>Configuration Builder</span>
+                </nav>
+                <h1 class="main-title">Agentic Workflow Configuration</h1>
+                <p class="subtitle">Build your custom workflow in 3 easy steps</p>
+            </div>
+        </header>
+
+        <main class="main-content builder-container">
+            <!-- Progress Indicator -->
+            <section class="progress-section" aria-label="Progress indicator">
+                <div class="progress-bar-container" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 33%;"></div>
+                </div>
+                <p class="progress-text">
+                    <span class="current-step">Step 1</span> of 3: Basic Configuration
+                </p>
+            </section>
+
+            <!-- Configuration Form -->
+            <form id="builder-form" class="builder-form" novalidate>
+                <!-- Epic Selection Section -->
+                <section class="form-section" aria-labelledby="epic-selection-title">
+                    <h2 class="form-section-title" id="epic-selection-title">
+                        <span class="form-section-icon" aria-hidden="true">🎯</span>
+                        Epic Selection
+                    </h2>
+                    <p class="form-section-description">
+                        Choose the complexity level for your agentic workflow. More epics means more features and capabilities.
+                    </p>
+
+                    <div class="form-group">
+                        <label class="form-label required" id="epic-count-label">
+                            How many epics would you like to include?
+                        </label>
+                        <div class="radio-group" role="radiogroup" aria-labelledby="epic-count-label">
+                            <div class="radio-option" tabindex="0" role="radio" aria-checked="true">
+                                <input type="radio" name="epic-count" value="2" id="epic-2" checked>
+                                <div class="radio-visual" aria-hidden="true"></div>
+                                <div class="radio-label">
+                                    <div class="radio-title">2 Epics (Beginner)</div>
+                                    <div class="radio-description">Perfect for getting started with basic agent workflows</div>
+                                </div>
+                            </div>
+
+                            <div class="radio-option" tabindex="0" role="radio" aria-checked="false">
+                                <input type="radio" name="epic-count" value="3" id="epic-3">
+                                <div class="radio-visual" aria-hidden="true"></div>
+                                <div class="radio-label">
+                                    <div class="radio-title">3 Epics (Intermediate)</div>
+                                    <div class="radio-description">Balanced approach with moderate complexity</div>
+                                </div>
+                            </div>
+
+                            <div class="radio-option" tabindex="0" role="radio" aria-checked="false">
+                                <input type="radio" name="epic-count" value="4" id="epic-4">
+                                <div class="radio-visual" aria-hidden="true"></div>
+                                <div class="radio-label">
+                                    <div class="radio-title">4 Epics (Advanced)</div>
+                                    <div class="radio-description">Full-featured workflow with advanced capabilities</div>
+                                </div>
+                            </div>
+
+                            <div class="radio-option" tabindex="0" role="radio" aria-checked="false">
+                                <input type="radio" name="epic-count" value="custom" id="epic-custom">
+                                <div class="radio-visual" aria-hidden="true"></div>
+                                <div class="radio-label">
+                                    <div class="radio-title">Custom</div>
+                                    <div class="radio-description">Specify your own number of epics</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="custom-epic-input" class="custom-epic-input">
+                            <label for="custom-epic-count" class="form-label">
+                                Custom Epic Count
+                            </label>
+                            <input
+                                type="number"
+                                id="custom-epic-count"
+                                class="form-input"
+                                min="2"
+                                placeholder="Enter number of epics (minimum 2)"
+                                aria-describedby="custom-epic-help"
+                            >
+                            <span id="custom-epic-help" class="form-helper-text">
+                                Minimum 2 epics required
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Project Configuration Section -->
+                <section class="form-section" aria-labelledby="project-config-title">
+                    <h2 class="form-section-title" id="project-config-title">
+                        <span class="form-section-icon" aria-hidden="true">📝</span>
+                        Project Configuration
+                    </h2>
+                    <p class="form-section-description">
+                        Give your workflow a meaningful name to help identify it later.
+                    </p>
+
+                    <div class="form-group">
+                        <label for="project-name" class="form-label">
+                            Project Name (Optional)
+                        </label>
+                        <input
+                            type="text"
+                            id="project-name"
+                            class="form-input"
+                            placeholder="My Agentic Workflow"
+                            aria-describedby="project-name-help"
+                            maxlength="100"
+                        >
+                        <span id="project-name-help" class="form-helper-text">
+                            A descriptive name for your workflow configuration
+                        </span>
+                    </div>
+                </section>
+
+                <!-- Core Components Section -->
+                <section class="form-section" aria-labelledby="core-components-title">
+                    <h2 class="form-section-title" id="core-components-title">
+                        <span class="form-section-icon" aria-hidden="true">🔧</span>
+                        Core Components
+                    </h2>
+                    <p class="form-section-description">
+                        Essential components required for your agentic workflow.
+                    </p>
+
+                    <div class="form-group">
+                        <div class="checkbox-group" role="group" aria-labelledby="core-components-title">
+                            <div class="checkbox-option checked disabled" data-checkbox="core-product-manager">
+                                <input
+                                    type="checkbox"
+                                    id="core-product-manager"
+                                    checked
+                                    disabled
+                                    aria-describedby="pm-help"
+                                >
+                                <div class="checkbox-visual" aria-hidden="true"></div>
+                                <div class="checkbox-label">
+                                    <div class="checkbox-title">
+                                        Product-Manager Agent
+                                        <span class="checkbox-badge" aria-label="Required component">Required</span>
+                                    </div>
+                                    <div class="checkbox-description" id="pm-help">
+                                        Orchestrates the entire workflow and manages agent coordination
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-option checked" data-checkbox="core-meta-agent" tabindex="0" role="checkbox" aria-checked="true">
+                                <input
+                                    type="checkbox"
+                                    id="core-meta-agent"
+                                    checked
+                                    aria-describedby="meta-help"
+                                >
+                                <div class="checkbox-visual" aria-hidden="true"></div>
+                                <div class="checkbox-label">
+                                    <div class="checkbox-title">
+                                        Meta-Agent
+                                        <span class="checkbox-badge" style="background: var(--warning);" aria-label="Recommended component">Recommended</span>
+                                    </div>
+                                    <div class="checkbox-description" id="meta-help">
+                                        Provides high-level oversight and optimization across agents
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Optional Features Section -->
+                <section class="form-section" aria-labelledby="optional-features-title">
+                    <h2 class="form-section-title" id="optional-features-title">
+                        <span class="form-section-icon" aria-hidden="true">✨</span>
+                        Optional Features
+                    </h2>
+                    <p class="form-section-description">
+                        Enhance your workflow with additional capabilities.
+                    </p>
+
+                    <div class="form-group">
+                        <div class="checkbox-group" role="group" aria-labelledby="optional-features-title">
+                            <div class="checkbox-option" data-checkbox="opt-specialized-agents" tabindex="0" role="checkbox" aria-checked="false">
+                                <input
+                                    type="checkbox"
+                                    id="opt-specialized-agents"
+                                    aria-describedby="specialized-help"
+                                >
+                                <div class="checkbox-visual" aria-hidden="true"></div>
+                                <div class="checkbox-label">
+                                    <div class="checkbox-title">Specialized Agent Templates</div>
+                                    <div class="checkbox-description" id="specialized-help">
+                                        Pre-configured agents for common tasks and domains
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-option" data-checkbox="opt-logging" tabindex="0" role="checkbox" aria-checked="false">
+                                <input
+                                    type="checkbox"
+                                    id="opt-logging"
+                                    aria-describedby="logging-help"
+                                >
+                                <div class="checkbox-visual" aria-hidden="true"></div>
+                                <div class="checkbox-label">
+                                    <div class="checkbox-title">Logging & Monitoring</div>
+                                    <div class="checkbox-description" id="logging-help">
+                                        Track agent performance and debug workflow execution
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-option" data-checkbox="opt-custom-tools" tabindex="0" role="checkbox" aria-checked="false">
+                                <input
+                                    type="checkbox"
+                                    id="opt-custom-tools"
+                                    aria-describedby="tools-help"
+                                >
+                                <div class="checkbox-visual" aria-hidden="true"></div>
+                                <div class="checkbox-label">
+                                    <div class="checkbox-title">Custom Tools Configuration</div>
+                                    <div class="checkbox-description" id="tools-help">
+                                        Define and integrate custom tools for your agents
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Error Message Container -->
+                <div id="error-message" class="error-message" role="alert" aria-live="polite">
+                    <div class="error-message-title">
+                        <span aria-hidden="true">⚠️</span>
+                        <span>Please fix the following errors:</span>
+                    </div>
+                    <ul id="error-list" class="error-message-list"></ul>
+                </div>
+
+                <!-- Success Message Container -->
+                <div id="success-message" class="success-message" role="status" aria-live="polite">
+                    <span class="success-message-icon" aria-hidden="true">✓</span>
+                    <span class="success-message-text">Configuration saved successfully!</span>
+                </div>
+            </form>
+
+            <!-- Navigation Buttons -->
+            <nav class="builder-navigation" aria-label="Wizard navigation">
+                <div class="nav-left">
+                    <button type="button" id="btn-reset" class="btn btn-tertiary">
+                        <span class="btn-icon" aria-hidden="true">↺</span>
+                        Reset
+                    </button>
+                </div>
+                <div class="nav-right">
+                    <button type="button" id="btn-save" class="btn btn-secondary">
+                        <span class="btn-icon" aria-hidden="true">💾</span>
+                        Save Draft
+                    </button>
+                    <button type="submit" id="btn-continue" class="btn btn-primary">
+                        Continue
+                        <span class="btn-icon" aria-hidden="true">→</span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Help Section -->
+            <section class="status-section" style="margin-top: var(--spacing-xl);">
+                <div class="status-card">
+                    <h3 class="section-title">
+                        <span class="icon">💡</span>
+                        Quick Tips
+                    </h3>
+                    <div class="action-grid">
+                        <div class="action-item">
+                            <span class="action-icon" aria-hidden="true">⌨️</span>
+                            <div class="action-content">
+                                <h3>Keyboard Shortcuts</h3>
+                                <p>Press Ctrl+S to save draft, Ctrl+Enter to continue</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon" aria-hidden="true">💾</span>
+                            <div class="action-content">
+                                <h3>Auto-Save</h3>
+                                <p>Your progress is automatically saved to your browser</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon" aria-hidden="true">🔄</span>
+                            <div class="action-content">
+                                <h3>Resume Anytime</h3>
+                                <p>Come back later and pick up where you left off</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Attention Mechanism Educational Project. Configuration Builder v1.0</p>
+        </footer>
+    </div>
+
+    <!-- State Management -->
+    <script src="js/state.js"></script>
+    <!-- Builder Logic -->
+    <script src="js/builder.js"></script>
+</body>
+</html>

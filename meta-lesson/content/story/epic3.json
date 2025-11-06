@@ -1,0 +1,82 @@
+{
+  "epicNumber": 3,
+  "title": "Epic 3: Visualization",
+  "tagline": "Bringing attention to life through clear, educational visual feedback",
+  "perspectives": {
+    "productManager": {
+      "narrative": "I spawned the third team-lead with confidence—the foundation was solid, the implementation complete. Now came the challenge of making abstract tensor operations visible and understandable. The logs showed the team-lead immediately reading both .epic1_complete.json and .epic2_complete.json, extracting function names and tensor shapes. This epic would transform numbers into insight. I watched as specialists were spawned: a Visualization Specialist and a Notebook Integration Specialist. Hours passed as matplotlib plots were crafted, heatmaps generated, token labels positioned. The challenge was the batch dimension—tensors were [1, 6, 6] but visualizations needed [6, 6]. The specialists handled it gracefully with squeezing operations. When .epic3_complete.json appeared, I reviewed the deliverables: four visualization functions, all integrated into notebooks, token labels visible, graceful error handling. The abstract mathematics now had visual form. Students would see attention patterns, not just compute them.",
+      "felixQuotes": [
+        "Let visualization specialist choose appropriate plot types and colors",
+        "Focus on educational clarity"
+      ]
+    },
+    "teamLead": {
+      "narrative": "I emerged into a project with solid foundations. My first actions: read .epic1_complete.json for function names and cell positions, read .epic2_complete.json for tensor shapes. The mission was clear: implement 4 visualization functions that would make attention mechanisms visible. I immediately recognized this required dual expertise: matplotlib visualization skills and notebook integration knowledge. I consulted the meta-agent, spawning two specialists. To the Visualization Specialist: 'Implement visualize_qkv_projections(), visualize_attention_scores(), visualize_attention_weights(), and visualize_attended_values(). Handle batch dimensions [1, 6, 6] → [6, 6]. Show token labels: The, cat, sat, on, the, mat. Make plots educational—clear labels, appropriate titles, intuitive color schemes.' To the Notebook Integration Specialist: 'Ensure visualizations display inline, test with Epic 2's outputs, handle missing data gracefully, verify plt.show() is called.' I monitored their work, ensuring consistency with the established token example. The batch dimension challenge was resolved through careful squeezing. When both reported completion, I validated by running the notebooks—beautiful heatmaps appeared, showing attention patterns clearly. I compiled .epic3_complete.json documenting function signatures and integration status.",
+      "decisions": [
+        "Spawn Visualization Specialist and Notebook Integration Specialist",
+        "Handle batch dimension squeezing [1, 6, 6] → [6, 6] for 2D plots",
+        "Display token labels consistently across all visualizations",
+        "Allow specialists to choose plot types (heatmaps, bar charts, etc.)",
+        "Ensure graceful error handling for missing data",
+        "Test integration with Epic 2's actual outputs"
+      ]
+    },
+    "specialists": [
+      {
+        "role": "Visualization Specialist",
+        "narrative": "My canvas was matplotlib, my subject was attention. I implemented four visualizations, each revealing different aspects of the mechanism. Function 1: visualize_qkv_projections(). I created a multi-panel plot showing the transformation from embeddings to Q, K, V matrices. Color-coded heatmaps with token labels revealed how information was projected. Function 2: visualize_attention_scores(). The raw attention scores as a heatmap, showing which tokens might attend to which others. Diverging colormap to show positive/negative values. Function 3: visualize_attention_weights(). The post-softmax probabilities as a heatmap—this was the core attention pattern. I used 'YlOrRd' colormap (yellow to orange to red) for intuitive intensity. Each row summed to 1.0, shown with value annotations. Function 4: visualize_attended_values(). A combined visualization showing attention weights alongside the resulting value aggregation. The challenge was the batch dimension: tensors came in as [1, 6, 6], but heatmaps needed [6, 6]. I squeezed the first dimension, adding shape validation to catch errors. Token labels ('The', 'cat', 'sat', 'on', 'the', 'mat') appeared on both axes. Every plot had clear titles, axis labels, and called plt.show() at the end. Educational clarity was paramount—students would see attention patterns instantly.",
+        "challenges": [
+          "Handling batch dimension squeezing [1, 6, 6] → [6, 6]",
+          "Choosing intuitive color schemes for different plot types",
+          "Making attention patterns immediately understandable",
+          "Displaying token labels clearly without cluttering plots"
+        ],
+        "solutions": [
+          "Implemented tensor.squeeze(0) with shape validation",
+          "Used 'YlOrRd' colormap for attention weights (intuitive intensity)",
+          "Added value annotations to heatmaps showing exact attention weights",
+          "Positioned token labels on both axes with clear fontsize"
+        ]
+      },
+      {
+        "role": "Notebook Integration Specialist",
+        "narrative": "My task was ensuring visualizations worked seamlessly in the notebooks. I tested each function with Epic 2's actual outputs, verifying inline display in Jupyter. The key was the plt.show() call—without it, plots wouldn't appear. I also added error handling: if tensors were the wrong shape, functions would raise clear ValueError messages. If data was None, functions would skip plotting gracefully. I ran the complete_lesson.ipynb end-to-end, watching as each visualization appeared after its corresponding implementation cell. The flow was perfect: implement Q, K, V → visualize projections → implement attention scores → visualize scores → implement softmax → visualize weights → implement aggregation → visualize attended values. Students would see cause and effect immediately. I also verified the lesson.ipynb displayed properly with TODO cells—the visualizations would work once students filled in their implementations. Finally, I updated the imports at the top of both notebooks: 'from src.visualizations import visualize_qkv_projections, visualize_attention_scores, visualize_attention_weights, visualize_attended_values'. All tests passed. Integration complete.",
+        "challenges": [
+          "Ensuring inline display in Jupyter notebooks",
+          "Handling errors gracefully without breaking notebook flow",
+          "Testing with Epic 2's actual tensor outputs",
+          "Verifying imports worked across both notebooks"
+        ],
+        "solutions": [
+          "Verified all functions call plt.show() at the end",
+          "Added shape validation and None checks with clear error messages",
+          "Ran complete_lesson.ipynb end-to-end with Epic 2's outputs",
+          "Updated imports in both notebooks and verified module paths"
+        ]
+      }
+    ]
+  },
+  "completionMetrics": {
+    "filesCreated": 1,
+    "linesOfCode": 380,
+    "visualizationFunctions": 4,
+    "plotsGenerated": 6
+  },
+  "handoffInfo": {
+    "keyDeliverables": [
+      "src/visualizations.py fully implemented",
+      "visualize_qkv_projections() with multi-panel heatmaps",
+      "visualize_attention_scores() with diverging colormap",
+      "visualize_attention_weights() with 'YlOrRd' and annotations",
+      "visualize_attended_values() showing weights and aggregation",
+      "Batch dimension handling [1, 6, 6] → [6, 6]",
+      "Token labels displayed on all plots",
+      ".epic3_complete.json with function signatures"
+    ],
+    "nextEpicDependencies": [
+      "Epic 4 can use visualizations for debugging evaluation",
+      "Epic 5 visualizations work with model comparison outputs",
+      "Epic 6 documentation should reference visualization capabilities"
+    ]
+  }
+}

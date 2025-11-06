@@ -1,0 +1,760 @@
+{
+  "examples": [
+    {
+      "id": "api-docs-explorer",
+      "name": "API Documentation to Interactive Explorer",
+      "domain": "Documentation",
+      "complexity": "Intermediate",
+      "description": "Generate comprehensive API documentation from codebase and create an interactive API explorer with live testing capabilities",
+      "epic1": {
+        "name": "API Documentation Generation",
+        "purpose": "Extract API endpoints, parameters, and responses from codebase to create structured documentation",
+        "deliverables": [
+          "OpenAPI/Swagger specification file",
+          "Endpoint documentation with examples",
+          "Authentication and authorization guide",
+          "Error code reference"
+        ]
+      },
+      "epic2": {
+        "name": "Interactive API Explorer",
+        "purpose": "Build a web-based interface allowing users to browse and test API endpoints in real-time",
+        "deliverables": [
+          "Interactive API testing interface",
+          "Request/response visualization",
+          "Code snippet generator for multiple languages",
+          "Authentication token management UI"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Documentation Specialist",
+          "responsibility": "Extract and structure API documentation from source code"
+        },
+        {
+          "role": "Frontend Developer",
+          "responsibility": "Build interactive web interface for API exploration"
+        },
+        {
+          "role": "Backend Integration Engineer",
+          "responsibility": "Connect explorer to live API endpoints"
+        },
+        {
+          "role": "UX Designer",
+          "responsibility": "Design intuitive user experience for API testing"
+        }
+      ],
+      "useCases": [
+        "Developer onboarding to new API",
+        "Client-facing API documentation portal",
+        "Internal API testing and debugging",
+        "API contract validation"
+      ],
+      "sampleOutput": "A fully functional web application where developers can browse API endpoints, see request/response examples, test endpoints with custom parameters, and generate code snippets in Python, JavaScript, cURL, and other languages"
+    },
+    {
+      "id": "tech-spec-user-guide",
+      "name": "Technical Specification to User Guide",
+      "domain": "Documentation",
+      "complexity": "Beginner",
+      "description": "Transform technical specifications into accessible, user-friendly guides with tutorials and examples",
+      "epic1": {
+        "name": "Technical Specification Writing",
+        "purpose": "Document system architecture, features, and technical requirements in detailed specifications",
+        "deliverables": [
+          "System architecture document",
+          "Feature specifications",
+          "Technical requirements list",
+          "API/interface definitions"
+        ]
+      },
+      "epic2": {
+        "name": "User Guide Creation",
+        "purpose": "Convert technical documentation into easy-to-follow user guides with step-by-step tutorials",
+        "deliverables": [
+          "Getting started guide",
+          "Step-by-step tutorials with screenshots",
+          "Common use case examples",
+          "Troubleshooting FAQ"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Technical Writer",
+          "responsibility": "Draft comprehensive technical specifications"
+        },
+        {
+          "role": "Content Translator",
+          "responsibility": "Convert technical content to user-friendly language"
+        },
+        {
+          "role": "Tutorial Designer",
+          "responsibility": "Create step-by-step tutorials and examples"
+        }
+      ],
+      "useCases": [
+        "Product documentation for non-technical users",
+        "Software onboarding materials",
+        "SaaS product help center",
+        "Educational course materials"
+      ],
+      "sampleOutput": "A comprehensive user guide with clear sections: Quick Start, Feature Tutorials, Best Practices, and Troubleshooting. Each section includes screenshots, code examples, and practical tips for end users"
+    },
+    {
+      "id": "architecture-diagrams",
+      "name": "Architecture Documentation to Diagram Generation",
+      "domain": "Documentation",
+      "complexity": "Advanced",
+      "description": "Document complex system architecture and automatically generate visual diagrams with interactive components",
+      "epic1": {
+        "name": "Architecture Documentation",
+        "purpose": "Create comprehensive documentation of system architecture, components, and data flows",
+        "deliverables": [
+          "Component architecture descriptions",
+          "Data flow documentation",
+          "Integration point specifications",
+          "Security and infrastructure details"
+        ]
+      },
+      "epic2": {
+        "name": "Interactive Diagram Generation",
+        "purpose": "Transform architecture documentation into interactive, zoomable diagrams with component details",
+        "deliverables": [
+          "Auto-generated system architecture diagrams",
+          "Component relationship visualizations",
+          "Data flow diagrams",
+          "Interactive diagram with clickable components"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "System Architect",
+          "responsibility": "Document system architecture and component relationships"
+        },
+        {
+          "role": "Diagram Generator",
+          "responsibility": "Convert documentation to structured diagram formats"
+        },
+        {
+          "role": "Visualization Engineer",
+          "responsibility": "Create interactive diagram interface"
+        },
+        {
+          "role": "Documentation Validator",
+          "responsibility": "Ensure diagram accuracy and completeness"
+        }
+      ],
+      "useCases": [
+        "Enterprise system documentation",
+        "Microservices architecture visualization",
+        "Cloud infrastructure mapping",
+        "Technical debt assessment"
+      ],
+      "sampleOutput": "A suite of interactive diagrams including system overview, component dependencies, data flows, and deployment architecture. Diagrams support zoom, click-to-expand details, and export to PNG/SVG formats"
+    },
+    {
+      "id": "unit-integration-tests",
+      "name": "Unit Test Suite to Integration Test Framework",
+      "domain": "Testing",
+      "complexity": "Intermediate",
+      "description": "Build comprehensive unit tests for individual components, then create integration test framework for end-to-end workflows",
+      "epic1": {
+        "name": "Unit Test Suite Creation",
+        "purpose": "Develop thorough unit tests for all modules, functions, and classes with high coverage",
+        "deliverables": [
+          "Unit tests for all core modules",
+          "Mock and stub utilities",
+          "Test fixtures and factories",
+          "Code coverage report (>80%)"
+        ]
+      },
+      "epic2": {
+        "name": "Integration Test Framework",
+        "purpose": "Build framework for testing interactions between components and external services",
+        "deliverables": [
+          "Integration test suite",
+          "Test database setup/teardown scripts",
+          "API integration tests",
+          "End-to-end workflow tests"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Unit Test Developer",
+          "responsibility": "Write comprehensive unit tests for all components"
+        },
+        {
+          "role": "Integration Test Engineer",
+          "responsibility": "Design and implement integration test scenarios"
+        },
+        {
+          "role": "Test Infrastructure Specialist",
+          "responsibility": "Set up test databases and mock services"
+        },
+        {
+          "role": "QA Analyst",
+          "responsibility": "Define test coverage requirements and validate results"
+        }
+      ],
+      "useCases": [
+        "New feature development with TDD",
+        "Legacy code refactoring with safety net",
+        "Continuous integration pipeline setup",
+        "API contract testing"
+      ],
+      "sampleOutput": "A complete test suite with 250+ unit tests and 50+ integration tests, achieving 85% code coverage. Tests run in under 2 minutes and include detailed failure reports with stack traces and assertions"
+    },
+    {
+      "id": "test-data-e2e",
+      "name": "Test Data Generator to E2E Test Scenarios",
+      "domain": "Testing",
+      "complexity": "Advanced",
+      "description": "Create sophisticated test data generation system, then build end-to-end test scenarios using realistic data",
+      "epic1": {
+        "name": "Test Data Generator",
+        "purpose": "Build configurable system to generate realistic test data for various scenarios",
+        "deliverables": [
+          "Fake data generation library",
+          "Schema-based data generators",
+          "Relationship and constraint handling",
+          "Data seeding scripts"
+        ]
+      },
+      "epic2": {
+        "name": "E2E Test Scenarios",
+        "purpose": "Develop comprehensive end-to-end test scenarios using generated realistic data",
+        "deliverables": [
+          "User journey test scenarios",
+          "Performance test data sets",
+          "Edge case test data",
+          "Automated E2E test execution framework"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Data Engineer",
+          "responsibility": "Build flexible test data generation system"
+        },
+        {
+          "role": "QA Automation Engineer",
+          "responsibility": "Create E2E test scenarios and automation"
+        },
+        {
+          "role": "Performance Tester",
+          "responsibility": "Design load testing scenarios with realistic data"
+        },
+        {
+          "role": "Business Analyst",
+          "responsibility": "Define realistic user journeys for testing"
+        }
+      ],
+      "useCases": [
+        "Performance and load testing",
+        "UI/UX testing with realistic data",
+        "Database migration validation",
+        "Privacy compliance testing (GDPR, etc.)"
+      ],
+      "sampleOutput": "A test data generator that can create 10,000+ realistic user records with relationships (orders, addresses, payments) in seconds, plus 25 E2E test scenarios covering critical user journeys like registration, checkout, and account management"
+    },
+    {
+      "id": "ci-deployment-automation",
+      "name": "CI Pipeline Setup to Deployment Automation",
+      "domain": "DevOps",
+      "complexity": "Intermediate",
+      "description": "Configure continuous integration pipeline with automated testing, then implement automated deployment to multiple environments",
+      "epic1": {
+        "name": "CI Pipeline Setup",
+        "purpose": "Establish continuous integration pipeline with automated builds, tests, and quality checks",
+        "deliverables": [
+          "CI configuration files (GitHub Actions/GitLab CI)",
+          "Automated build process",
+          "Test execution in pipeline",
+          "Code quality gates"
+        ]
+      },
+      "epic2": {
+        "name": "Deployment Automation",
+        "purpose": "Automate deployment process to staging and production environments with rollback capabilities",
+        "deliverables": [
+          "Automated deployment scripts",
+          "Environment-specific configurations",
+          "Blue-green deployment setup",
+          "Rollback procedures"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "DevOps Engineer",
+          "responsibility": "Configure CI/CD pipeline and automation"
+        },
+        {
+          "role": "Release Manager",
+          "responsibility": "Define deployment strategies and rollback procedures"
+        },
+        {
+          "role": "Infrastructure Engineer",
+          "responsibility": "Set up deployment environments and networking"
+        },
+        {
+          "role": "Security Specialist",
+          "responsibility": "Implement security checks and secret management"
+        }
+      ],
+      "useCases": [
+        "Modern web application deployment",
+        "Microservices continuous delivery",
+        "Mobile app CI/CD pipeline",
+        "Infrastructure as code deployment"
+      ],
+      "sampleOutput": "A fully automated CI/CD pipeline that builds, tests, and deploys code changes within 10 minutes. Includes automated rollback, Slack notifications, and deployment to staging/production environments with zero downtime"
+    },
+    {
+      "id": "container-orchestration",
+      "name": "Container Configuration to Orchestration Setup",
+      "domain": "DevOps",
+      "complexity": "Advanced",
+      "description": "Containerize application with Docker, then set up Kubernetes orchestration for scalability and high availability",
+      "epic1": {
+        "name": "Container Configuration",
+        "purpose": "Containerize all application components with optimized Docker images and configurations",
+        "deliverables": [
+          "Dockerfiles for all services",
+          "Docker Compose configuration",
+          "Container health checks",
+          "Multi-stage build optimization"
+        ]
+      },
+      "epic2": {
+        "name": "Orchestration Setup",
+        "purpose": "Deploy containerized application to Kubernetes with auto-scaling and load balancing",
+        "deliverables": [
+          "Kubernetes manifests (deployments, services, ingress)",
+          "Horizontal pod autoscaling",
+          "Rolling update configuration",
+          "Monitoring and logging setup"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Container Specialist",
+          "responsibility": "Create optimized Docker images and configurations"
+        },
+        {
+          "role": "Kubernetes Engineer",
+          "responsibility": "Design and implement K8s orchestration"
+        },
+        {
+          "role": "SRE Engineer",
+          "responsibility": "Set up monitoring, logging, and alerting"
+        },
+        {
+          "role": "Security Engineer",
+          "responsibility": "Implement container security and network policies"
+        }
+      ],
+      "useCases": [
+        "Cloud-native application deployment",
+        "Microservices architecture scaling",
+        "Multi-region application deployment",
+        "High-availability system design"
+      ],
+      "sampleOutput": "A production-ready Kubernetes cluster running containerized application with 3 replicas per service, auto-scaling from 3-10 pods based on CPU usage, ingress with SSL termination, and centralized logging to ELK stack"
+    },
+    {
+      "id": "data-ingestion-etl",
+      "name": "Data Ingestion Pipeline to ETL Transformation",
+      "domain": "Data",
+      "complexity": "Intermediate",
+      "description": "Build data ingestion pipeline from multiple sources, then implement ETL transformations for analytics",
+      "epic1": {
+        "name": "Data Ingestion Pipeline",
+        "purpose": "Create robust pipeline to ingest data from APIs, databases, and file sources",
+        "deliverables": [
+          "Data source connectors",
+          "Incremental data loading",
+          "Error handling and retry logic",
+          "Raw data storage layer"
+        ]
+      },
+      "epic2": {
+        "name": "ETL Transformation",
+        "purpose": "Transform raw data into clean, structured format ready for analytics and reporting",
+        "deliverables": [
+          "Data cleaning and validation",
+          "Transformation logic",
+          "Data warehouse schema",
+          "Automated ETL scheduling"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Data Engineer",
+          "responsibility": "Build data ingestion and ETL pipelines"
+        },
+        {
+          "role": "Database Architect",
+          "responsibility": "Design data warehouse schema"
+        },
+        {
+          "role": "Data Quality Analyst",
+          "responsibility": "Define validation rules and quality checks"
+        },
+        {
+          "role": "Analytics Engineer",
+          "responsibility": "Create analytics-ready data models"
+        }
+      ],
+      "useCases": [
+        "Business intelligence data warehouse",
+        "Real-time analytics platform",
+        "Customer 360 data integration",
+        "IoT sensor data processing"
+      ],
+      "sampleOutput": "A data pipeline processing 1M+ records daily from 5 sources (REST APIs, PostgreSQL, S3 files), transforming data through 15 ETL jobs, and loading into data warehouse with dimensional model ready for BI tools"
+    },
+    {
+      "id": "data-validation-dashboard",
+      "name": "Data Validation Rules to Quality Dashboard",
+      "domain": "Data",
+      "complexity": "Beginner",
+      "description": "Define comprehensive data validation rules, then create dashboard to monitor data quality metrics",
+      "epic1": {
+        "name": "Data Validation Rules",
+        "purpose": "Establish validation rules and data quality constraints for all data sources",
+        "deliverables": [
+          "Field-level validation rules",
+          "Business logic constraints",
+          "Data type and format validators",
+          "Validation configuration file"
+        ]
+      },
+      "epic2": {
+        "name": "Quality Dashboard",
+        "purpose": "Build visual dashboard to monitor data quality metrics and validation failures",
+        "deliverables": [
+          "Data quality metrics dashboard",
+          "Validation failure reports",
+          "Trend analysis charts",
+          "Alerting for critical issues"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Data Analyst",
+          "responsibility": "Define validation rules and quality metrics"
+        },
+        {
+          "role": "Dashboard Developer",
+          "responsibility": "Build interactive quality monitoring dashboard"
+        },
+        {
+          "role": "Data Steward",
+          "responsibility": "Monitor data quality and handle exceptions"
+        }
+      ],
+      "useCases": [
+        "Data governance program",
+        "Data migration quality monitoring",
+        "Third-party data validation",
+        "Regulatory compliance reporting"
+      ],
+      "sampleOutput": "A real-time dashboard showing data quality scores (95%+), validation failure trends, top error types, and detailed drill-down into specific validation failures with sample records and remediation suggestions"
+    },
+    {
+      "id": "react-storybook",
+      "name": "React Component Library to Storybook Documentation",
+      "domain": "Web",
+      "complexity": "Intermediate",
+      "description": "Develop reusable React component library, then create interactive Storybook documentation for developers",
+      "epic1": {
+        "name": "React Component Library",
+        "purpose": "Build comprehensive library of reusable React components with consistent design system",
+        "deliverables": [
+          "20+ reusable UI components",
+          "TypeScript type definitions",
+          "Component unit tests",
+          "CSS/styled-components styling"
+        ]
+      },
+      "epic2": {
+        "name": "Storybook Documentation",
+        "purpose": "Create interactive documentation showcasing component variants, props, and usage examples",
+        "deliverables": [
+          "Storybook configuration",
+          "Stories for all components",
+          "Interactive props controls",
+          "Usage documentation and code examples"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "React Developer",
+          "responsibility": "Build component library with best practices"
+        },
+        {
+          "role": "Design System Specialist",
+          "responsibility": "Ensure design consistency across components"
+        },
+        {
+          "role": "Documentation Engineer",
+          "responsibility": "Create comprehensive Storybook documentation"
+        },
+        {
+          "role": "Accessibility Expert",
+          "responsibility": "Ensure components meet WCAG standards"
+        }
+      ],
+      "useCases": [
+        "Design system implementation",
+        "Multi-product UI consistency",
+        "Developer onboarding to component library",
+        "Design-developer collaboration"
+      ],
+      "sampleOutput": "A component library with 25 production-ready React components (buttons, forms, modals, tables, etc.) and comprehensive Storybook with 100+ stories showing all variants, props, and usage patterns"
+    },
+    {
+      "id": "landing-page-seo",
+      "name": "Landing Page Development to SEO Optimization",
+      "domain": "Web",
+      "complexity": "Beginner",
+      "description": "Build responsive landing page with modern design, then optimize for search engines and performance",
+      "epic1": {
+        "name": "Landing Page Development",
+        "purpose": "Create responsive, modern landing page with compelling content and call-to-actions",
+        "deliverables": [
+          "Responsive HTML/CSS/JavaScript",
+          "Hero section with CTA",
+          "Feature showcase sections",
+          "Contact form integration"
+        ]
+      },
+      "epic2": {
+        "name": "SEO Optimization",
+        "purpose": "Optimize landing page for search engines, performance, and accessibility",
+        "deliverables": [
+          "Meta tags and structured data",
+          "Performance optimization (95+ Lighthouse score)",
+          "Image optimization and lazy loading",
+          "Analytics and tracking integration"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Frontend Developer",
+          "responsibility": "Build responsive landing page"
+        },
+        {
+          "role": "SEO Specialist",
+          "responsibility": "Implement SEO best practices and metadata"
+        },
+        {
+          "role": "Performance Engineer",
+          "responsibility": "Optimize page load time and Core Web Vitals"
+        }
+      ],
+      "useCases": [
+        "Product launch page",
+        "Marketing campaign landing page",
+        "Lead generation page",
+        "Event registration page"
+      ],
+      "sampleOutput": "A fully responsive landing page loading in under 2 seconds with 95+ Lighthouse score, optimized meta tags, schema.org markup, and integrated with Google Analytics for conversion tracking"
+    },
+    {
+      "id": "linting-enforcement",
+      "name": "Linting Configuration to Code Style Enforcement",
+      "domain": "Quality",
+      "complexity": "Beginner",
+      "description": "Configure code linting and formatting tools, then set up automated enforcement in development and CI",
+      "epic1": {
+        "name": "Linting Configuration",
+        "purpose": "Set up ESLint, Prettier, and other linting tools with team-agreed code style rules",
+        "deliverables": [
+          "ESLint configuration file",
+          "Prettier configuration",
+          "Editor integration setup",
+          "Custom linting rules"
+        ]
+      },
+      "epic2": {
+        "name": "Code Style Enforcement",
+        "purpose": "Automate code style enforcement through git hooks and CI pipeline checks",
+        "deliverables": [
+          "Pre-commit hooks with Husky",
+          "CI pipeline linting checks",
+          "Auto-fix on commit",
+          "Linting error reports"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Code Quality Lead",
+          "responsibility": "Define code style standards and linting rules"
+        },
+        {
+          "role": "DevOps Engineer",
+          "responsibility": "Integrate linting into CI/CD pipeline"
+        },
+        {
+          "role": "Developer Advocate",
+          "responsibility": "Document standards and help team adoption"
+        }
+      ],
+      "useCases": [
+        "New project code quality setup",
+        "Legacy codebase standardization",
+        "Team code style consistency",
+        "Open source project contributions"
+      ],
+      "sampleOutput": "A fully configured linting setup that automatically formats code on commit, prevents commits with linting errors, and fails CI builds with style violations. Includes detailed documentation for team members"
+    },
+    {
+      "id": "code-review-refactoring",
+      "name": "Code Review Automation to Refactoring Suggestions",
+      "domain": "Quality",
+      "complexity": "Intermediate",
+      "description": "Automate code review checks with static analysis, then generate intelligent refactoring suggestions",
+      "epic1": {
+        "name": "Code Review Automation",
+        "purpose": "Set up automated code review tools to catch bugs, security issues, and code smells",
+        "deliverables": [
+          "SonarQube/CodeClimate integration",
+          "Security vulnerability scanning",
+          "Code complexity analysis",
+          "Automated PR comments"
+        ]
+      },
+      "epic2": {
+        "name": "Refactoring Suggestions",
+        "purpose": "Generate intelligent refactoring suggestions based on code analysis and best practices",
+        "deliverables": [
+          "Refactoring opportunity identification",
+          "Automated refactoring scripts",
+          "Technical debt tracking",
+          "Refactoring priority recommendations"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Code Quality Engineer",
+          "responsibility": "Configure automated code review tools"
+        },
+        {
+          "role": "Senior Developer",
+          "responsibility": "Define refactoring patterns and priorities"
+        },
+        {
+          "role": "Static Analysis Specialist",
+          "responsibility": "Customize analysis rules for codebase"
+        },
+        {
+          "role": "Tech Lead",
+          "responsibility": "Review and prioritize refactoring suggestions"
+        }
+      ],
+      "useCases": [
+        "Technical debt reduction program",
+        "Code quality improvement initiative",
+        "Legacy code modernization",
+        "Security vulnerability remediation"
+      ],
+      "sampleOutput": "An automated system that reviews every PR for 50+ quality metrics, posts inline comments on issues, and generates weekly refactoring reports identifying 20+ high-priority improvements with estimated effort"
+    },
+    {
+      "id": "project-scaffolding-config",
+      "name": "Project Scaffolding to Configuration Management",
+      "domain": "Miscellaneous",
+      "complexity": "Beginner",
+      "description": "Generate project structure with best practices, then set up configuration management for multiple environments",
+      "epic1": {
+        "name": "Project Scaffolding",
+        "purpose": "Create well-structured project template with best practices and conventions",
+        "deliverables": [
+          "Directory structure",
+          "Package.json/requirements.txt",
+          "README and documentation templates",
+          "Git configuration (.gitignore, .gitattributes)"
+        ]
+      },
+      "epic2": {
+        "name": "Configuration Management",
+        "purpose": "Set up environment-specific configuration management system",
+        "deliverables": [
+          "Environment config files (dev, staging, prod)",
+          ".env template and validation",
+          "Config loading utilities",
+          "Secret management setup"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Project Setup Specialist",
+          "responsibility": "Create project scaffolding and best practices"
+        },
+        {
+          "role": "Configuration Engineer",
+          "responsibility": "Design configuration management system"
+        },
+        {
+          "role": "Security Specialist",
+          "responsibility": "Implement secure secret management"
+        }
+      ],
+      "useCases": [
+        "New project initialization",
+        "Microservice template creation",
+        "Team project standards",
+        "Open source project setup"
+      ],
+      "sampleOutput": "A fully scaffolded project with organized directory structure, package management, ESLint/Prettier config, and environment-specific configuration files supporting development, staging, and production environments"
+    },
+    {
+      "id": "database-migrations",
+      "name": "Database Schema Design to Migration Scripts",
+      "domain": "Miscellaneous",
+      "complexity": "Beginner",
+      "description": "Design normalized database schema with relationships, then create migration scripts for version control",
+      "epic1": {
+        "name": "Database Schema Design",
+        "purpose": "Design comprehensive database schema with tables, relationships, and constraints",
+        "deliverables": [
+          "Entity-relationship diagram",
+          "Normalized table structures",
+          "Indexes and constraints",
+          "Schema documentation"
+        ]
+      },
+      "epic2": {
+        "name": "Migration Scripts",
+        "purpose": "Create version-controlled migration scripts for schema deployment and updates",
+        "deliverables": [
+          "Initial schema migration",
+          "Up/down migration scripts",
+          "Seed data scripts",
+          "Migration testing framework"
+        ]
+      },
+      "suggestedAgents": [
+        {
+          "role": "Database Architect",
+          "responsibility": "Design optimal database schema"
+        },
+        {
+          "role": "Migration Engineer",
+          "responsibility": "Create and test migration scripts"
+        },
+        {
+          "role": "Data Modeler",
+          "responsibility": "Ensure data integrity and relationships"
+        }
+      ],
+      "useCases": [
+        "New application database setup",
+        "Database refactoring project",
+        "Multi-tenant schema design",
+        "Data warehouse dimensional modeling"
+      ],
+      "sampleOutput": "A complete database schema with 15 tables, proper normalization, foreign key constraints, and 10 migration scripts covering initial setup, indexes, and seed data. Includes rollback scripts for all migrations"
+    }
+  ]
+}
