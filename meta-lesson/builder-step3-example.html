@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Configuration wizard - Agent Configuration (Step 3)">
+    <title>Agent Configuration - Step 3 | Workflow Builder</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Builder Styles -->
+    <link rel="stylesheet" href="css/builder.css">
+    <!-- Editor Styles -->
+    <link rel="stylesheet" href="css/editor.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="../index.html">Home</a> &gt;
+                    <a href="builder.html">Configuration Builder</a> &gt;
+                    <span>Agent Configuration</span>
+                </nav>
+                <h1 class="main-title">Specialized Agent Configuration</h1>
+                <p class="subtitle">Create custom agent configurations for your workflow</p>
+            </div>
+        </header>
+
+        <main class="main-content builder-container">
+            <!-- Progress Indicator -->
+            <section class="progress-section" aria-label="Progress indicator">
+                <div class="progress-bar-container" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 85%;"></div>
+                </div>
+                <p class="progress-text">
+                    <span class="current-step">Step 3</span> of 3: Agent Configuration
+                </p>
+            </section>
+
+            <!-- Step Description -->
+            <section class="form-section" aria-labelledby="step-description-title">
+                <h2 class="form-section-title" id="step-description-title">
+                    <span class="form-section-icon" aria-hidden="true">🤖</span>
+                    Configure Specialized Agents
+                </h2>
+                <p class="form-section-description">
+                    Define custom specialized agents that will be available to your epics.
+                    Each agent should have a specific domain expertise and clear set of tools.
+                </p>
+            </section>
+
+            <!-- Agent Editors Container -->
+            <div id="agent-editors-container">
+                <!-- Agent editors will be rendered here dynamically -->
+            </div>
+
+            <!-- Add Another Agent Button -->
+            <div class="form-section">
+                <button type="button" id="btn-add-agent" class="btn btn-secondary">
+                    <span class="btn-icon" aria-hidden="true">➕</span>
+                    Add Another Agent
+                </button>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <nav class="builder-navigation" aria-label="Wizard navigation">
+                <div class="nav-left">
+                    <button type="button" id="btn-back" class="btn btn-tertiary">
+                        <span class="btn-icon" aria-hidden="true">←</span>
+                        Back to Step 2
+                    </button>
+                </div>
+                <div class="nav-right">
+                    <button type="button" id="btn-save" class="btn btn-secondary">
+                        <span class="btn-icon" aria-hidden="true">💾</span>
+                        Save Draft
+                    </button>
+                    <button type="button" id="btn-continue" class="btn btn-primary">
+                        Continue to Review
+                        <span class="btn-icon" aria-hidden="true">→</span>
+                    </button>
+                    <button type="button" id="btn-skip" class="btn btn-tertiary">
+                        Skip This Step
+                        <span class="btn-icon" aria-hidden="true">⤷</span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Help Section -->
+            <section class="status-section" style="margin-top: var(--spacing-xl);">
+                <div class="status-card">
+                    <h3 class="section-title">
+                        <span class="icon">💡</span>
+                        Agent Configuration Tips
+                    </h3>
+                    <div class="action-grid">
+                        <div class="action-item">
+                            <span class="action-icon" aria-hidden="true">🎯</span>
+                            <div class="action-content">
+                                <h3>Be Specific</h3>
+                                <p>Define clear, focused domains for each agent (e.g., "data-science", "testing")</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon" aria-hidden="true">🔧</span>
+                            <div class="action-content">
+                                <h3>Tool Selection</h3>
+                                <p>Select only the tools each agent needs - minimalism improves security</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon" aria-hidden="true">📋</span>
+                            <div class="action-content">
+                                <h3>Detailed Instructions</h3>
+                                <p>Provide comprehensive markdown instructions for optimal agent performance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Attention Mechanism Educational Project. Configuration Builder v1.0</p>
+        </footer>
+    </div>
+
+    <!-- State Management -->
+    <script src="js/state.js"></script>
+    <!-- Agent Editor Component -->
+    <script src="js/agent-editor.js"></script>
+    <!-- Step 3 Logic -->
+    <script>
+        /**
+         * Step 3: Agent Configuration
+         * Dynamically creates agent editors (conditional step)
+         */
+
+        // Store agent editor instances
+        const agentEditors = [];
+        let nextAgentId = 1;
+
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeStep3();
+        });
+
+        /**
+         * Initialize Step 3
+         */
+        function initializeStep3() {
+            // Load state
+            const state = stateManager.getState();
+
+            // Check if specialized agents are enabled
+            if (!state.config.optionalFeatures.specializedAgents) {
+                // Redirect to Step 4 if specialized agents not enabled
+                console.log('Specialized agents not enabled, redirecting to Step 4');
+                window.location.href = 'builder-step4.html';
+                return;
+            }
+
+            console.log('Initializing Step 3: Agent Configuration');
+
+            // Load existing agents or create first agent
+            const existingAgents = state.agents || {};
+            const agentIds = Object.keys(existingAgents);
+
+            if (agentIds.length === 0) {
+                // Create first agent by default
+                createAgentEditor();
+            } else {
+                // Load existing agents
+                agentIds.forEach(agentId => {
+                    createAgentEditor(agentId);
+                });
+                nextAgentId = Math.max(...agentIds.map(id => parseInt(id) || 0)) + 1;
+            }
+
+            // Setup navigation
+            setupNavigation();
+
+            // Update progress
+            stateManager.setStep(3);
+        }
+
+        /**
+         * Create an agent editor instance
+         */
+        function createAgentEditor(agentId = null) {
+            // Generate agent ID if not provided
+            if (agentId === null) {
+                agentId = nextAgentId++;
+            }
+
+            // Create a container div for this agent
+            const container = document.getElementById('agent-editors-container');
+            const agentContainer = document.createElement('div');
+            agentContainer.id = `agent-${agentId}-container`;
+            container.appendChild(agentContainer);
+
+            // Create and render the agent editor
+            const editor = new AgentEditor(agentId, agentContainer, stateManager);
+            editor.render();
+
+            // Store editor instance
+            agentEditors.push(editor);
+
+            console.log(`Agent ${agentId} editor created`);
+
+            return editor;
+        }
+
+        /**
+         * Setup navigation handlers
+         */
+        function setupNavigation() {
+            // Add agent button
+            document.getElementById('btn-add-agent')?.addEventListener('click', () => {
+                createAgentEditor();
+            });
+
+            // Back button
+            document.getElementById('btn-back')?.addEventListener('click', () => {
+                if (confirm('Go back to Step 2? Your agent configurations will be saved.')) {
+                    saveAllEditors();
+                    window.location.href = 'builder-step2.html';
+                }
+            });
+
+            // Save button
+            document.getElementById('btn-save')?.addEventListener('click', () => {
+                saveAllEditors();
+                alert('All agents saved successfully!');
+            });
+
+            // Continue button
+            document.getElementById('btn-continue')?.addEventListener('click', () => {
+                if (validateAllAgents()) {
+                    saveAllEditors();
+                    window.location.href = 'builder-step4.html';
+                } else {
+                    alert('Please fix validation errors before continuing');
+                }
+            });
+
+            // Skip button
+            document.getElementById('btn-skip')?.addEventListener('click', () => {
+                if (confirm('Skip agent configuration? You can still use the default Product-Manager and Meta-Agent.')) {
+                    window.location.href = 'builder-step4.html';
+                }
+            });
+        }
+
+        /**
+         * Validate all agent editors
+         */
+        function validateAllAgents() {
+            let allValid = true;
+
+            agentEditors.forEach(editor => {
+                const isValid = editor.validate();
+                if (!isValid) {
+                    allValid = false;
+                }
+            });
+
+            return allValid;
+        }
+
+        /**
+         * Save all agent editors
+         */
+        function saveAllEditors() {
+            agentEditors.forEach(editor => {
+                editor.save();
+            });
+            console.log('All agents saved');
+        }
+
+        /**
+         * Cleanup on page unload
+         */
+        window.addEventListener('beforeunload', () => {
+            agentEditors.forEach(editor => {
+                editor.destroy();
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + S to save
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                saveAllEditors();
+                alert('All agents saved!');
+            }
+        });
+    </script>
+</body>
+</html>

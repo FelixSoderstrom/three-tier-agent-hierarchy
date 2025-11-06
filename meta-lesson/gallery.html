@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore 15 diverse workflow examples demonstrating agentic development patterns across multiple domains">
+    <title>Workflow Gallery - Building with Agentic Workflows</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/gallery.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="gallery-header" role="banner">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-text">
+                        <a href="index.html" class="back-link" aria-label="Back to home">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                            Back
+                        </a>
+                        <h1 class="page-title">Workflow Gallery</h1>
+                        <p class="page-subtitle">Explore diverse examples of 2-epic agentic workflows across multiple domains</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filter Bar -->
+        <section class="filter-section" role="search" aria-label="Filter workflows">
+            <div class="container">
+                <div class="filter-container">
+                    <!-- Search Input -->
+                    <div class="filter-group filter-search">
+                        <label for="search-input" class="sr-only">Search workflows by name</label>
+                        <div class="search-wrapper">
+                            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                            </svg>
+                            <input
+                                type="text"
+                                id="search-input"
+                                class="search-input"
+                                placeholder="Search workflows..."
+                                aria-label="Search workflows by name"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Domain Filter -->
+                    <div class="filter-group">
+                        <label for="domain-filter" class="filter-label">Domain</label>
+                        <select id="domain-filter" class="filter-select" aria-label="Filter by domain">
+                            <option value="all">All Domains</option>
+                            <option value="Documentation">Documentation</option>
+                            <option value="Testing">Testing</option>
+                            <option value="DevOps">DevOps/Infrastructure</option>
+                            <option value="Data">Data Processing</option>
+                            <option value="Web">Web Development</option>
+                            <option value="Quality">Code Quality</option>
+                            <option value="Miscellaneous">Miscellaneous</option>
+                        </select>
+                    </div>
+
+                    <!-- Complexity Filter -->
+                    <div class="filter-group">
+                        <label for="complexity-filter" class="filter-label">Complexity</label>
+                        <select id="complexity-filter" class="filter-select" aria-label="Filter by complexity level">
+                            <option value="all">All Levels</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </div>
+
+                    <!-- Clear Filters Button -->
+                    <button
+                        id="clear-filters"
+                        class="btn btn-secondary btn-clear"
+                        aria-label="Clear all filters"
+                    >
+                        Clear Filters
+                    </button>
+                </div>
+
+                <!-- Results Counter -->
+                <div class="results-info" role="status" aria-live="polite">
+                    <p id="results-count" class="results-count">Loading examples...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main id="main-content" class="gallery-main" role="main">
+            <div class="container">
+                <!-- Loading State -->
+                <div id="loading-state" class="loading-state" aria-live="polite">
+                    <div class="spinner spinner-lg"></div>
+                    <p>Loading workflow examples...</p>
+                </div>
+
+                <!-- Error State -->
+                <div id="error-state" class="error-state d-none" role="alert">
+                    <div class="alert alert-error">
+                        <div class="alert-content">
+                            <p class="alert-title">Unable to Load Examples</p>
+                            <p>There was an error loading the workflow examples. Please try refreshing the page.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="empty-state d-none" role="status">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                    <h2>No workflows found</h2>
+                    <p>Try adjusting your filters or search terms</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('clear-filters').click()">
+                        Clear Filters
+                    </button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div id="gallery-grid" class="gallery-grid" role="list">
+                    <!-- Cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="container">
+                <p>
+                    <a href="index.html" class="footer-link">Home</a> |
+                    <a href="builder.html" class="footer-link">Build Your Own</a> |
+                    <a href="../index.html" class="footer-link">Original Project</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/gallery.js"></script>
+</body>
+</html>
