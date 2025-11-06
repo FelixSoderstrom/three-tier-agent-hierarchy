@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 4: Review & Export - Agentic Workflow Builder</title>
+  <link rel="stylesheet" href="css/builder.css">
+  <style>
+    /* Additional styles specific to Step 4 */
+    .review-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .review-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .review-header h1 {
+      font-size: 2.5rem;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-header p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    .config-summary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .config-summary h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .summary-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+    }
+
+    .summary-label {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+
+    .summary-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .section h2 {
+      margin-top: 0;
+      color: #1a1a1a;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .epic-card {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .epic-card:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .epic-card h3 {
+      margin-top: 0;
+      color: #667eea;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .epic-purpose {
+      color: #555;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .epic-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .meta-icon {
+      font-size: 1.2rem;
+    }
+
+    .agent-card {
+      background: #f0f7ff;
+      border-left: 4px solid #4299e1;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+
+    .agent-card h3 {
+      margin-top: 0;
+      color: #4299e1;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .agent-domain {
+      display: inline-block;
+      background: #4299e1;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .agent-description {
+      color: #555;
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .agent-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .tool-badge {
+      background: #e6f2ff;
+      color: #2c5282;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .validation-section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .validation-status {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .validation-status.valid {
+      background: #d4edda;
+      border-left: 4px solid #28a745;
+    }
+
+    .validation-status.invalid {
+      background: #f8d7da;
+      border-left: 4px solid #dc3545;
+    }
+
+    .validation-icon {
+      font-size: 2rem;
+    }
+
+    .validation-text {
+      flex: 1;
+    }
+
+    .validation-text h3 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.2rem;
+    }
+
+    .validation-text p {
+      margin: 0;
+      color: #666;
+    }
+
+    #validation-errors {
+      display: none;
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    .validation-errors-header {
+      margin-top: 0;
+      color: #856404;
+    }
+
+    .validation-errors-list {
+      margin: 1rem 0 0 0;
+      padding-left: 1.5rem;
+    }
+
+    .validation-error-item {
+      color: #856404;
+      margin-bottom: 0.5rem;
+    }
+
+    .action-section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .export-button-wrapper {
+      margin: 2rem 0;
+    }
+
+    #export-button {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      border: none;
+      padding: 1rem 3rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 6px rgba(245, 87, 108, 0.3);
+    }
+
+    #export-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(245, 87, 108, 0.4);
+    }
+
+    #export-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    #export-button.btn-loading {
+      background: #6c757d;
+      box-shadow: 0 4px 6px rgba(108, 117, 125, 0.3);
+    }
+
+    #export-button.btn-success {
+      background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+      box-shadow: 0 4px 6px rgba(86, 171, 47, 0.3);
+    }
+
+    #export-button.btn-error {
+      background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+      box-shadow: 0 4px 6px rgba(235, 51, 73, 0.3);
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 0.6s linear infinite;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    #export-progress {
+      display: none;
+      color: #666;
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    .navigation-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .btn-secondary {
+      background: #e9ecef;
+      color: #495057;
+    }
+
+    .btn-secondary:hover {
+      background: #dee2e6;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #999;
+    }
+
+    .empty-state-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .chip {
+      background: #e7e7ff;
+      color: #4a4a9f;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .review-container {
+        padding: 1rem;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .epic-meta {
+        flex-direction: column;
+      }
+
+      .navigation-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="review-container">
+    <!-- Header -->
+    <div class="review-header">
+      <h1>Step 4: Review & Export</h1>
+      <p>Review your configuration and export your custom .claude workflow</p>
+    </div>
+
+    <!-- Configuration Summary -->
+    <div class="config-summary">
+      <h2>Configuration Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="summary-label">Project Name</div>
+          <div class="summary-value" id="summary-project-name">Loading...</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Total Epics</div>
+          <div class="summary-value" id="summary-epic-count">0</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Specialized Agents</div>
+          <div class="summary-value" id="summary-agent-count">0</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Meta-Agent</div>
+          <div class="summary-value" id="summary-meta-agent">No</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Epic Definitions Section -->
+    <div class="section">
+      <h2>Epic Definitions</h2>
+      <div id="epics-list">
+        <!-- Epic cards will be inserted here -->
+      </div>
+    </div>
+
+    <!-- Specialized Agents Section (conditional) -->
+    <div class="section" id="agents-section" style="display: none;">
+      <h2>Specialized Agents</h2>
+      <div id="agents-list">
+        <!-- Agent cards will be inserted here -->
+      </div>
+    </div>
+
+    <!-- Validation Section -->
+    <div class="validation-section">
+      <h2>Validation Status</h2>
+      <div id="validation-status-container">
+        <!-- Validation status will be inserted here -->
+      </div>
+      <div id="validation-errors">
+        <!-- Validation errors will be inserted here -->
+      </div>
+    </div>
+
+    <!-- Export Section -->
+    <div class="action-section">
+      <h2>Export Your Configuration</h2>
+      <p>Download your customized .claude workflow configuration as a ZIP file.</p>
+
+      <div class="export-button-wrapper">
+        <button id="export-button" onclick="handleExport()">
+          Export Configuration
+        </button>
+      </div>
+
+      <div id="export-progress"></div>
+
+      <div class="navigation-buttons">
+        <button class="btn btn-secondary" onclick="goBack()">
+          ← Back to Previous Step
+        </button>
+        <button class="btn btn-secondary" onclick="startOver()">
+          Start Over
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JSZip Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <!-- State Manager -->
+  <script src="js/state.js"></script>
+
+  <!-- Export Logic -->
+  <script src="js/export.js"></script>
+
+  <!-- Page Logic -->
+  <script>
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      loadConfigurationSummary();
+      runValidation();
+    });
+
+    /**
+     * Load and display configuration summary
+     */
+    function loadConfigurationSummary() {
+      const state = stateManager.getState();
+
+      // Update summary
+      document.getElementById('summary-project-name').textContent =
+        state.config.projectName || 'Agentic Workflow';
+      document.getElementById('summary-epic-count').textContent =
+        state.config.epicCount || 0;
+
+      const agentCount = state.agents ? Object.keys(state.agents).length : 0;
+      document.getElementById('summary-agent-count').textContent = agentCount;
+
+      document.getElementById('summary-meta-agent').textContent =
+        state.config.coreComponents?.metaAgent ? 'Yes' : 'No';
+
+      // Load epics
+      loadEpics(state);
+
+      // Load agents (if applicable)
+      if (state.config.optionalFeatures?.specializedAgents && state.agents) {
+        loadAgents(state);
+      }
+    }
+
+    /**
+     * Load and display epic definitions
+     */
+    function loadEpics(state) {
+      const container = document.getElementById('epics-list');
+      container.innerHTML = '';
+
+      const epicCount = state.config.epicCount || 0;
+
+      if (epicCount === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📋</div>
+            <p>No epics configured</p>
+          </div>
+        `;
+        return;
+      }
+
+      for (let i = 1; i <= epicCount; i++) {
+        const epicData = state.epics?.[i];
+
+        if (!epicData) {
+          container.innerHTML += `
+            <div class="epic-card" style="border-left-color: #dc3545;">
+              <h3>Epic ${i}: Not Defined</h3>
+              <p class="epic-purpose" style="color: #dc3545;">
+                This epic has not been defined yet. Please go back and complete the epic definition.
+              </p>
+            </div>
+          `;
+          continue;
+        }
+
+        const subagentsHtml = epicData.subagents && epicData.subagents.length > 0
+          ? `<div class="chips-container">
+               ${epicData.subagents.map(agent => `<span class="chip">${agent}</span>`).join('')}
+             </div>`
+          : '<span style="color: #999;">No subagents suggested</span>';
+
+        container.innerHTML += `
+          <div class="epic-card">
+            <h3>Epic ${i}: ${epicData.name || 'Untitled Epic'}</h3>
+            <p class="epic-purpose">${epicData.purpose || 'No purpose defined'}</p>
+            <div class="epic-meta">
+              <div class="meta-item">
+                <span class="meta-icon">📝</span>
+                <span>${epicData.definition ? epicData.definition.length : 0} characters</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon">👥</span>
+                <span>Suggested Subagents:</span>
+              </div>
+            </div>
+            ${subagentsHtml}
+          </div>
+        `;
+      }
+    }
+
+    /**
+     * Load and display specialized agents
+     */
+    function loadAgents(state) {
+      const section = document.getElementById('agents-section');
+      const container = document.getElementById('agents-list');
+
+      const agentIds = Object.keys(state.agents || {});
+
+      if (agentIds.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      section.style.display = 'block';
+      container.innerHTML = '';
+
+      agentIds.forEach((agentId, index) => {
+        const agentData = state.agents[agentId];
+
+        const toolsHtml = agentData.tools && agentData.tools.length > 0
+          ? agentData.tools.map(tool => `<span class="tool-badge">${tool}</span>`).join('')
+          : '<span style="color: #999;">No tools configured</span>';
+
+        container.innerHTML += `
+          <div class="agent-card">
+            <h3>Agent ${index + 1}: ${agentData.name || 'Untitled Agent'}</h3>
+            <span class="agent-domain">${agentData.domain || 'General'}</span>
+            <p class="agent-description">${agentData.description || 'No description provided'}</p>
+            <div class="meta-item">
+              <span class="meta-icon">🔧</span>
+              <span><strong>Tools:</strong></span>
+            </div>
+            <div class="agent-tools">
+              ${toolsHtml}
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    /**
+     * Run validation and display results
+     */
+    function runValidation() {
+      const state = stateManager.getState();
+      const validation = validateConfiguration(state);
+
+      const container = document.getElementById('validation-status-container');
+      const exportButton = document.getElementById('export-button');
+
+      if (validation.isValid) {
+        container.innerHTML = `
+          <div class="validation-status valid">
+            <div class="validation-icon">✓</div>
+            <div class="validation-text">
+              <h3>Configuration Valid</h3>
+              <p>All validation checks passed. Your configuration is ready to export.</p>
+            </div>
+          </div>
+        `;
+        exportButton.disabled = false;
+        clearValidationErrors();
+      } else {
+        container.innerHTML = `
+          <div class="validation-status invalid">
+            <div class="validation-icon">✗</div>
+            <div class="validation-text">
+              <h3>Validation Failed</h3>
+              <p>Please fix the following errors before exporting:</p>
+            </div>
+          </div>
+        `;
+        exportButton.disabled = true;
+        displayValidationErrors(validation.errors);
+      }
+    }
+
+    /**
+     * Handle export button click
+     */
+    async function handleExport() {
+      try {
+        await generateZipExport();
+      } catch (error) {
+        console.error('Export error:', error);
+        alert('Export failed. Please check the console for details.');
+      }
+    }
+
+    /**
+     * Go back to previous step
+     */
+    function goBack() {
+      const state = stateManager.getState();
+
+      // Determine which step to go back to
+      if (state.config.optionalFeatures?.specializedAgents) {
+        window.location.href = 'builder-step3.html';
+      } else {
+        window.location.href = 'builder-step2.html';
+      }
+    }
+
+    /**
+     * Start over - clear state and go to step 1
+     */
+    function startOver() {
+      if (confirm('Are you sure you want to start over? This will clear all your configuration.')) {
+        stateManager.resetState();
+        window.location.href = 'builder.html';
+      }
+    }
+  </script>
+</body>
+</html>

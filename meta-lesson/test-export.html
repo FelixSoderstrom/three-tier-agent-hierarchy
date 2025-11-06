@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Export System Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .test-section {
+      background: #f5f5f5;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    #output {
+      background: white;
+      padding: 15px;
+      border-left: 4px solid #4CAF50;
+      margin-top: 20px;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+    .error {
+      color: red;
+      border-left-color: red;
+    }
+    .success {
+      color: green;
+      border-left-color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Export System Test Page</h1>
+  <p>This page tests the export functionality with sample data.</p>
+
+  <div class="test-section">
+    <h2>Test Configuration</h2>
+    <button onclick="setupTestData()">1. Setup Test Data</button>
+    <button onclick="runValidation()">2. Run Validation</button>
+    <button onclick="testExport()">3. Test Export</button>
+    <button onclick="clearData()">Clear All Data</button>
+  </div>
+
+  <div id="output"></div>
+
+  <!-- JSZip Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <!-- State Manager -->
+  <script src="js/state.js"></script>
+
+  <!-- Export Logic -->
+  <script src="js/export.js"></script>
+
+  <script>
+    const output = document.getElementById('output');
+
+    function log(message, type = 'info') {
+      const div = document.createElement('div');
+      div.className = type;
+      div.textContent = message;
+      output.appendChild(div);
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function clearOutput() {
+      output.innerHTML = '';
+    }
+
+    function setupTestData() {
+      clearOutput();
+      log('Setting up test data...', 'info');
+
+      try {
+        // Clear existing state
+        stateManager.resetState();
+
+        // Set basic config
+        stateManager.setProjectName('Test Agentic Workflow');
+        stateManager.setEpicCount(3);
+        stateManager.setCoreComponent('metaAgent', true);
+        stateManager.setOptionalFeature('specializedAgents', true);
+
+        // Add epic 1
+        stateManager.state.epics[1] = {
+          name: 'Environment Setup',
+          purpose: 'Set up the development environment and project structure for the workflow system.',
+          definition: 'This epic establishes the foundation by creating necessary directories, installing dependencies, and configuring the development environment. It ensures all prerequisites are met before proceeding to implementation.',
+          subagents: ['Setup Specialist', 'Configuration Agent']
+        };
+
+        // Add epic 2
+        stateManager.state.epics[2] = {
+          name: 'Core Implementation',
+          purpose: 'Implement the core functionality and business logic of the workflow system.',
+          definition: 'This epic focuses on building the primary features and functionality. It includes implementing the main algorithms, data structures, and core services that form the backbone of the system.',
+          subagents: ['Backend Developer', 'API Specialist', 'Database Agent']
+        };
+
+        // Add epic 3
+        stateManager.state.epics[3] = {
+          name: 'Testing and Documentation',
+          purpose: 'Create comprehensive tests and documentation for the completed workflow system.',
+          definition: 'This epic ensures quality and maintainability through extensive testing and documentation. It includes unit tests, integration tests, user guides, and API documentation.',
+          subagents: ['QA Specialist', 'Documentation Writer']
+        };
+
+        // Add specialized agent 1
+        stateManager.state.agents['agent-1'] = {
+          name: 'Data Science Specialist',
+          domain: 'data-science',
+          description: 'Specialized agent for data analysis, machine learning, and statistical modeling tasks.',
+          purpose: 'Handle all data science related tasks including data preprocessing, model training, and evaluation.',
+          tools: ['read', 'write', 'bash', 'grep'],
+          instructions: 'Focus on data analysis and machine learning tasks. Use Python and relevant libraries.',
+          responseFormat: 'Provide results in markdown format with code snippets and visualizations.'
+        };
+
+        // Add specialized agent 2
+        stateManager.state.agents['agent-2'] = {
+          name: 'Frontend Developer',
+          domain: 'web-development',
+          description: 'Specialized agent for frontend development with expertise in modern JavaScript frameworks.',
+          purpose: 'Build responsive and interactive user interfaces using best practices.',
+          tools: ['read', 'write', 'edit', 'bash'],
+          instructions: 'Create modern, accessible web interfaces. Follow web standards and best practices.',
+          responseFormat: 'Provide HTML, CSS, and JavaScript code with inline documentation.'
+        };
+
+        // Save state
+        stateManager.saveState();
+
+        log('✓ Test data setup complete!', 'success');
+        log('  - Project Name: Test Agentic Workflow', 'success');
+        log('  - Epic Count: 3', 'success');
+        log('  - Specialized Agents: 2', 'success');
+        log('  - Meta-Agent: Enabled', 'success');
+
+      } catch (error) {
+        log('✗ Error setting up test data: ' + error.message, 'error');
+        console.error(error);
+      }
+    }
+
+    function runValidation() {
+      clearOutput();
+      log('Running validation...', 'info');
+
+      try {
+        const state = stateManager.getState();
+        const validation = validateConfiguration(state);
+
+        if (validation.isValid) {
+          log('✓ Validation PASSED!', 'success');
+          log('  Configuration is valid and ready to export.', 'success');
+        } else {
+          log('✗ Validation FAILED!', 'error');
+          log('  Errors found:', 'error');
+          validation.errors.forEach(error => {
+            let errorMsg = '';
+            if (error.type === 'epic') {
+              errorMsg = `  - Epic ${error.epicNumber}: ${error.message}`;
+            } else if (error.type === 'agent') {
+              errorMsg = `  - Agent ${error.agentId}: ${error.message}`;
+            } else {
+              errorMsg = `  - ${error.message}`;
+            }
+            log(errorMsg, 'error');
+          });
+        }
+
+      } catch (error) {
+        log('✗ Validation error: ' + error.message, 'error');
+        console.error(error);
+      }
+    }
+
+    async function testExport() {
+      clearOutput();
+      log('Testing export...', 'info');
+
+      try {
+        // First validate
+        const state = stateManager.getState();
+        const validation = validateConfiguration(state);
+
+        if (!validation.isValid) {
+          log('✗ Cannot export - validation failed!', 'error');
+          log('  Run validation test first to see errors.', 'error');
+          return;
+        }
+
+        log('  Validation passed, generating ZIP...', 'info');
+
+        // Generate ZIP
+        const zip = new JSZip();
+        const claudeFolder = zip.folder('.claude');
+        const commandsFolder = claudeFolder.folder('commands');
+        const epicsFolder = commandsFolder.folder('epics');
+
+        log('  Loading templates...', 'info');
+
+        // Generate Product Manager
+        const pmContent = await generateProductManagerConfig(state);
+        commandsFolder.file('product-manager.md', pmContent);
+        log('  ✓ Generated product-manager.md', 'success');
+
+        // Generate Meta-Agent
+        const maContent = await generateMetaAgentConfig(state);
+        commandsFolder.file('meta-agent.md', maContent);
+        log('  ✓ Generated meta-agent.md', 'success');
+
+        // Generate Epics
+        for (let i = 1; i <= state.config.epicCount; i++) {
+          const epicData = state.epics[i];
+          const epicContent = await generateEpicDefinition(epicData, i, state);
+          epicsFolder.file(`epic-${i}.md`, epicContent);
+          log(`  ✓ Generated epic-${i}.md`, 'success');
+        }
+
+        // Generate Agents
+        const agentsFolder = claudeFolder.folder('agents');
+        const agentIds = Object.keys(state.agents);
+        agentIds.forEach((agentId, index) => {
+          const agentData = state.agents[agentId];
+          const agentContent = generateAgentConfig(agentData, state);
+          agentsFolder.file(`agent-${index + 1}.md`, agentContent);
+          log(`  ✓ Generated agent-${index + 1}.md`, 'success');
+        });
+
+        // Generate README
+        const readmeContent = await generateReadme(state);
+        claudeFolder.file('README.md', readmeContent);
+        log('  ✓ Generated README.md', 'success');
+
+        // Create ZIP blob
+        log('  Creating ZIP file...', 'info');
+        const blob = await zip.generateAsync({
+          type: 'blob',
+          compression: 'DEFLATE',
+          compressionOptions: { level: 6 }
+        });
+
+        // Download
+        const filename = generateFilename();
+        downloadZip(blob, filename);
+
+        log('✓ Export SUCCESSFUL!', 'success');
+        log(`  Downloaded: ${filename}`, 'success');
+        log(`  Size: ${(blob.size / 1024).toFixed(2)} KB`, 'success');
+
+      } catch (error) {
+        log('✗ Export error: ' + error.message, 'error');
+        console.error(error);
+      }
+    }
+
+    function clearData() {
+      clearOutput();
+      if (confirm('Clear all test data?')) {
+        stateManager.resetState();
+        log('✓ All data cleared!', 'success');
+      }
+    }
+  </script>
+</body>
+</html>
