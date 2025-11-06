@@ -18,7 +18,9 @@ const DEFAULT_STATE = {
       logging: false,
       customTools: false
     }
-  }
+  },
+  epics: {},  // Epic definitions: { epicNumber: { name, purpose, definition, subagents, ... } }
+  agents: {}  // Agent configurations: { agentId: { name, domain, description, purpose, tools, instructions, ... } }
 };
 
 // Storage key for localStorage
@@ -71,7 +73,9 @@ class StateManager {
           ...DEFAULT_STATE.config.optionalFeatures,
           ...savedState.config?.optionalFeatures
         }
-      }
+      },
+      epics: savedState.epics || DEFAULT_STATE.epics,
+      agents: savedState.agents || DEFAULT_STATE.agents
     };
   }
 

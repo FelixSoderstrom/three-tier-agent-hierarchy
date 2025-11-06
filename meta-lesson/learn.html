@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master agentic workflow principles: Learn agent hierarchy, epic development, meta-agent patterns, and delegation best practices">
+    <title>Learn: Agentic Workflows Theory | Building with Agentic Workflows</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/learn.css">
+
+    <!-- Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Reading Progress Bar -->
+    <div class="progress-bar-container" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar-fill" id="reading-progress"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="learn-header">
+        <div class="header-content">
+            <a href="index.html" class="back-link" aria-label="Back to home">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+            <h1 class="header-title">Agentic Workflows Theory</h1>
+        </div>
+    </header>
+
+    <div class="learn-container">
+        <!-- Table of Contents Sidebar -->
+        <aside class="toc-sidebar" id="toc-sidebar" role="navigation" aria-label="Table of contents">
+            <!-- Mobile Menu Toggle -->
+            <button class="toc-toggle" id="toc-toggle" aria-expanded="false" aria-controls="toc-nav" aria-label="Toggle table of contents">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+                <span>Table of Contents</span>
+            </button>
+
+            <nav class="toc-nav" id="toc-nav">
+                <h2 class="toc-title">Contents</h2>
+                <ul class="toc-list">
+                    <li><a href="#agent-hierarchy" class="toc-link active" data-section="agent-hierarchy">Agent Hierarchy</a></li>
+                    <li><a href="#epic-development" class="toc-link" data-section="epic-development">Epic Development</a></li>
+                    <li><a href="#meta-agent-pattern" class="toc-link" data-section="meta-agent-pattern">Meta-Agent Pattern</a></li>
+                    <li><a href="#delegation-best-practices" class="toc-link" data-section="delegation-best-practices">Delegation Best Practices</a></li>
+                    <li><a href="#getting-started" class="toc-link" data-section="getting-started">Getting Started</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="learn-content" id="main-content" role="main">
+            <!-- Section 1: Agent Hierarchy -->
+            <section id="agent-hierarchy" class="content-section">
+                <h2>Agent Hierarchy: Three Tiers of Intelligence</h2>
+
+                <h3>Understanding the Organizational Structure</h3>
+                <p>Imagine you're managing a large software project. You wouldn't have every developer working independently without coordination, right? Agentic workflows follow the same principle. They organize AI agents into a three-tier hierarchy that mirrors successful team structures in real-world software development.</p>
+
+                <h3>The Three-Tier Structure</h3>
+
+                <div class="subsection">
+                    <h4>Product Manager (Top Tier)</h4>
+                    <p>The Product Manager sits at the top of the hierarchy. This is your main agent - the one you interact with directly. Its job is strategic: understanding the overall project goals, breaking them into manageable pieces called "epics," and delegating those epics to Team Leads. Think of it as the architect who sees the big picture but doesn't write every line of code.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Team Lead (Middle Tier)</h4>
+                    <p>Team Leads receive epics from the Product Manager and are responsible for execution. Each Team Lead runs as a separate background session, working independently on their assigned epic. They analyze requirements, plan the work, and delegate specific tasks to Specialized Subagents. Team Leads are tactical coordinators - they understand both high-level goals and implementation details.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Specialized Subagents (Bottom Tier)</h4>
+                    <p>These are your task-specific workers. Each subagent is created on-demand with expertise tailored to a particular job: writing documentation, creating test files, validating code, or implementing specific features. They execute specific tasks and report results back to their Team Lead. This is where the actual work happens.</p>
+                </div>
+
+                <h3>How Agents Communicate</h3>
+                <p>Communication flows primarily downward through delegation and upward through completion reports. The Product Manager delegates epics to Team Leads via custom commands (like <code>/epic1</code> or <code>/epic2</code>). Team Leads create subagents dynamically, passing detailed instructions through specialized prompts. When work completes, agents create completion files (like <code>.epic1_complete.json</code>) that serve as handoff documents, containing critical information for the next epic.</p>
+
+                <h3>Benefits of Hierarchical Organization</h3>
+                <p>This structure prevents chaos. Without hierarchy, you'd have dozens of agents working without coordination, duplicating effort or creating conflicts. The hierarchy provides clear responsibility boundaries, enabling parallel execution (multiple Team Leads can work simultaneously), and creates natural checkpoints for validation.</p>
+
+                <p>The hierarchy also optimizes costs. You can run your Product Manager with a powerful model (like Claude Opus) for strategic thinking, Team Leads with a mid-tier model (like Claude Sonnet) for tactical work, and Subagents with efficient models for specific tasks. This balances intelligence with efficiency.</p>
+
+                <p>Most importantly, hierarchy enables <strong>scalability</strong>. As projects grow, you simply add more Team Leads or Subagents. The structure remains comprehensible and manageable because each tier has a defined role.</p>
+            </section>
+
+            <!-- Section 2: Epic Development -->
+            <section id="epic-development" class="content-section">
+                <h2>Epic Development: Breaking Projects into Manageable Chunks</h2>
+
+                <h3>What Are Epics in Agentic Workflows?</h3>
+                <p>In traditional Agile development, an "epic" is a large body of work that can be broken into smaller stories. Agentic workflows borrow this concept but adapt it for AI agent execution. An epic in this context is a complete, self-contained feature or component that one Team Lead agent can own from start to finish.</p>
+
+                <p>For example, in a machine learning lesson project, you might have epics like:</p>
+                <ul class="feature-list">
+                    <li>Epic 1: Set up the Jupyter notebook structure</li>
+                    <li>Epic 2: Implement core attention mechanism functions</li>
+                    <li>Epic 3: Create visualization components</li>
+                    <li>Epic 4: Build evaluation and testing framework</li>
+                    <li>Epic 5: Develop interactive student exercises</li>
+                    <li>Epic 6: Generate comprehensive documentation</li>
+                </ul>
+
+                <p>Each epic represents days or hours of development work, contains multiple related tasks, and produces tangible deliverables.</p>
+
+                <h3>Breaking Projects into Manageable Chunks</h3>
+                <p>The art of defining good epics is crucial to workflow success. Epic boundaries should align with natural project divisions. Think about:</p>
+
+                <div class="subsection">
+                    <h4>Functional Cohesion</h4>
+                    <p>Group tasks that work toward the same functional goal. Don't mix frontend UI with backend API implementation in the same epic.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Reasonable Scope</h4>
+                    <p>An epic should be completable in one focused session. Too small, and you waste overhead on coordination. Too large, and agents get lost in complexity.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Clear Deliverables</h4>
+                    <p>Each epic should produce verifiable outputs - code files, documentation, test results. Vague goals like "improve the codebase" make terrible epics.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Minimal Cross-Dependencies</h4>
+                    <p>While some dependencies are unavoidable, minimize them. The more epics can run independently, the more parallelization you can achieve.</p>
+                </div>
+
+                <h3>Epic Dependencies and Handoffs</h3>
+                <p>Not all epics are independent. Epic 3 might depend on functions created in Epic 2. Managing these dependencies is critical.</p>
+
+                <div class="subsection">
+                    <h4>Dependency Declaration</h4>
+                    <p>Each epic definition explicitly states prerequisites. Before starting, the Team Lead checks for required completion files. If dependencies are missing, the agent stops immediately and reports the issue.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Completion Files</h4>
+                    <p>When an epic finishes, the Team Lead creates a completion file (<code>.epic2_complete.json</code>, for example). This JSON file acts as a contract, documenting what was built, where files are located, what function signatures were created, and any configuration details the next epic needs.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Sequential vs Parallel Execution</h4>
+                    <p>Independent epics can run in parallel - multiple Team Lead sessions executing simultaneously. Dependent epics must run sequentially, with each one reading completion files from its prerequisites before starting work.</p>
+                </div>
+
+                <h3>State Management</h3>
+                <p>State management prevents agents from "forgetting" what was done previously. Completion files serve as persistent memory across sessions. Each file typically contains:</p>
+
+                <div class="code-block-wrapper">
+                    <button class="copy-btn" aria-label="Copy code to clipboard">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        <span class="copy-text">Copy</span>
+                    </button>
+                    <pre><code class="language-json">{
+  "epic_number": 2,
+  "status": "complete",
+  "timestamp": "2025-11-06T10:30:00Z",
+  "deliverables": {
+    "notebook_cells": ["0", "1", "2", "3"],
+    "functions_created": ["scaled_dot_product_attention", "softmax"],
+    "output_files": ["outputs/attention_weights.png"]
+  },
+  "handoff_notes": "Attention function expects (batch, seq_len, d_model) tensors"
+}</code></pre>
+                </div>
+
+                <p>When Epic 3 starts, its Team Lead reads <code>.epic2_complete.json</code> to understand what functions exist, what their signatures are, and how to use them. This explicit state transfer prevents duplicate work and integration failures.</p>
+
+                <p>The completion file approach also enables <strong>recovery</strong>. If a Team Lead session crashes mid-epic, you can resume or restart without losing context about completed epics. The state is durable and explicit, not hidden in conversation history.</p>
+
+                <p>Good epic development transforms an overwhelming project into a series of achievable milestones, each building on the last with clear handoffs and verifiable progress.</p>
+            </section>
+
+            <!-- Section 3: Meta-Agent Pattern -->
+            <section id="meta-agent-pattern" class="content-section">
+                <h2>The Meta-Agent Pattern: Creating Agents On-Demand</h2>
+
+                <h3>What Is a Meta-Agent?</h3>
+                <p>A meta-agent is an agent whose job is to create other agents. It's a template or factory for generating specialized subagents with custom capabilities, expertise, and instructions. Think of it as a "master craftsperson" who trains apprentices for specific tasks.</p>
+
+                <p>In traditional development, you might hardcode a dozen different agent types: one for testing, one for documentation, one for database work, etc. The meta-agent pattern is more flexible - you define one meta-agent, and it dynamically generates whatever specialized agents your Team Lead needs.</p>
+
+                <h3>How Meta-Agents Work</h3>
+                <p>When a Team Lead encounters a task requiring specialized expertise, it invokes the meta-agent with a description of the needed capabilities. The meta-agent then constructs a new subagent by:</p>
+
+                <ol class="numbered-list">
+                    <li><strong>Analyzing Requirements:</strong> Understanding what expertise the task demands</li>
+                    <li><strong>Crafting Instructions:</strong> Writing a detailed system prompt defining the agent's role, capabilities, and constraints</li>
+                    <li><strong>Configuring Parameters:</strong> Setting model choice, temperature, and other execution parameters</li>
+                    <li><strong>Instantiating the Agent:</strong> Creating a new agent session with these specifications</li>
+                </ol>
+
+                <p>For example, a Team Lead might tell the meta-agent: <em>"I need an agent specialized in writing pytest unit tests for PyTorch code, with expertise in testing attention mechanisms and tensor operations."</em></p>
+
+                <p>The meta-agent would generate a subagent with a system prompt like:</p>
+
+                <div class="code-block-wrapper">
+                    <button class="copy-btn" aria-label="Copy code to clipboard">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        <span class="copy-text">Copy</span>
+                    </button>
+                    <pre><code class="language-markdown">You are a PyTorch Testing Specialist. Your expertise includes:
+- Writing comprehensive pytest unit tests
+- Testing neural network components, especially attention mechanisms
+- Validating tensor shapes and operations
+- Creating parameterized tests for different input configurations
+- Mocking and fixture creation for ML testing
+
+When writing tests, always include:
+- Docstrings explaining what behavior is tested
+- Assertions for tensor shapes AND values
+- Edge case coverage
+- Clear test names following pytest conventions</code></pre>
+                </div>
+
+                <h3>Meta-Agent Capabilities and Customization</h3>
+                <p>The power of meta-agents lies in their flexibility. A well-designed meta-agent can generate subagents for:</p>
+
+                <div class="subsection">
+                    <h4>Code Specialists</h4>
+                    <p>Agents focused on specific languages (Python, JavaScript) or frameworks (PyTorch, React)</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Domain Experts</h4>
+                    <p>Agents with knowledge in particular fields (machine learning, web security, data visualization)</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Task Specialists</h4>
+                    <p>Agents optimized for specific activities (code review, documentation writing, refactoring)</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Context-Aware Agents</h4>
+                    <p>Agents that understand your project's conventions, coding style, and architecture</p>
+                </div>
+
+                <p>Customization happens through the instructions passed to the meta-agent. You're not limited to predefined agent types - you dynamically create exactly what you need, when you need it.</p>
+
+                <h3>When to Use Meta-Agents vs Predefined Agents</h3>
+
+                <div class="comparison-box">
+                    <div class="comparison-section">
+                        <h4>Use Meta-Agents When:</h4>
+                        <ul>
+                            <li>Tasks vary significantly across your project</li>
+                            <li>You need specialized expertise not covered by standard agents</li>
+                            <li>Project requirements evolve and you can't predict all needed agent types</li>
+                            <li>You want consistent agent quality through centralized creation logic</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-section">
+                        <h4>Use Predefined Agents When:</h4>
+                        <ul>
+                            <li>You have a small set of recurring tasks with stable requirements</li>
+                            <li>Agent configurations are complex and need careful hand-tuning</li>
+                            <li>Performance is critical and you want to avoid generation overhead</li>
+                            <li>You're building a simple workflow without much variety</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>For most sophisticated agentic workflows, meta-agents are the better choice. They prevent the "agent sprawl" problem where you end up with dozens of similar but slightly different predefined agents, making maintenance nightmarish.</p>
+
+                <h3>Dynamic Agent Configuration</h3>
+                <p>Meta-agents enable dynamic decisions about agent configuration. Based on task complexity, the meta-agent might choose:</p>
+
+                <ul class="feature-list">
+                    <li><strong>Model Selection:</strong> Use GPT-4 for complex reasoning tasks, but GPT-3.5 for simple formatting work</li>
+                    <li><strong>Temperature Settings:</strong> Lower temperature (0.2) for code generation requiring precision, higher (0.7) for creative writing</li>
+                    <li><strong>Token Limits:</strong> Adjust context windows based on expected output length</li>
+                    <li><strong>Tool Access:</strong> Grant only necessary permissions (e.g., read-only access for review agents)</li>
+                </ul>
+
+                <p>This dynamic configuration optimizes both quality and cost, allocating resources intelligently based on task demands.</p>
+
+                <blockquote>
+                    The meta-agent pattern is arguably the most important innovation in scalable agentic workflows. It provides consistency, flexibility, and maintainability that hardcoded agent definitions cannot match.
+                </blockquote>
+            </section>
+
+            <!-- Section 4: Delegation Best Practices -->
+            <section id="delegation-best-practices" class="content-section">
+                <h2>Delegation Best Practices: Making Agents Work Together</h2>
+
+                <h3>Effective Prompting Techniques</h3>
+                <p>Delegation in agentic workflows happens through prompting. The quality of your delegation determines the quality of your results. Poor prompts lead to confused agents, wasted tokens, and incorrect outputs. Great prompts create autonomous, effective agents.</p>
+
+                <div class="subsection">
+                    <h4>Be Specific About Expectations</h4>
+                    <p>Vague instructions like "make the code better" doom your agents to failure. Instead: "Refactor the attention function to improve readability by: extracting the softmax calculation into a separate function, adding type hints, and including docstrings with parameter descriptions and example usage."</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Provide Context</h4>
+                    <p>Agents don't automatically know your project's history, conventions, or constraints. Effective delegation includes background: "This project uses PyTorch, follows Google Python style guide, and targets beginners learning about transformers. All code should include educational comments explaining the 'why' behind implementation choices."</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Use Examples</h4>
+                    <p>When possible, show don't just tell. If you want a particular coding style, provide a reference example. If you need documentation in a specific format, share a template. Examples eliminate ambiguity far better than descriptions.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Specify Output Format</h4>
+                    <p>Be explicit about deliverables. "Create unit tests" is unclear. "Create a pytest file named <code>test_attention.py</code> containing at least 5 test functions covering: basic functionality, edge cases, tensor shape validation, gradient flow, and batch processing" is actionable.</p>
+                </div>
+
+                <h3>Clear Task Boundaries and Acceptance Criteria</h3>
+                <p>Agents perform best when they understand exactly what they're responsible for and when they're done.</p>
+
+                <div class="subsection">
+                    <h4>Define Scope Explicitly</h4>
+                    <p>"Implement the attention mechanism" has unclear boundaries. Does it include visualization? Testing? Multiple attention variants? Instead: "Implement ONLY the scaled dot-product attention function as described in 'Attention Is All You Need' section 3.2.1. Input: Q, K, V matrices. Output: attention output and attention weights. Do NOT implement multi-head attention or positional encoding - those are separate tasks."</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Use Checkboxes for Acceptance Criteria</h4>
+                    <p>Give agents a literal checklist:</p>
+
+                    <div class="code-block-wrapper">
+                        <button class="copy-btn" aria-label="Copy code to clipboard">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-text">Copy</span>
+                        </button>
+                        <pre><code class="language-markdown">Task complete when:
+- [ ] Function `scaled_dot_product_attention()` created in attention.py
+- [ ] Function accepts Q, K, V tensors with shapes (batch, seq_len, d_k)
+- [ ] Function returns tuple of (output, attention_weights)
+- [ ] Docstring includes mathematical formula and parameter descriptions
+- [ ] Example usage included in docstring
+- [ ] Function handles mask parameter for padding tokens</code></pre>
+                    </div>
+
+                    <p>Agents can verify completion by checking off items. This creates accountability and prevents premature task completion.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Establish Success Metrics</h4>
+                    <p>How do you know the work is correct? Define verification: "Implementation is successful if it produces the same attention weights as the reference implementation in <code>test_data/expected_attention_weights.pt</code> when given <code>test_data/input_qkv.pt</code> (tolerance: 1e-6)."</p>
+                </div>
+
+                <h3>Error Handling and Recovery</h3>
+                <p>Things go wrong in agentic workflows. Agents misunderstand instructions, code has bugs, dependencies break. Building in error handling is essential.</p>
+
+                <div class="subsection">
+                    <h4>Validation Steps</h4>
+                    <p>Instruct agents to validate their work before marking tasks complete. "After implementation, run the function with the example input Q=[[1, 0], [0, 1]], K=V=[[1, 2], [3, 4]] and verify output shapes are correct. Include the output in your completion report."</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Failure Protocols</h4>
+                    <p>Define what agents should do when encountering problems. "If you cannot complete the task due to missing dependencies, create a <code>.epic_blocked.json</code> file documenting: the blocking issue, what prerequisites are needed, and your progress so far. Then stop execution."</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Graceful Degradation</h4>
+                    <p>Sometimes partial completion is better than total failure. "Primary goal: implement full attention with masking. Fallback: if masking proves too complex, implement basic attention without masking and document the limitation."</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Logging and Transparency</h4>
+                    <p>Require agents to log their actions. Many workflows use hooks that automatically log tool usage (file reads/writes, bash commands). This creates an audit trail for debugging. When things fail, you can trace exactly what the agent did.</p>
+                </div>
+
+                <h3>Agent Coordination Strategies</h3>
+                <p>Multiple agents working simultaneously need coordination to avoid conflicts.</p>
+
+                <div class="subsection">
+                    <h4>File Ownership</h4>
+                    <p>Assign clear file ownership. "Epic 2 owns all files in <code>src/attention/</code>. Epic 3 owns <code>src/visualization/</code>. If Epic 3 needs to modify attention code, it must create an interface request rather than editing directly."</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Lock Files</h4>
+                    <p>For shared resources, use lock files. Before modifying a shared configuration file, an agent creates <code>.config_lock</code> to signal "I'm working here." Other agents check for locks before proceeding.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Merge Strategies</h4>
+                    <p>When agents work on related code, define merge strategies upfront. "Subagent A handles test files. Subagent B handles implementation. Team Lead reviews both and integrates changes after validation."</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Communication Channels</h4>
+                    <p>Agents communicate through structured files, not just code. Create <code>messages/</code> directory where agents leave <code>.json</code> messages for each other:</p>
+
+                    <div class="code-block-wrapper">
+                        <button class="copy-btn" aria-label="Copy code to clipboard">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-text">Copy</span>
+                        </button>
+                        <pre><code class="language-json">{
+  "from": "epic3_visualization_agent",
+  "to": "epic2_implementation_agent",
+  "subject": "API Request",
+  "message": "Need attention_head() to return intermediate states for visualization. Can you add return_intermediates=False parameter?"
+}</code></pre>
+                    </div>
+
+                    <p>This explicit communication prevents assumptions and enables true agent collaboration.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Conflict Resolution</h4>
+                    <p>Define who has authority when agents disagree. Typically, Team Leads resolve conflicts between their Subagents, and the Product Manager resolves conflicts between Team Leads.</p>
+                </div>
+
+                <blockquote>
+                    Effective delegation transforms agents from unpredictable tools into reliable team members. The investment in clear instructions, boundaries, and coordination pays massive dividends in workflow reliability and output quality.
+                </blockquote>
+            </section>
+
+            <!-- Section 5: Getting Started -->
+            <section id="getting-started" class="content-section">
+                <h2>Getting Started with Agentic Workflows</h2>
+
+                <h3>Your First Workflow: Start Simple</h3>
+                <p>If you're new to agentic workflows, resist the temptation to build a complex multi-tier system immediately. Start with a single-agent workflow to understand the fundamentals, then gradually add complexity.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h4>Week 1 Exercise</h4>
+                            <p>Use one agent to complete a small project - perhaps generating documentation for an existing codebase or creating a set of unit tests. Focus on writing clear prompts and understanding how the agent interprets your instructions. Notice where it succeeds and where it struggles.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h4>Week 2 Exercise</h4>
+                            <p>Introduce a two-tier structure: a coordinator agent that delegates to task-specific subagents. Try something like "coordinator delegates to separate agents for: writing code, writing tests, and writing docs." This teaches you about handoffs and state management.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3+</div>
+                        <div class="timeline-content">
+                            <h4>Week 3+</h4>
+                            <p>Add the three-tier hierarchy with epics, Team Leads, and specialized subagents. By this point, you'll appreciate why each layer exists.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Common Pitfalls and How to Avoid Them</h3>
+
+                <div class="pitfall-grid">
+                    <div class="pitfall-card">
+                        <h4>Pitfall 1: Vague Instructions</h4>
+                        <p>Agents interpret literally. "Improve the code" means nothing specific.</p>
+                        <p class="fix"><strong>Fix:</strong> Always include concrete acceptance criteria and examples.</p>
+                    </div>
+
+                    <div class="pitfall-card">
+                        <h4>Pitfall 2: Missing Context</h4>
+                        <p>Agents don't remember previous sessions unless you give them artifacts (completion files, state documents).</p>
+                        <p class="fix"><strong>Fix:</strong> Create explicit handoff mechanisms. Don't rely on conversation history.</p>
+                    </div>
+
+                    <div class="pitfall-card">
+                        <h4>Pitfall 3: Scope Creep</h4>
+                        <p>Agents will expand tasks if boundaries aren't clear, wasting tokens and time on unrelated work.</p>
+                        <p class="fix"><strong>Fix:</strong> Define explicit scope with "Do X, but NOT Y, Z."</p>
+                    </div>
+
+                    <div class="pitfall-card">
+                        <h4>Pitfall 4: No Validation</h4>
+                        <p>Trusting agent output blindly leads to compounding errors.</p>
+                        <p class="fix"><strong>Fix:</strong> Build validation into your workflow. Have agents test their own work or create validator agents that check others' output.</p>
+                    </div>
+
+                    <div class="pitfall-card">
+                        <h4>Pitfall 5: Over-Engineering</h4>
+                        <p>Creating 10 agent types when 3 would suffice adds complexity without value.</p>
+                        <p class="fix"><strong>Fix:</strong> Start minimal. Add agents only when you have clear evidence they're needed.</p>
+                    </div>
+                </div>
+
+                <h3>Debugging Approaches</h3>
+                <p>Agentic workflows are harder to debug than traditional code because the logic is distributed and sometimes non-deterministic. Here's how to approach debugging:</p>
+
+                <ul class="feature-list">
+                    <li><strong>Read the Logs:</strong> If you've set up agent activity logging (highly recommended), start there. Trace which files were read/written, what commands were executed, and when errors occurred.</li>
+                    <li><strong>Check Completion Files:</strong> If epics aren't integrating properly, examine the completion files. Are they missing critical information? Is the format inconsistent?</li>
+                    <li><strong>Isolate the Problem:</strong> Run a single epic or agent in isolation. If it works standalone but fails in the workflow, the issue is coordination/handoff, not the agent itself.</li>
+                    <li><strong>Simplify Prompts:</strong> If an agent produces unexpected results, try breaking its task into smaller pieces with simpler instructions. Sometimes complexity overwhelms the agent's ability to plan.</li>
+                    <li><strong>Version Control:</strong> Use git religiously. When agents make changes that break things, you need the ability to diff and revert.</li>
+                </ul>
+
+                <h3>First Workflow Recommendations</h3>
+                <p>Here are three beginner-friendly projects perfect for learning agentic workflows:</p>
+
+                <div class="project-cards">
+                    <div class="project-card">
+                        <h4>Project 1: Documentation Generator</h4>
+                        <p><strong>Input:</strong> A Python codebase without docs.</p>
+                        <p><strong>Goal:</strong> Generate README, API documentation, and usage examples.</p>
+                        <p><strong>Practice:</strong> Start with one agent, then split into: analyzer agent (understands code), writer agent (creates docs), and validator agent (checks accuracy).</p>
+                    </div>
+
+                    <div class="project-card">
+                        <h4>Project 2: Test Suite Creator</h4>
+                        <p><strong>Input:</strong> Python functions without tests.</p>
+                        <p><strong>Goal:</strong> Comprehensive pytest suite.</p>
+                        <p><strong>Practice:</strong> Delegation: coordinator agent assigns functions to test-writer agents, then a validator agent checks coverage and quality.</p>
+                    </div>
+
+                    <div class="project-card">
+                        <h4>Project 3: Code Refactoring Pipeline</h4>
+                        <p><strong>Input:</strong> Legacy code needing cleanup.</p>
+                        <p><strong>Goal:</strong> Improved code following modern standards.</p>
+                        <p><strong>Practice:</strong> Chain agents: analysis agent identifies issues, refactor agent makes changes, test agent ensures behavior unchanged, documentation agent updates comments.</p>
+                    </div>
+                </div>
+
+                <p>These projects teach core concepts - delegation, validation, handoffs, and state management - without overwhelming complexity.</p>
+
+                <h3>Building Confidence</h3>
+                <p>Start small, measure results, iterate. Each workflow teaches lessons that improve the next. Keep notes on what worked, what didn't, and why. The investment in learning agentic workflows pays off quickly - what takes hours manually can happen in minutes with well-designed agents.</p>
+
+                <blockquote>
+                    Most importantly: embrace experimentation. Agentic workflows are still an emerging field. Your innovations might become tomorrow's best practices.
+                </blockquote>
+            </section>
+
+            <!-- Back to Top Button -->
+            <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M12 19V5M5 12l7-7 7 7"/>
+                </svg>
+            </button>
+        </main>
+    </div>
+
+    <!-- Syntax Highlighting Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="js/learn.js"></script>
+</body>
+</html>

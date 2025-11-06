@@ -1,0 +1,714 @@
+/**
+ * Timeline Component Styles
+ * Interactive story timeline for Felix's journey through 8 epics
+ */
+
+/* ============================================
+   HEADER & PAGE STRUCTURE
+   ============================================ */
+
+.story-header {
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-xl) 0;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+.breadcrumb-link {
+  color: var(--color-accent-primary);
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb-link:hover {
+  color: var(--color-accent-secondary);
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: var(--color-text-tertiary);
+}
+
+.breadcrumb-current {
+  color: var(--color-text-secondary);
+}
+
+.page-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--line-height-tight);
+}
+
+.page-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  max-width: 700px;
+}
+
+/* ============================================
+   TIMELINE SECTION - DESKTOP (HORIZONTAL)
+   ============================================ */
+
+.timeline-section {
+  padding: var(--spacing-3xl) 0;
+  min-height: 400px;
+}
+
+.timeline-wrapper {
+  position: relative;
+  padding: var(--spacing-2xl) 0;
+}
+
+/* Timeline Track (connecting line) */
+.timeline-track {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: var(--color-bg-tertiary);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* Timeline Nodes Container */
+.timeline-nodes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  padding: 0 5%;
+}
+
+/* Individual Timeline Node */
+.timeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.timeline-node:focus-visible {
+  outline: none;
+}
+
+.timeline-node:focus-visible .node-circle {
+  box-shadow: var(--shadow-focus);
+}
+
+/* Node Circle */
+.node-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-primary);
+  border: 3px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-tertiary);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+/* Node Label */
+.node-label {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  transition: color var(--transition-fast);
+  max-width: 120px;
+  line-height: var(--line-height-tight);
+}
+
+/* Node States */
+
+/* Completed State */
+.timeline-node.completed .node-circle {
+  border-color: var(--color-accent-primary);
+  background: var(--color-accent-primary);
+  color: var(--color-text-primary);
+}
+
+.timeline-node.completed .node-label {
+  color: var(--color-text-secondary);
+}
+
+/* Hover State */
+.timeline-node:hover .node-circle {
+  transform: scale(1.1);
+  box-shadow: var(--glow-accent);
+}
+
+.timeline-node:hover .node-label {
+  color: var(--color-accent-primary);
+}
+
+/* Active/Selected State */
+.timeline-node.active .node-circle {
+  transform: scale(1.15);
+  border-color: var(--color-accent-primary);
+  box-shadow: var(--glow-accent);
+}
+
+.timeline-node.active .node-label {
+  color: var(--color-accent-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Pulse Animation on Hover */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+  }
+}
+
+.timeline-node:hover .node-circle {
+  animation: pulse 1.5s infinite;
+}
+
+/* ============================================
+   EPIC MODAL STYLES
+   ============================================ */
+
+.epic-modal {
+  max-width: 900px;
+  width: 90%;
+  max-height: 85vh;
+}
+
+.modal-header-content {
+  flex: 1;
+}
+
+.modal-tagline {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  font-style: italic;
+  margin-top: var(--spacing-xs);
+}
+
+/* ============================================
+   TAB INTERFACE
+   ============================================ */
+
+.modal-tabs {
+  display: flex;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tab-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  position: relative;
+}
+
+.tab-button:hover {
+  color: var(--color-text-secondary);
+  background: rgba(255, 107, 53, 0.05);
+}
+
+.tab-button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+}
+
+.tab-button.active {
+  color: var(--color-accent-primary);
+  border-bottom-color: var(--color-accent-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-accent-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.tab-button.active::after {
+  transform: scaleX(1);
+}
+
+/* ============================================
+   TAB PANELS
+   ============================================ */
+
+.tab-panel {
+  display: none;
+  animation: fadeInUp var(--transition-base);
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.perspective-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* ============================================
+   CONTENT SECTIONS
+   ============================================ */
+
+.section-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 1.2em;
+  background: var(--color-accent-primary);
+  border-radius: var(--radius-sm);
+}
+
+.narrative-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.narrative-text {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-base);
+}
+
+/* Quotes Section */
+.quotes-section {
+  margin-top: var(--spacing-lg);
+}
+
+.quotes-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.quote-item {
+  padding: var(--spacing-md);
+  background: rgba(255, 107, 53, 0.05);
+  border-left: 4px solid var(--color-accent-primary);
+  border-radius: var(--radius-md);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.quote-item::before {
+  content: '"';
+  color: var(--color-accent-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-right: var(--spacing-xs);
+}
+
+.quote-item::after {
+  content: '"';
+  color: var(--color-accent-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-left: var(--spacing-xs);
+}
+
+/* Decisions Section */
+.decisions-section {
+  margin-top: var(--spacing-lg);
+}
+
+.decisions-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.decision-item {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  position: relative;
+  padding-left: var(--spacing-xl);
+}
+
+.decision-item::before {
+  content: '✓';
+  position: absolute;
+  left: var(--spacing-md);
+  color: var(--color-accent-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Challenges & Solutions */
+.challenges-section,
+.solutions-section {
+  margin-top: var(--spacing-lg);
+}
+
+.challenges-list,
+.solutions-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.challenge-item,
+.solution-item {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  position: relative;
+  padding-left: var(--spacing-xl);
+}
+
+.challenge-item::before {
+  content: '⚠';
+  position: absolute;
+  left: var(--spacing-md);
+  color: var(--color-warning);
+}
+
+.solution-item::before {
+  content: '✓';
+  position: absolute;
+  left: var(--spacing-md);
+  color: var(--color-success);
+}
+
+/* ============================================
+   METRICS FOOTER
+   ============================================ */
+
+.metrics-container {
+  display: flex;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.metric-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.metric-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-medium);
+}
+
+.metric-value {
+  font-size: var(--font-size-lg);
+  color: var(--color-accent-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   LOADING & ERROR STATES
+   ============================================ */
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-3xl) 0;
+  min-height: 400px;
+}
+
+.loading-state p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.error-state {
+  padding: var(--spacing-xl) 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer p {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.footer-link {
+  color: var(--color-accent-primary);
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--color-accent-secondary);
+}
+
+/* ============================================
+   RESPONSIVE: MOBILE (VERTICAL TIMELINE)
+   ============================================ */
+
+@media (max-width: 640px) {
+  .page-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  /* Vertical Timeline Layout */
+  .timeline-track {
+    top: 0;
+    left: 30px;
+    right: auto;
+    bottom: 0;
+    width: 2px;
+    height: auto;
+    transform: none;
+  }
+
+  .timeline-nodes {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+    padding: 0;
+  }
+
+  .timeline-node {
+    flex-direction: row;
+    gap: var(--spacing-md);
+    width: 100%;
+  }
+
+  .node-circle {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+  }
+
+  .node-label {
+    margin-top: 0;
+    text-align: left;
+    max-width: none;
+  }
+
+  /* Modal adjustments for mobile */
+  .epic-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .modal-header {
+    padding: var(--spacing-md);
+  }
+
+  .modal-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .modal-tagline {
+    font-size: var(--font-size-xs);
+  }
+
+  .modal-tabs {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .tab-button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-xs);
+  }
+
+  .modal-body {
+    padding: var(--spacing-md);
+  }
+
+  .modal-footer {
+    padding: var(--spacing-md);
+  }
+
+  .section-title {
+    font-size: var(--font-size-base);
+  }
+
+  .narrative-text {
+    font-size: var(--font-size-sm);
+  }
+
+  .metrics-container {
+    gap: var(--spacing-md);
+  }
+}
+
+/* ============================================
+   RESPONSIVE: TABLET
+   ============================================ */
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .page-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .epic-modal {
+    width: 90%;
+    max-height: 85vh;
+  }
+
+  .timeline-nodes {
+    padding: 0 2%;
+  }
+
+  .timeline-track {
+    left: 2%;
+    right: 2%;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY: REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-node:hover .node-circle {
+    animation: none;
+    transform: none;
+  }
+
+  .tab-panel {
+    animation: none;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY: HIGH CONTRAST
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  .node-circle {
+    border-width: 4px;
+  }
+
+  .timeline-node.completed .node-circle {
+    border-width: 5px;
+  }
+
+  .tab-button {
+    border: 1px solid var(--color-border);
+  }
+
+  .tab-button.active {
+    border: 2px solid var(--color-accent-primary);
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .timeline-track {
+    background: #000;
+  }
+
+  .node-circle {
+    border-color: #000;
+  }
+
+  .timeline-node.completed .node-circle {
+    background: #000;
+    color: #fff;
+  }
+
+  .modal-overlay {
+    position: relative;
+    background: transparent;
+  }
+
+  .epic-modal {
+    box-shadow: none;
+    border: 2px solid #000;
+  }
+
+  .tab-button.active {
+    border-bottom: 3px solid #000;
+  }
+}
