@@ -131,3 +131,6 @@ Good stuff:
     - Good step by step progress for the selections in the main screen
     - Timeline (step 1/3 is nice)
 
+## Codebase
+
+All files are just thrown into "meta-lesson/". Please for the love of god create a "pages/" directory..
