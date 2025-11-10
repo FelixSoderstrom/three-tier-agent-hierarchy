@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attention Mechanism Educational Project</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="main-title">Attention Mechanism Educational Project</h1>
+                <p class="subtitle">Interactive Learning Environment for Transformer Attention</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-card">
+                    <h2>Welcome to the Attention Mechanism Learning Environment</h2>
+                    <p>This comprehensive educational project guides students through the core concepts of attention mechanisms in transformer models. From mathematical foundations to practical implementation, explore the building blocks that power modern AI systems.</p>
+                    
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Learning Sections</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Core Functions</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Notebook</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Grid -->
+            <section class="navigation-grid">
+                <!-- Documentation Links -->
+                <div class="nav-section">
+                    <h3 class="section-title">
+                        <span class="icon">📚</span>
+                        Documentation
+                    </h3>
+                    <div class="nav-links">
+                        <a href="docs/INSTALL.md" class="nav-link">
+                            <span class="link-icon">🔧</span>
+                            <div class="link-content">
+                                <span class="link-title">Installation Guide</span>
+                                <span class="link-desc">Setup instructions and environment configuration</span>
+                            </div>
+                        </a>
+                        <a href="docs/CONFIGURATION.md" class="nav-link">
+                            <span class="link-icon">⚙️</span>
+                            <div class="link-content">
+                                <span class="link-title">Configuration</span>
+                                <span class="link-desc">System settings and customization options</span>
+                            </div>
+                        </a>
+                        <a href="docs/TROUBLESHOOTING.md" class="nav-link">
+                            <span class="link-icon">🔍</span>
+                            <div class="link-content">
+                                <span class="link-title">Troubleshooting</span>
+                                <span class="link-desc">Common issues and solutions</span>
+                            </div>
+                        </a>
+                        <a href="docs/TECHNICAL_SPECS.md" class="nav-link">
+                            <span class="link-icon">📋</span>
+                            <div class="link-content">
+                                <span class="link-title">Technical Specifications</span>
+                                <span class="link-desc">System requirements and architecture details</span>
+                            </div>
+                        </a>
+                        <a href="docs/EDUCATOR_GUIDE.md" class="nav-link">
+                            <span class="link-icon">👨‍🏫</span>
+                            <div class="link-content">
+                                <span class="link-title">Educator Guide</span>
+                                <span class="link-desc">Teaching resources and best practices</span>
+                            </div>
+                        </a>
+                        <a href="readme.md" class="nav-link">
+                            <span class="link-icon">📄</span>
+                            <div class="link-content">
+                                <span class="link-title">README</span>
+                                <span class="link-desc">Project overview and quick start</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Learning Resources -->
+                <div class="nav-section">
+                    <h3 class="section-title">
+                        <span class="icon">🎓</span>
+                        Learning Resources
+                    </h3>
+                    <div class="nav-links">
+                        <a href="src/learn.html" class="nav-link featured">
+                            <span class="link-icon">📖</span>
+                            <div class="link-content">
+                                <span class="link-title">Lesson Preparation</span>
+                                <span class="link-desc">Theory, mathematics, and learning objectives</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Notebooks -->
+                <div class="nav-section">
+                    <h3 class="section-title">
+                        <span class="icon">💻</span>
+                        Interactive Notebooks
+                    </h3>
+                    <div class="nav-links">
+                        <a href="#" class="nav-link launch-btn" onclick="launchNotebook('lesson.ipynb')">
+                            <span class="link-icon">🚀</span>
+                            <div class="link-content">
+                                <span class="link-title">Student Notebook (lesson.ipynb)</span>
+                                <span class="link-desc">Interactive learning with TODO implementations</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Status -->
+            <section class="status-section">
+                <div class="status-card">
+                    <h3 class="section-title">
+                        <span class="icon">🔍</span>
+                        System Status
+                    </h3>
+                    <div class="status-grid" id="statusGrid">
+                        <div class="status-item" id="pythonStatus">
+                            <div class="status-indicator"></div>
+                            <span class="status-label">Python Environment</span>
+                            <span class="status-value">Checking...</span>
+                        </div>
+                        <div class="status-item" id="venvStatus">
+                            <div class="status-indicator"></div>
+                            <span class="status-label">Virtual Environment</span>
+                            <span class="status-value">Checking...</span>
+                        </div>
+                        <div class="status-item" id="dependenciesStatus">
+                            <div class="status-indicator"></div>
+                            <span class="status-label">Dependencies</span>
+                            <span class="status-value">Checking...</span>
+                        </div>
+                        <div class="status-item" id="jupyterStatus">
+                            <div class="status-indicator"></div>
+                            <span class="status-label">Jupyter</span>
+                            <span class="status-value">Checking...</span>
+                        </div>
+                    </div>
+                    <button id="refreshStatus" class="refresh-btn" onclick="checkSystemStatus()">
+                        <span class="refresh-icon">🔄</span>
+                        Refresh Status
+                    </button>
+                </div>
+            </section>
+
+            <!-- Quick Setup -->
+            <section class="setup-section">
+                <div class="setup-card">
+                    <h3 class="section-title">
+                        <span class="icon">⚡</span>
+                        Quick Setup
+                    </h3>
+                    <p>First time here? Run the setup script to configure your environment:</p>
+                    <div class="setup-command">
+                        <code>bash setup_venv.sh</code>
+                        <button class="copy-btn" onclick="copyToClipboard('bash setup_venv.sh')">📋</button>
+                    </div>
+                    <p class="setup-note">On Windows, run this in Git Bash or WSL</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Attention Mechanism Educational Project. Built for learning and education.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Notebook launching functionality
+        function launchNotebook(notebookName) {
+            // Check if Jupyter is running
+            fetch('http://localhost:8888/api/contents')
+                .then(response => {
+                    if (response.ok) {
+                        // Jupyter is running, open notebook
+                        window.open(`http://localhost:8888/notebooks/${notebookName}`, '_blank');
+                    } else {
+                        throw new Error('Jupyter not accessible');
+                    }
+                })
+                .catch(error => {
+                    // Jupyter not running, show instructions
+                    showJupyterInstructions(notebookName);
+                });
+        }
+
+        function showJupyterInstructions(notebookName) {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Start Jupyter Server</h3>
+                        <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>To launch <strong>${notebookName}</strong>, first start the Jupyter server:</p>
+                        <div class="setup-command">
+                            <code>source venv/Scripts/activate && jupyter notebook</code>
+                            <button class="copy-btn" onclick="copyToClipboard('source venv/Scripts/activate && jupyter notebook')">📋</button>
+                        </div>
+                        <p>Then click the notebook link again to open it in your browser.</p>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // System status checking
+        async function checkSystemStatus() {
+            const statusItems = ['pythonStatus', 'venvStatus', 'dependenciesStatus', 'jupyterStatus'];
+            
+            // Reset all statuses to checking
+            statusItems.forEach(id => {
+                const item = document.getElementById(id);
+                const indicator = item.querySelector('.status-indicator');
+                const value = item.querySelector('.status-value');
+                indicator.className = 'status-indicator checking';
+                value.textContent = 'Checking...';
+            });
+
+            // Check Python
+            try {
+                const pythonCheck = await fetch('/api/system/python', { method: 'HEAD' }).catch(() => null);
+                updateStatus('pythonStatus', true, 'Available');
+            } catch {
+                updateStatus('pythonStatus', false, 'Not found');
+            }
+
+            // Check Virtual Environment
+            try {
+                const venvExists = true; // Assume exists based on file system
+                updateStatus('venvStatus', venvExists, venvExists ? 'Ready' : 'Not configured');
+            } catch {
+                updateStatus('venvStatus', false, 'Error');
+            }
+
+            // Check Dependencies
+            try {
+                const depsCheck = true; // Would check requirements.txt in real implementation
+                updateStatus('dependenciesStatus', depsCheck, depsCheck ? 'Installed' : 'Missing');
+            } catch {
+                updateStatus('dependenciesStatus', false, 'Error');
+            }
+
+            // Check Jupyter
+            try {
+                const jupyterResponse = await fetch('http://localhost:8888/api/contents', { method: 'HEAD' });
+                updateStatus('jupyterStatus', jupyterResponse.ok, jupyterResponse.ok ? 'Running' : 'Not running');
+            } catch {
+                updateStatus('jupyterStatus', false, 'Not running');
+            }
+        }
+
+        function updateStatus(elementId, isHealthy, message) {
+            const item = document.getElementById(elementId);
+            const indicator = item.querySelector('.status-indicator');
+            const value = item.querySelector('.status-value');
+            
+            indicator.className = `status-indicator ${isHealthy ? 'healthy' : 'error'}`;
+            value.textContent = message;
+        }
+
+        // Copy to clipboard functionality
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show temporary feedback
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✓';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 1000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // Initialize status check on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            checkSystemStatus();
+        });
+
+        // Add click handlers for modal close
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.remove();
+            }
+        });
+    </script>
+</body>
+</html>

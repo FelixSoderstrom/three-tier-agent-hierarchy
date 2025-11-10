@@ -3,314 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attention Mechanism Educational Project</title>
-    <link rel="stylesheet" href="src/styles.css">
+    <meta name="description" content="Learn to orchestrate AI agents for complex software development tasks through agentic workflows">
+    <title>Building with Agentic Workflows</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="header-content">
-                <h1 class="main-title">Attention Mechanism Educational Project</h1>
-                <p class="subtitle">Interactive Learning Environment for Transformer Attention</p>
+    <!-- Animated Background -->
+    <div class="animated-background" aria-hidden="true">
+        <div class="gradient-layer"></div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="page-wrapper">
+        <!-- Hero Section -->
+        <header class="hero-section" role="banner">
+            <div class="hero-content">
+                <h1 class="hero-title">Building with Agentic Workflows</h1>
+                <p class="hero-subtitle">Learn to orchestrate AI agents for complex software development tasks</p>
+
+                <!-- Project Statistics -->
+                <div class="stats-container" role="region" aria-label="Project statistics">
+                    <div class="stat-card">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Epics Completed</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">Workflow Examples</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Theory Modules</span>
+                    </div>
+                </div>
             </div>
         </header>
 
-        <main class="main-content">
-            <!-- Welcome Section -->
-            <section class="welcome-section">
-                <div class="welcome-card">
-                    <h2>Welcome to the Attention Mechanism Learning Environment</h2>
-                    <p>This comprehensive educational project guides students through the core concepts of attention mechanisms in transformer models. From mathematical foundations to practical implementation, explore the building blocks that power modern AI systems.</p>
-                    
-                    <div class="project-stats">
-                        <div class="stat">
-                            <span class="stat-number">5</span>
-                            <span class="stat-label">Learning Sections</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">4</span>
-                            <span class="stat-label">Core Functions</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">1</span>
-                            <span class="stat-label">Notebook</span>
-                        </div>
+        <!-- Navigation Cards -->
+        <main class="main-content" role="main">
+            <nav class="navigation-cards" aria-label="Main navigation">
+                <!-- Story Card -->
+                <a href="pages/story.html" class="nav-card" role="button" aria-label="Navigate to Story - Experience the agents' story through 8 epic developments">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
                     </div>
-                </div>
-            </section>
+                    <h2 class="card-title">Story</h2>
+                    <p class="card-description">Experience the agents' story through 8 epic developments</p>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
 
-            <!-- Navigation Grid -->
-            <section class="navigation-grid">
-                <!-- Documentation Links -->
-                <div class="nav-section">
-                    <h3 class="section-title">
-                        <span class="icon">📚</span>
-                        Documentation
-                    </h3>
-                    <div class="nav-links">
-                        <a href="docs/INSTALL.md" class="nav-link">
-                            <span class="link-icon">🔧</span>
-                            <div class="link-content">
-                                <span class="link-title">Installation Guide</span>
-                                <span class="link-desc">Setup instructions and environment configuration</span>
-                            </div>
-                        </a>
-                        <a href="docs/CONFIGURATION.md" class="nav-link">
-                            <span class="link-icon">⚙️</span>
-                            <div class="link-content">
-                                <span class="link-title">Configuration</span>
-                                <span class="link-desc">System settings and customization options</span>
-                            </div>
-                        </a>
-                        <a href="docs/TROUBLESHOOTING.md" class="nav-link">
-                            <span class="link-icon">🔍</span>
-                            <div class="link-content">
-                                <span class="link-title">Troubleshooting</span>
-                                <span class="link-desc">Common issues and solutions</span>
-                            </div>
-                        </a>
-                        <a href="docs/TECHNICAL_SPECS.md" class="nav-link">
-                            <span class="link-icon">📋</span>
-                            <div class="link-content">
-                                <span class="link-title">Technical Specifications</span>
-                                <span class="link-desc">System requirements and architecture details</span>
-                            </div>
-                        </a>
-                        <a href="docs/EDUCATOR_GUIDE.md" class="nav-link">
-                            <span class="link-icon">👨‍🏫</span>
-                            <div class="link-content">
-                                <span class="link-title">Educator Guide</span>
-                                <span class="link-desc">Teaching resources and best practices</span>
-                            </div>
-                        </a>
-                        <a href="readme.md" class="nav-link">
-                            <span class="link-icon">📄</span>
-                            <div class="link-content">
-                                <span class="link-title">README</span>
-                                <span class="link-desc">Project overview and quick start</span>
-                            </div>
-                        </a>
+                <!-- Gallery Card -->
+                <a href="pages/gallery.html" class="nav-card" role="button" aria-label="Navigate to Gallery - Explore 15 diverse workflow examples">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
                     </div>
-                </div>
+                    <h2 class="card-title">Gallery</h2>
+                    <p class="card-description">Explore 15 diverse workflow examples</p>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
 
-                <!-- Learning Resources -->
-                <div class="nav-section">
-                    <h3 class="section-title">
-                        <span class="icon">🎓</span>
-                        Learning Resources
-                    </h3>
-                    <div class="nav-links">
-                        <a href="src/learn.html" class="nav-link featured">
-                            <span class="link-icon">📖</span>
-                            <div class="link-content">
-                                <span class="link-title">Lesson Preparation</span>
-                                <span class="link-desc">Theory, mathematics, and learning objectives</span>
-                            </div>
-                        </a>
+                <!-- Learn Card -->
+                <a href="pages/learn.html" class="nav-card" role="button" aria-label="Navigate to Learn - Master agentic workflow principles">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
                     </div>
-                </div>
+                    <h2 class="card-title">Learn</h2>
+                    <p class="card-description">Master agentic workflow principles</p>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
 
-                <!-- Interactive Notebooks -->
-                <div class="nav-section">
-                    <h3 class="section-title">
-                        <span class="icon">💻</span>
-                        Interactive Notebooks
-                    </h3>
-                    <div class="nav-links">
-                        <a href="#" class="nav-link launch-btn" onclick="launchNotebook('lesson.ipynb')">
-                            <span class="link-icon">🚀</span>
-                            <div class="link-content">
-                                <span class="link-title">Student Notebook (lesson.ipynb)</span>
-                                <span class="link-desc">Interactive learning with TODO implementations</span>
-                            </div>
-                        </a>
+                <!-- Build Card (Primary CTA) -->
+                <a href="pages/builder.html" class="nav-card nav-card--primary" role="button" aria-label="Navigate to Build - Create your own custom workflow">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
                     </div>
-                </div>
-            </section>
-
-            <!-- System Status -->
-            <section class="status-section">
-                <div class="status-card">
-                    <h3 class="section-title">
-                        <span class="icon">🔍</span>
-                        System Status
-                    </h3>
-                    <div class="status-grid" id="statusGrid">
-                        <div class="status-item" id="pythonStatus">
-                            <div class="status-indicator"></div>
-                            <span class="status-label">Python Environment</span>
-                            <span class="status-value">Checking...</span>
-                        </div>
-                        <div class="status-item" id="venvStatus">
-                            <div class="status-indicator"></div>
-                            <span class="status-label">Virtual Environment</span>
-                            <span class="status-value">Checking...</span>
-                        </div>
-                        <div class="status-item" id="dependenciesStatus">
-                            <div class="status-indicator"></div>
-                            <span class="status-label">Dependencies</span>
-                            <span class="status-value">Checking...</span>
-                        </div>
-                        <div class="status-item" id="jupyterStatus">
-                            <div class="status-indicator"></div>
-                            <span class="status-label">Jupyter</span>
-                            <span class="status-value">Checking...</span>
-                        </div>
-                    </div>
-                    <button id="refreshStatus" class="refresh-btn" onclick="checkSystemStatus()">
-                        <span class="refresh-icon">🔄</span>
-                        Refresh Status
-                    </button>
-                </div>
-            </section>
-
-            <!-- Quick Setup -->
-            <section class="setup-section">
-                <div class="setup-card">
-                    <h3 class="section-title">
-                        <span class="icon">⚡</span>
-                        Quick Setup
-                    </h3>
-                    <p>First time here? Run the setup script to configure your environment:</p>
-                    <div class="setup-command">
-                        <code>bash setup_venv.sh</code>
-                        <button class="copy-btn" onclick="copyToClipboard('bash setup_venv.sh')">📋</button>
-                    </div>
-                    <p class="setup-note">On Windows, run this in Git Bash or WSL</p>
-                </div>
-            </section>
+                    <h2 class="card-title">Build</h2>
+                    <p class="card-description">Create your own custom workflow</p>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </nav>
         </main>
 
-        <footer class="footer">
-            <p>&copy; 2024 Attention Mechanism Educational Project. Built for learning and education.</p>
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <p>Built with automated agentic workflows</p>
         </footer>
     </div>
 
-    <script>
-        // Notebook launching functionality
-        function launchNotebook(notebookName) {
-            // Check if Jupyter is running
-            fetch('http://localhost:8888/api/contents')
-                .then(response => {
-                    if (response.ok) {
-                        // Jupyter is running, open notebook
-                        window.open(`http://localhost:8888/notebooks/${notebookName}`, '_blank');
-                    } else {
-                        throw new Error('Jupyter not accessible');
-                    }
-                })
-                .catch(error => {
-                    // Jupyter not running, show instructions
-                    showJupyterInstructions(notebookName);
-                });
-        }
-
-        function showJupyterInstructions(notebookName) {
-            const modal = document.createElement('div');
-            modal.className = 'modal';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Start Jupyter Server</h3>
-                        <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>To launch <strong>${notebookName}</strong>, first start the Jupyter server:</p>
-                        <div class="setup-command">
-                            <code>source venv/Scripts/activate && jupyter notebook</code>
-                            <button class="copy-btn" onclick="copyToClipboard('source venv/Scripts/activate && jupyter notebook')">📋</button>
-                        </div>
-                        <p>Then click the notebook link again to open it in your browser.</p>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
-        // System status checking
-        async function checkSystemStatus() {
-            const statusItems = ['pythonStatus', 'venvStatus', 'dependenciesStatus', 'jupyterStatus'];
-            
-            // Reset all statuses to checking
-            statusItems.forEach(id => {
-                const item = document.getElementById(id);
-                const indicator = item.querySelector('.status-indicator');
-                const value = item.querySelector('.status-value');
-                indicator.className = 'status-indicator checking';
-                value.textContent = 'Checking...';
-            });
-
-            // Check Python
-            try {
-                const pythonCheck = await fetch('/api/system/python', { method: 'HEAD' }).catch(() => null);
-                updateStatus('pythonStatus', true, 'Available');
-            } catch {
-                updateStatus('pythonStatus', false, 'Not found');
-            }
-
-            // Check Virtual Environment
-            try {
-                const venvExists = true; // Assume exists based on file system
-                updateStatus('venvStatus', venvExists, venvExists ? 'Ready' : 'Not configured');
-            } catch {
-                updateStatus('venvStatus', false, 'Error');
-            }
-
-            // Check Dependencies
-            try {
-                const depsCheck = true; // Would check requirements.txt in real implementation
-                updateStatus('dependenciesStatus', depsCheck, depsCheck ? 'Installed' : 'Missing');
-            } catch {
-                updateStatus('dependenciesStatus', false, 'Error');
-            }
-
-            // Check Jupyter
-            try {
-                const jupyterResponse = await fetch('http://localhost:8888/api/contents', { method: 'HEAD' });
-                updateStatus('jupyterStatus', jupyterResponse.ok, jupyterResponse.ok ? 'Running' : 'Not running');
-            } catch {
-                updateStatus('jupyterStatus', false, 'Not running');
-            }
-        }
-
-        function updateStatus(elementId, isHealthy, message) {
-            const item = document.getElementById(elementId);
-            const indicator = item.querySelector('.status-indicator');
-            const value = item.querySelector('.status-value');
-            
-            indicator.className = `status-indicator ${isHealthy ? 'healthy' : 'error'}`;
-            value.textContent = message;
-        }
-
-        // Copy to clipboard functionality
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                // Show temporary feedback
-                const btn = event.target;
-                const originalText = btn.textContent;
-                btn.textContent = '✓';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 1000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-        }
-
-        // Initialize status check on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            checkSystemStatus();
-        });
-
-        // Add click handlers for modal close
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal')) {
-                e.target.remove();
-            }
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="js/navigation.js"></script>
 </body>
 </html>

@@ -1,0 +1,86 @@
+{
+  "env": {
+    "BASH_DEFAULT_TIMEOUT_MS": "7200000",
+    "BASH_MAX_TIMEOUT_MS": "7200000",
+    "MCP_TIMEOUT": "60000",
+    "MCP_TOOL_TIMEOUT": "120000",
+    "ANTHROPIC_MODEL": "claude-opus-4-1-20250805",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-4-20250514",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_COST_WARNINGS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "WebSearch",
+      "WebFetch",
+      "Bash(claude:*)",
+      "Bash(mkdir:*)",
+      "Read(//c/Users/felix/Desktop/Code/Skola/AI2/vg-assignment/the-attention-mechanism/.claude/logs/**)",
+      "Read(//c/Users/felix/Desktop/Code/Skola/AI2/vg-assignment/the-attention-mechanism/**)",
+      "Bash(source:*)",
+      "Bash(test:*)",
+      "Bash(jupyter --version)",
+      "Bash(for file in INSTALL.md CONFIGURATION.md TROUBLESHOOTING.md TECHNICAL_SPECS.md EDUCATOR_GUIDE.md README.md)",
+      "Bash(do if [ -f \"$file\" ])",
+      "Bash(then echo \"$file: EXISTS\")",
+      "Bash(else echo \"$file: MISSING\")",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(venv/Scripts/python.exe -m pip install:*)",
+      "Bash(. venv/Scripts/activate)",
+      "Bash(pip install:*)",
+      "Bash(pip index versions:*)",
+      "Bash(timeout:*)",
+      "Bash(jupyter notebook --version)",
+      "Bash(bash:*)",
+      "Read(//c/Users/felix/AppData/Local/Programs/Python/Python310/**)",
+      "Bash(\"C:\\Users\\felix\\AppData\\Local\\Programs\\Python\\Python310\\python.exe\" --version)",
+      "Bash(\"C:\\Users\\felix\\AppData\\Local\\Programs\\Python\\Python310\\python.exe\" -m venv venv)",
+      "Bash(jupyter notebook:*)",
+      "Read(//c/Users/Felix/Desktop/Code/Skola/**)",
+      "Bash(cat:*)",
+      "Bash(./setup_venv.sh:*)",
+      "Bash(xargs du:*)",
+      "Bash(./venv/Scripts/python.exe --version)",
+      "Bash(find:*)",
+      "Bash(./venv/Scripts/pip.exe list)",
+      "Bash(wmic:*)",
+      "Bash(ver)",
+      "Bash(cmd.exe /c ver)",
+      "Bash(tree:*)",
+      "Bash(gh issue create --title \"[BUG] builder.html CSS not loading - wrong path reference\" --body \"$(cat <<''EOF''\n## 🔴 CRITICAL BUG - Blocks all builder.html functionality\n\n### Problem\nThe builder.html file references incorrect CSS path `../src/styles.css` which causes complete styling failure. The page appears unstyled and broken.\n\n### Current Behavior\n- Line 10 of builder.html: `<link rel=\"stylesheet\" href=\"../src/styles.css\">`\n- This path goes outside meta-lesson directory to look for attention-mechanism styles\n- Results in 404 error and no styling applied\n\n### Expected Behavior\n- builder.html should use meta-lesson''s own CSS system\n- Page should be properly styled with the project''s design system\n\n### Acceptance Criteria\n- [ ] Fix CSS path to use meta-lesson CSS files\n- [ ] Verify builder.html loads with proper styling\n- [ ] Ensure consistency with other meta-lesson pages\n\n### Dependencies\n**None - This must be fixed FIRST**\n\n### Reference\nFeedback: \"There is literally NO styling on this page - 'Refused to apply styles from 'css/styles.css' because its MIME'\"\nEOF\n)\" --label \"bug\" --label \"critical\" --label \"priority-1\")",
+      "Bash(gh issue create:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)"
+    ],
+    "ask": []
+  },
+  "model": "claude-opus-4-1-20250805",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Write|MultiEdit|Edit|NotebookEdit|NotebookRead|Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash 'C:\\Users\\felix\\Desktop\\Code\\Skola\\AI2\\vg-assignment\\the-attention-mechanism\\.claude\\scripts\\log_agent_activity.sh'"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash 'C:\\Users\\felix\\Desktop\\Code\\Skola\\AI2\\vg-assignment\\the-attention-mechanism\\.claude\\scripts\\security_hook.sh'"
+          }
+        ]
+      }
+    ]
+  }
+}
