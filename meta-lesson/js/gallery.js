@@ -7,26 +7,14 @@
 
 // State management
 const state = {
-  examples: [],
-  filteredExamples: [],
-  filters: {
-    domain: 'all',
-    complexity: 'all',
-    search: ''
-  }
+  examples: []
 };
 
 // DOM elements
 const elements = {
   galleryGrid: null,
   loadingState: null,
-  errorState: null,
-  emptyState: null,
-  resultsCount: null,
-  searchInput: null,
-  domainFilter: null,
-  complexityFilter: null,
-  clearFiltersBtn: null
+  errorState: null
 };
 
 /**
@@ -36,14 +24,11 @@ async function init() {
   // Cache DOM elements
   cacheElements();
 
-  // Set up event listeners
-  setupEventListeners();
-
   // Load examples from JSON
   await loadExamples();
 
   // Initial render
-  updateGrid();
+  displayCards(state.examples);
 }
 
 /**
@@ -53,45 +38,6 @@ function cacheElements() {
   elements.galleryGrid = document.getElementById('gallery-grid');
   elements.loadingState = document.getElementById('loading-state');
   elements.errorState = document.getElementById('error-state');
-  elements.emptyState = document.getElementById('empty-state');
-  elements.resultsCount = document.getElementById('results-count');
-  elements.searchInput = document.getElementById('search-input');
-  elements.domainFilter = document.getElementById('domain-filter');
-  elements.complexityFilter = document.getElementById('complexity-filter');
-  elements.clearFiltersBtn = document.getElementById('clear-filters');
-}
-
-/**
- * Set up event listeners for filters
- */
-function setupEventListeners() {
-  // Search input with debounce
-  let searchTimeout;
-  elements.searchInput.addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => {
-      state.filters.search = e.target.value.toLowerCase().trim();
-      updateGrid();
-    }, 300);
-  });
-
-  // Domain filter
-  elements.domainFilter.addEventListener('change', (e) => {
-    state.filters.domain = e.target.value;
-    updateGrid();
-  });
-
-  // Complexity filter
-  elements.complexityFilter.addEventListener('change', (e) => {
-    state.filters.complexity = e.target.value;
-    updateGrid();
-  });
-
-  // Clear filters button
-  elements.clearFiltersBtn.addEventListener('click', clearFilters);
-
-  // Keyboard navigation
-  document.addEventListener('keydown', handleKeyboardNavigation);
 }
 
 /**
@@ -107,7 +53,6 @@ async function loadExamples() {
 
     const data = await response.json();
     state.examples = data.examples || [];
-    state.filteredExamples = [...state.examples];
 
     // Hide loading, show content
     elements.loadingState.classList.add('d-none');
@@ -126,65 +71,6 @@ function showError() {
   elements.loadingState.classList.add('d-none');
   elements.galleryGrid.classList.add('d-none');
   elements.errorState.classList.remove('d-none');
-  elements.resultsCount.textContent = 'Error loading examples';
-}
-
-/**
- * Filter examples based on current filter state
- */
-function filterExamples() {
-  state.filteredExamples = state.examples.filter(example => {
-    // Domain filter
-    if (state.filters.domain !== 'all' && example.domain !== state.filters.domain) {
-      return false;
-    }
-
-    // Complexity filter
-    if (state.filters.complexity !== 'all' && example.complexity !== state.filters.complexity) {
-      return false;
-    }
-
-    // Search filter (name and description)
-    if (state.filters.search) {
-      const searchLower = state.filters.search;
-      const nameMatch = example.name.toLowerCase().includes(searchLower);
-      const descMatch = example.description.toLowerCase().includes(searchLower);
-      const domainMatch = example.domain.toLowerCase().includes(searchLower);
-
-      if (!nameMatch && !descMatch && !domainMatch) {
-        return false;
-      }
-    }
-
-    return true;
-  });
-}
-
-/**
- * Update the gallery grid display
- */
-function updateGrid() {
-  // Filter examples
-  filterExamples();
-
-  // Update results count
-  updateResultsCount();
-
-  // Check for empty results
-  if (state.filteredExamples.length === 0) {
-    showEmptyState();
-    return;
-  }
-
-  // Hide empty state
-  elements.emptyState.classList.add('d-none');
-  elements.galleryGrid.classList.remove('d-none');
-
-  // Render cards
-  displayCards(state.filteredExamples);
-
-  // Announce to screen readers
-  announceResults();
 }
 
 /**
@@ -209,7 +95,7 @@ function createWorkflowCard(example, index) {
   card.className = 'workflow-card';
   card.setAttribute('role', 'listitem');
   card.setAttribute('tabindex', '0');
-  card.setAttribute('aria-label', `${example.name} - ${example.complexity} level, ${example.domain} domain`);
+  card.setAttribute('aria-label', `${example.name} - ${example.complexity} level, ${example.domain} domain. Click for details.`);
 
   // Card header
   const header = document.createElement('div');
@@ -244,28 +130,10 @@ function createWorkflowCard(example, index) {
   header.appendChild(cardTop);
   header.appendChild(domainTag);
 
-  // Description
-  const description = document.createElement('p');
-  description.className = 'card-description';
-  description.textContent = example.description;
-
-  // Epic flow
-  const epicFlow = createEpicFlow(example);
-
-  // Agents section
-  const agentsSection = createAgentsSection(example);
-
-  // Use cases section
-  const useCasesSection = createUseCasesSection(example);
-
   // Assemble card
   card.appendChild(header);
-  card.appendChild(description);
-  card.appendChild(epicFlow);
-  card.appendChild(agentsSection);
-  card.appendChild(useCasesSection);
 
-  // Add click handler for potential future expansion
+  // Add click handler to open modal
   card.addEventListener('click', () => handleCardClick(example));
   card.addEventListener('keypress', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -278,221 +146,149 @@ function createWorkflowCard(example, index) {
 }
 
 /**
- * Create epic flow section
- */
-function createEpicFlow(example) {
-  const epicFlow = document.createElement('div');
-  epicFlow.className = 'epic-flow';
-
-  // Epic 1
-  const epic1 = document.createElement('div');
-  epic1.className = 'epic-item';
-  epic1.innerHTML = `
-    <div class="epic-title">
-      <span class="epic-number">1</span>
-      ${example.epic1.name}
-    </div>
-    <div class="epic-purpose">${example.epic1.purpose}</div>
-  `;
-
-  // Arrow
-  const arrow = document.createElement('div');
-  arrow.className = 'epic-arrow';
-  arrow.setAttribute('aria-hidden', 'true');
-  arrow.textContent = '↓';
-
-  // Epic 2
-  const epic2 = document.createElement('div');
-  epic2.className = 'epic-item';
-  epic2.innerHTML = `
-    <div class="epic-title">
-      <span class="epic-number">2</span>
-      ${example.epic2.name}
-    </div>
-    <div class="epic-purpose">${example.epic2.purpose}</div>
-  `;
-
-  epicFlow.appendChild(epic1);
-  epicFlow.appendChild(arrow);
-  epicFlow.appendChild(epic2);
-
-  return epicFlow;
-}
-
-/**
- * Create agents section
- */
-function createAgentsSection(example) {
-  const section = document.createElement('div');
-  section.className = 'agents-section';
-
-  const title = document.createElement('h4');
-  title.className = 'agents-title';
-  title.textContent = 'Suggested Agents:';
-
-  const list = document.createElement('ul');
-  list.className = 'agents-list';
-
-  // Limit to first 3-4 agents as specified
-  const agentsToShow = example.suggestedAgents.slice(0, 4);
-
-  agentsToShow.forEach(agent => {
-    const item = document.createElement('li');
-    item.className = 'agent-item';
-    item.innerHTML = `
-      <span class="agent-role">${agent.role}</span> - ${agent.responsibility}
-    `;
-    list.appendChild(item);
-  });
-
-  section.appendChild(title);
-  section.appendChild(list);
-
-  return section;
-}
-
-/**
- * Create use cases section
- */
-function createUseCasesSection(example) {
-  const section = document.createElement('div');
-  section.className = 'use-cases-section';
-
-  const title = document.createElement('h4');
-  title.className = 'use-cases-title';
-  title.textContent = 'Use Cases:';
-
-  const list = document.createElement('ul');
-  list.className = 'use-cases-list';
-
-  example.useCases.forEach(useCase => {
-    const item = document.createElement('li');
-    item.className = 'use-case-item';
-    item.textContent = useCase;
-    list.appendChild(item);
-  });
-
-  section.appendChild(title);
-  section.appendChild(list);
-
-  return section;
-}
-
-/**
- * Handle card click (for potential future expansion)
+ * Handle card click - Open workflow detail modal
  */
 function handleCardClick(example) {
-  // Future: Could open a modal with more details
-  console.log('Card clicked:', example.name);
+  openWorkflowModal(example);
 }
 
 /**
- * Update results count display
+ * Open workflow detail modal
  */
-function updateResultsCount() {
-  const total = state.examples.length;
-  const showing = state.filteredExamples.length;
+function openWorkflowModal(example) {
+  // Get modal elements
+  const modal = document.getElementById('workflowModal');
+  const title = document.getElementById('workflowModalTitle');
+  const subtitle = document.getElementById('workflowModalSubtitle');
+  const description = document.getElementById('workflowDescription');
+  const epicFlow = document.getElementById('workflowEpicFlow');
+  const agents = document.getElementById('workflowAgents');
+  const useCases = document.getElementById('workflowUseCases');
+  const closeBtn = document.getElementById('closeWorkflowModalBtn');
 
-  if (showing === total) {
-    elements.resultsCount.textContent = `Showing all ${total} examples`;
-  } else {
-    elements.resultsCount.textContent = `Showing ${showing} of ${total} examples`;
-  }
-}
+  // Populate modal content
+  title.textContent = example.name;
+  subtitle.textContent = `${example.domain} - ${example.complexity} Level`;
+  description.textContent = example.description;
 
-/**
- * Show empty state
- */
-function showEmptyState() {
-  elements.galleryGrid.classList.add('d-none');
-  elements.emptyState.classList.remove('d-none');
-}
+  // Build epic flow
+  epicFlow.innerHTML = `
+    <div class="modal-epic-flow">
+      <div class="modal-epic-item">
+        <div class="modal-epic-header">
+          <span class="modal-epic-number">1</span>
+          <strong>${example.epic1.name}</strong>
+        </div>
+        <p class="modal-epic-purpose">${example.epic1.purpose}</p>
+      </div>
+      <div class="modal-epic-arrow" aria-hidden="true">↓</div>
+      <div class="modal-epic-item">
+        <div class="modal-epic-header">
+          <span class="modal-epic-number">2</span>
+          <strong>${example.epic2.name}</strong>
+        </div>
+        <p class="modal-epic-purpose">${example.epic2.purpose}</p>
+      </div>
+    </div>
+  `;
 
-/**
- * Clear all filters
- */
-function clearFilters() {
-  // Reset filter state
-  state.filters.domain = 'all';
-  state.filters.complexity = 'all';
-  state.filters.search = '';
+  // Build agents list
+  agents.innerHTML = `
+    <ul class="modal-list">
+      ${example.suggestedAgents.map(agent => `
+        <li class="modal-list-item">
+          <strong>${agent.role}:</strong> ${agent.responsibility}
+        </li>
+      `).join('')}
+    </ul>
+  `;
 
-  // Reset UI
-  elements.searchInput.value = '';
-  elements.domainFilter.value = 'all';
-  elements.complexityFilter.value = 'all';
+  // Build use cases list
+  useCases.innerHTML = `
+    <ul class="modal-list">
+      ${example.useCases.map(useCase => `
+        <li class="modal-list-item">${useCase}</li>
+      `).join('')}
+    </ul>
+  `;
 
-  // Update grid
-  updateGrid();
+  // Show modal
+  modal.classList.remove('d-none');
+  modal.setAttribute('aria-hidden', 'false');
 
-  // Focus search input
-  elements.searchInput.focus();
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+
+  // Set up event listeners
+  closeBtn.addEventListener('click', closeWorkflowModal);
+  modal.addEventListener('click', handleModalOverlayClick);
+  document.addEventListener('keydown', handleModalKeydown);
+
+  // Focus close button
+  closeBtn.focus();
 
   // Announce to screen readers
-  announceFiltersClear();
+  announceModalOpen(example.name);
 }
 
 /**
- * Handle keyboard navigation
+ * Close workflow detail modal
  */
-function handleKeyboardNavigation(e) {
-  // Escape key clears search if focused
-  if (e.key === 'Escape' && document.activeElement === elements.searchInput) {
-    if (elements.searchInput.value) {
-      elements.searchInput.value = '';
-      state.filters.search = '';
-      updateGrid();
-    }
+function closeWorkflowModal() {
+  const modal = document.getElementById('workflowModal');
+  const closeBtn = document.getElementById('closeWorkflowModalBtn');
+
+  // Hide modal
+  modal.classList.add('d-none');
+  modal.setAttribute('aria-hidden', 'true');
+
+  // Restore body scroll
+  document.body.style.overflow = '';
+
+  // Remove event listeners
+  closeBtn.removeEventListener('click', closeWorkflowModal);
+  modal.removeEventListener('click', handleModalOverlayClick);
+  document.removeEventListener('keydown', handleModalKeydown);
+}
+
+/**
+ * Handle modal overlay click
+ */
+function handleModalOverlayClick(e) {
+  const modal = document.getElementById('workflowModal');
+  if (e.target === modal) {
+    closeWorkflowModal();
   }
 }
 
 /**
- * Announce results to screen readers
+ * Handle modal keyboard events
  */
-function announceResults() {
-  const announcement = `${state.filteredExamples.length} workflow examples displayed`;
-  announceToScreenReader(announcement);
+function handleModalKeydown(e) {
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    closeWorkflowModal();
+  }
 }
 
 /**
- * Announce filter clear to screen readers
+ * Announce modal open to screen readers
  */
-function announceFiltersClear() {
-  announceToScreenReader('All filters cleared');
-}
+function announceModalOpen(workflowName) {
+  let liveRegion = document.getElementById('modal-live-region');
 
-/**
- * Announce message to screen readers
- */
-function announceToScreenReader(message) {
-  // Use the results count element which has aria-live="polite"
-  const currentText = elements.resultsCount.textContent;
-  elements.resultsCount.textContent = message;
+  if (!liveRegion) {
+    liveRegion = document.createElement('div');
+    liveRegion.id = 'modal-live-region';
+    liveRegion.setAttribute('role', 'status');
+    liveRegion.setAttribute('aria-live', 'polite');
+    liveRegion.setAttribute('aria-atomic', 'true');
+    liveRegion.className = 'sr-only';
+    document.body.appendChild(liveRegion);
+  }
 
-  // Restore original text after announcement
-  setTimeout(() => {
-    updateResultsCount();
-  }, 1000);
-}
-
-/**
- * Utility: Check if any filters are active
- */
-function hasActiveFilters() {
-  return state.filters.domain !== 'all' ||
-         state.filters.complexity !== 'all' ||
-         state.filters.search !== '';
+  liveRegion.textContent = `${workflowName} workflow details opened. Press Escape to close.`;
 }
 
 // Initialize on DOM content loaded
 document.addEventListener('DOMContentLoaded', init);
-
-// Export for testing (if needed)
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    init,
-    filterExamples,
-    displayCards,
-    clearFilters
-  };
-}

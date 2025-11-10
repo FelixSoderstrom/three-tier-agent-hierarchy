@@ -7,14 +7,15 @@
     <title>Workflow Configuration Builder - Step 1 | Attention Mechanism Project</title>
 
     <!-- Base Styles -->
-    <link rel="stylesheet" href="../src/styles.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/main.css">
     <!-- Builder-specific Styles -->
-    <link rel="stylesheet" href="css/builder.css">
+    <link rel="stylesheet" href="../css/builder.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -22,8 +23,9 @@
         <header class="header">
             <div class="header-content">
                 <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <a href="../index.html">Home</a> &gt;
-                    <span>Configuration Builder</span>
+                    <a href="../index.html" class="breadcrumb-link">Home</a>
+                    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                    <span class="breadcrumb-current" aria-current="page">Configuration Builder</span>
                 </nav>
                 <h1 class="main-title">Agentic Workflow Configuration</h1>
                 <p class="subtitle">Build your custom workflow in 3 easy steps</p>
@@ -333,8 +335,8 @@
     </div>
 
     <!-- State Management -->
-    <script src="js/state.js"></script>
+    <script src="../js/state.js"></script>
     <!-- Builder Logic -->
-    <script src="js/builder.js"></script>
+    <script src="../js/builder.js"></script>
 </body>
 </html>

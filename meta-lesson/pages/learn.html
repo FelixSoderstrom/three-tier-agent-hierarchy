@@ -7,10 +7,10 @@
     <title>Learn: Agentic Workflows Theory | Building with Agentic Workflows</title>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/learn.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/learn.css">
 
     <!-- Syntax Highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
@@ -18,7 +18,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -32,12 +32,11 @@
     <!-- Header -->
     <header class="learn-header">
         <div class="header-content">
-            <a href="index.html" class="back-link" aria-label="Back to home">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                <span>Back to Home</span>
-            </a>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                <span class="breadcrumb-current" aria-current="page">Learn</span>
+            </nav>
             <h1 class="header-title">Agentic Workflows Theory</h1>
         </div>
     </header>
@@ -214,9 +213,9 @@
                     <li><strong>Instantiating the Agent:</strong> Creating a new agent session with these specifications</li>
                 </ol>
 
-                <p>For example, a Team Lead might tell the meta-agent: <em>"I need an agent specialized in writing pytest unit tests for PyTorch code, with expertise in testing attention mechanisms and tensor operations."</em></p>
+                <p>For example, in this project, a Team Lead told the meta-agent: <em>"I need an agent specialized in implementing PyTorch code with educational clarity, focusing on attention mechanisms with correct tensor operations."</em></p>
 
-                <p>The meta-agent would generate a subagent with a system prompt like:</p>
+                <p>The meta-agent generated a subagent with a system prompt like:</p>
 
                 <div class="code-block-wrapper">
                     <button class="copy-btn" aria-label="Copy code to clipboard">
@@ -226,18 +225,19 @@
                         </svg>
                         <span class="copy-text">Copy</span>
                     </button>
-                    <pre><code class="language-markdown">You are a PyTorch Testing Specialist. Your expertise includes:
-- Writing comprehensive pytest unit tests
-- Testing neural network components, especially attention mechanisms
-- Validating tensor shapes and operations
-- Creating parameterized tests for different input configurations
-- Mocking and fixture creation for ML testing
+                    <pre><code class="language-markdown">You are a PyTorch Implementation Specialist. Your expertise includes:
+- Implementing neural network components with correct tensor operations
+- Writing attention mechanisms following academic standards
+- Ensuring proper tensor shape handling throughout pipelines
+- Creating educational code with clear inline documentation
+- Balancing technical correctness with beginner accessibility
 
-When writing tests, always include:
-- Docstrings explaining what behavior is tested
-- Assertions for tensor shapes AND values
-- Edge case coverage
-- Clear test names following pytest conventions</code></pre>
+Your implementation standards:
+- Maintain consistent tensor dimensions across operations
+- Add shape assertions and comments explaining tensor transformations
+- Document expected input/output shapes in docstrings
+- Use descriptive variable names that reflect the mathematical notation
+- Ensure numerical stability (e.g., proper softmax normalization)</code></pre>
                 </div>
 
                 <h3>Meta-Agent Capabilities and Customization</h3>
@@ -573,6 +573,6 @@ When writing tests, always include:
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
     <!-- Custom JavaScript -->
-    <script src="js/learn.js"></script>
+    <script src="../js/learn.js"></script>
 </body>
 </html>

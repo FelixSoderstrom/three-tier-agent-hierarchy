@@ -300,20 +300,21 @@ function updateProgressIndicator() {
 function handleContinue() {
   // Show success message temporarily
   const successMessage = document.getElementById('success-message');
+  const successText = successMessage.querySelector('.success-message-text');
+  successText.textContent = 'Continuing to next step...';
   successMessage.classList.add('visible');
 
-  setTimeout(() => {
-    successMessage.classList.remove('visible');
-  }, 3000);
-
-  // In a multi-step wizard, this would navigate to the next step
-  // For now, we'll just log the action
+  // Save current state before navigation
+  stateManager.saveState();
   console.log('Continuing to next step...');
   console.log('Current configuration:', stateManager.getState().config);
 
-  // Update step number (for future multi-step implementation)
-  // stateManager.setStep(2);
-  // window.location.href = 'builder-step2.html';
+  // Navigate to step 2 after a brief delay to show the message
+  setTimeout(() => {
+    // Update step number and navigate
+    stateManager.setStep(2);
+    window.location.href = 'builder-step2.html';
+  }, 500);
 }
 
 /**

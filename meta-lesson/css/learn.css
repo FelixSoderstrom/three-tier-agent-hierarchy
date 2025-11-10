@@ -22,7 +22,7 @@
 
 .progress-bar-fill {
   height: 100%;
-  background: var(--gradient-primary);
+  background: var(--color-accent-primary);
   width: 0%;
   transition: width 0.2s ease-out;
 }
@@ -43,29 +43,6 @@
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 var(--spacing-md);
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
-  margin-bottom: var(--spacing-sm);
-  transition: color var(--transition-fast);
-}
-
-.back-link:hover {
-  color: var(--color-accent-primary);
-  text-decoration: none;
-}
-
-.back-link svg {
-  transition: transform var(--transition-fast);
-}
-
-.back-link:hover svg {
-  transform: translateX(-4px);
 }
 
 .header-title {
@@ -461,7 +438,7 @@ blockquote p:last-child {
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-  background: var(--gradient-primary);
+  background: var(--color-accent-primary);
   border-radius: var(--radius-full);
   color: var(--color-text-primary);
   font-size: var(--font-size-xl);
@@ -487,18 +464,17 @@ blockquote p:last-child {
   margin: var(--spacing-lg) 0;
 }
 
+/*
+ * Pitfall Cards - Non-interactive display elements
+ * These cards are purely informational and should NOT appear clickable.
+ * No hover effects that suggest interactivity.
+ */
 .pitfall-card {
   padding: var(--spacing-md);
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  transition: all var(--transition-base);
-}
-
-.pitfall-card:hover {
-  border-color: var(--color-accent-primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  cursor: default;
 }
 
 .pitfall-card h4 {
@@ -531,18 +507,17 @@ blockquote p:last-child {
   margin: var(--spacing-lg) 0;
 }
 
+/*
+ * Project Cards - Non-interactive display elements
+ * These cards are purely informational and should NOT appear clickable.
+ * No hover effects that suggest interactivity.
+ */
 .project-card {
   padding: var(--spacing-lg);
   background: var(--color-bg-secondary);
   border: 2px solid var(--color-border);
   border-radius: var(--radius-lg);
-  transition: all var(--transition-base);
-}
-
-.project-card:hover {
-  border-color: var(--color-accent-primary);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  cursor: default;
 }
 
 .project-card h4 {
@@ -804,7 +779,6 @@ blockquote p:last-child {
 
 /* Keyboard Focus */
 .toc-link:focus-visible,
-.back-link:focus-visible,
 .back-to-top:focus-visible,
 .copy-btn:focus-visible {
   outline: 2px solid var(--color-accent-primary);
@@ -815,11 +789,8 @@ blockquote p:last-child {
 @media (prefers-reduced-motion: reduce) {
   .progress-bar-fill,
   .toc-link,
-  .back-link,
   .copy-btn,
-  .back-to-top,
-  .pitfall-card,
-  .project-card {
+  .back-to-top {
     transition: none;
   }
 

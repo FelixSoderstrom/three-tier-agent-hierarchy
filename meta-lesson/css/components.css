@@ -170,7 +170,7 @@
 
 /* Card Variants */
 .card-primary {
-  background: var(--gradient-primary);
+  background: var(--color-accent-primary);
   border: none;
   color: var(--color-text-primary);
 }
@@ -634,7 +634,7 @@
 
 .progress-bar {
   height: 100%;
-  background: var(--gradient-primary);
+  background: var(--color-accent-primary);
   border-radius: var(--radius-full);
   transition: width var(--transition-base);
 }
@@ -698,6 +698,51 @@
   height: 100%;
   background: var(--color-border);
   margin: 0 var(--spacing-md);
+}
+
+
+/* ============================================
+   BREADCRUMB NAVIGATION
+   ============================================ */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-base);
+  margin-bottom: var(--spacing-md);
+}
+
+.breadcrumb-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  font-weight: var(--font-weight-medium);
+}
+
+.breadcrumb-link:hover {
+  color: var(--color-accent-primary);
+}
+
+.breadcrumb-link:focus-visible {
+  outline: none;
+  color: var(--color-accent-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.breadcrumb-separator {
+  color: var(--color-text-tertiary);
+  user-select: none;
+  font-weight: var(--font-weight-normal);
+}
+
+.breadcrumb-current {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 

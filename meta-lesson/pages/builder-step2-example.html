@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Configuration wizard - Epic Definition (Step 2)">
+    <title>Epic Definition - Step 2 | Workflow Builder</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/main.css>
+    <!-- Builder Styles -->
+    <link rel="stylesheet" href="../css/builder.css">
+    <!-- Editor Styles -->
+    <link rel="stylesheet" href="../css/editor.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="../index.html">Home</a> /
+                    <a href="builder.html">Configuration Builder</a> /
+                    <span>Epic Definition</span>
+                </nav>
+                <h1 class="main-title">Epic Definition</h1>
+                <p class="subtitle">Define your epics with detailed markdown specifications</p>
+            </div>
+        </header>
+
+        <main class="main-content builder-container">
+            <!-- Progress Indicator -->
+            <section class="progress-section" aria-label="Progress indicator">
+                <div class="progress-bar-container" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 66%;"></div>
+                </div>
+                <p class="progress-text">
+                    <span class="current-step">Step 2</span> of 3: Epic Definition
+                </p>
+            </section>
+
+            <!-- Step Description -->
+            <section class="form-section" aria-labelledby="step-description-title">
+                <h2 class="form-section-title" id="step-description-title">
+                    <span class="form-section-icon" aria-hidden="true">📝</span>
+                    Define Your Epics
+                </h2>
+                <p class="form-section-description">
+                    Create detailed epic definitions using markdown. Each epic will be executed sequentially
+                    by the Product-Manager agent. You can define <strong id="epic-count-display">2</strong> epics
+                    based on your Step 1 configuration.
+                </p>
+            </section>
+
+            <!-- Epic Editors Container -->
+            <div id="epic-editors-container">
+                <!-- Epic editors will be rendered here dynamically -->
+            </div>
+
+            <!-- Add Another Epic Button (if applicable) -->
+            <div id="add-epic-section" class="form-section" style="display: none;">
+                <button type="button" id="btn-add-epic" class="btn btn-secondary">
+                    <span class="btn-icon" aria-hidden="true">➕</span>
+                    Add Another Epic
+                </button>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <nav class="builder-navigation" aria-label="Wizard navigation">
+                <div class="nav-left">
+                    <button type="button" id="btn-back" class="btn btn-tertiary">
+                        <span class="btn-icon" aria-hidden="true">←</span>
+                        Back to Step 1
+                    </button>
+                </div>
+                <div class="nav-right">
+                    <button type="button" id="btn-save" class="btn btn-secondary">
+                        <span class="btn-icon" aria-hidden="true">💾</span>
+                        Save Draft
+                    </button>
+                    <button type="button" id="btn-continue" class="btn btn-primary">
+                        Continue to Step 3
+                        <span class="btn-icon" aria-hidden="true">→</span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Help Section -->
+            <section class="status-section" style="margin-top: var(--spacing-xl);">
+                <div class="status-card">
+                    <h3 class="section-title">
+                        <span class="icon">💡</span>
+                        Epic Definition Tips
+                    </h3>
+                    <div class="action-grid">
+                        <div class="action-item">
+                            <span class="action-icon" aria-hidden="true">📄</span>
+                            <div class="action-content">
+                                <h3>Use Templates</h3>
+                                <p>Click "Use Template" to load a comprehensive epic definition template</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon" aria-hidden="true">👁️</span>
+                            <div class="action-content">
+                                <h3>Preview Mode</h3>
+                                <p>Toggle preview to see how your markdown will be rendered</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon" aria-hidden="true">🔤</span>
+                            <div class="action-content">
+                                <h3>Template Variables</h3>
+                                <p>Use variables like {{EPIC_NAME}} that will be replaced automatically</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Attention Mechanism Educational Project. Configuration Builder v1.0</p>
+        </footer>
+    </div>
+
+    <!-- State Management -->
+    <script src="../js/state.js"></script>
+    <!-- Epic Editor Component -->
+    <script src="../js/epic-editor.js"></script>
+    <!-- Step 2 Logic -->
+    <script>
+        /**
+         * Step 2: Epic Definition
+         * Dynamically creates epic editors based on epic count from Step 1
+         */
+
+        // Store epic editor instances
+        const epicEditors = [];
+
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeStep2();
+        });
+
+        /**
+         * Initialize Step 2
+         */
+        function initializeStep2() {
+            // Load state from Step 1
+            const state = stateManager.getState();
+            const epicCount = state.config.epicCount;
+            const projectName = state.config.projectName || 'My Project';
+
+            console.log('Initializing Step 2 with', epicCount, 'epics');
+
+            // Update epic count display
+            const epicCountDisplay = document.getElementById('epic-count-display');
+            if (epicCountDisplay) {
+                epicCountDisplay.textContent = epicCount;
+            }
+
+            // Create epic editors
+            const container = document.getElementById('epic-editors-container');
+            for (let i = 1; i <= epicCount; i++) {
+                createEpicEditor(i, container);
+            }
+
+            // Setup navigation
+            setupNavigation();
+
+            // Update progress
+            stateManager.setStep(2);
+        }
+
+        /**
+         * Create an epic editor instance
+         */
+        function createEpicEditor(epicNumber, container) {
+            // Create a container div for this epic
+            const epicContainer = document.createElement('div');
+            epicContainer.id = `epic-${epicNumber}-container`;
+            container.appendChild(epicContainer);
+
+            // Create and render the epic editor
+            const editor = new EpicEditor(epicNumber, epicContainer, stateManager);
+            editor.render();
+
+            // Store editor instance
+            epicEditors.push(editor);
+
+            console.log(`Epic ${epicNumber} editor created`);
+        }
+
+        /**
+         * Setup navigation handlers
+         */
+        function setupNavigation() {
+            // Back button
+            document.getElementById('btn-back')?.addEventListener('click', () => {
+                if (confirm('Go back to Step 1? Your epic definitions will be saved.')) {
+                    saveAllEditors();
+                    window.location.href = 'builder.html';
+                }
+            });
+
+            // Save button
+            document.getElementById('btn-save')?.addEventListener('click', () => {
+                saveAllEditors();
+                alert('All epics saved successfully!');
+            });
+
+            // Continue button
+            document.getElementById('btn-continue')?.addEventListener('click', () => {
+                if (validateAllEpics()) {
+                    saveAllEditors();
+
+                    // Check if specialized agents are enabled
+                    const state = stateManager.getState();
+                    if (state.config.optionalFeatures.specializedAgents) {
+                        // Go to Step 3: Agent Configuration
+                        window.location.href = 'builder-step3.html';
+                    } else {
+                        // Skip to Step 4: Review & Export
+                        window.location.href = 'builder-step4.html';
+                    }
+                } else {
+                    alert('Please fix validation errors before continuing');
+                }
+            });
+        }
+
+        /**
+         * Validate all epic editors
+         */
+        function validateAllEpics() {
+            let allValid = true;
+
+            epicEditors.forEach(editor => {
+                const isValid = editor.validate();
+                if (!isValid) {
+                    allValid = false;
+                }
+            });
+
+            return allValid;
+        }
+
+        /**
+         * Save all epic editors
+         */
+        function saveAllEditors() {
+            epicEditors.forEach(editor => {
+                editor.save();
+            });
+            console.log('All epics saved');
+        }
+
+        /**
+         * Cleanup on page unload
+         */
+        window.addEventListener('beforeunload', () => {
+            epicEditors.forEach(editor => {
+                editor.destroy();
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + S to save
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                saveAllEditors();
+                alert('All epics saved!');
+            }
+
+            // Ctrl/Cmd + P to toggle preview (handled by individual editors)
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                // Individual editors handle this
+            }
+        });
+    </script>
+</body>
+</html>

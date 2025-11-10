@@ -30,7 +30,7 @@
 }
 
 .progress-bar {
-    background: linear-gradient(90deg, var(--accent-primary, #ff6b35), var(--accent-secondary, #ff8c66));
+    background: var(--color-accent-primary);
     height: 100%;
     transition: width 0.3s ease;
     border-radius: var(--radius-lg, 0.75rem);
@@ -549,6 +549,86 @@
     .progress-section {
         margin-bottom: var(--spacing-lg, 2rem);
     }
+}
+
+/* ============================================
+   STATUS SECTION & ACTION GRID
+   ============================================ */
+
+/*
+ * Status Section - Non-interactive informational area
+ * Used to display helpful tips and information.
+ * These elements are NOT clickable and should not appear interactive.
+ */
+.status-section {
+    margin-top: var(--spacing-xl, 3rem);
+}
+
+.status-card {
+    background: var(--bg-secondary, #2a2a2a);
+    border: 1px solid var(--bg-tertiary, #3a3a3a);
+    border-radius: var(--radius-lg, 0.75rem);
+    padding: var(--spacing-lg, 2rem);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm, 1rem);
+    font-size: var(--font-size-xl, 1.25rem);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--text-primary, #ffffff);
+    margin-bottom: var(--spacing-md, 1.5rem);
+}
+
+.section-title .icon {
+    font-size: var(--font-size-2xl, 1.5rem);
+}
+
+/*
+ * Action Grid - Non-interactive display grid
+ * Shows informational items (tips, help text, etc.)
+ * Items are NOT clickable and should have no hover effects.
+ */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md, 1.5rem);
+}
+
+.action-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm, 1rem);
+    padding: var(--spacing-md, 1.5rem);
+    background: var(--bg-tertiary, #3a3a3a);
+    border-radius: var(--radius-md, 0.5rem);
+    border: 1px solid transparent;
+    cursor: default;
+}
+
+.action-icon {
+    font-size: var(--font-size-2xl, 1.5rem);
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.action-content {
+    flex: 1;
+}
+
+.action-content h3 {
+    font-size: var(--font-size-base, 1rem);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--text-primary, #ffffff);
+    margin-bottom: var(--spacing-xs, 0.5rem);
+}
+
+.action-content p {
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--text-secondary, #cccccc);
+    margin: 0;
+    line-height: 1.5;
 }
 
 /* Accessibility */

@@ -4,7 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Step 4: Review & Export - Agentic Workflow Builder</title>
-  <link rel="stylesheet" href="css/builder.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/builder.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Additional styles specific to Step 4 */
     .review-container {
@@ -396,6 +404,13 @@
   <div class="review-container">
     <!-- Header -->
     <div class="review-header">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-separator" aria-hidden="true">/</span>
+        <a href="builder.html" class="breadcrumb-link">Configuration Builder</a>
+        <span class="breadcrumb-separator" aria-hidden="true">/</span>
+        <span class="breadcrumb-current" aria-current="page">Review & Export</span>
+      </nav>
       <h1>Step 4: Review & Export</h1>
       <p>Review your configuration and export your custom .claude workflow</p>
     </div>
@@ -478,10 +493,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
   <!-- State Manager -->
-  <script src="js/state.js"></script>
+  <script src="../js/state.js"></script>
 
   <!-- Export Logic -->
-  <script src="js/export.js"></script>
+  <script src="../js/export.js"></script>
 
   <!-- Page Logic -->
   <script>

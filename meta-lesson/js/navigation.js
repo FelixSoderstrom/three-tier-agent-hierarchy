@@ -350,3 +350,29 @@
     });
 
 })();
+
+/**
+ * Page Visibility API - Pause animations when tab is hidden
+ * Performance optimization to save battery and CPU
+ */
+(function() {
+    'use strict';
+
+    // Handle page visibility changes
+    function handleVisibilityChange() {
+        if (document.hidden) {
+            // Page is hidden - pause animations for battery saving
+            document.body.classList.add('page-hidden');
+        } else {
+            // Page is visible - resume animations
+            document.body.classList.remove('page-hidden');
+        }
+    }
+
+    // Listen for visibility changes
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Initial check
+    handleVisibilityChange();
+
+})();

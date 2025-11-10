@@ -1,6 +1,6 @@
 /**
  * Timeline Component Styles
- * Interactive story timeline for Felix's journey through 8 epics
+ * Interactive story timeline for the agents' journey through 8 epics
  */
 
 /* ============================================
@@ -41,11 +41,13 @@
 }
 
 .page-title {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-extrabold);
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-sm);
   line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .page-subtitle {
@@ -67,6 +69,9 @@
 .timeline-wrapper {
   position: relative;
   padding: var(--spacing-2xl) 0;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
 }
 
 /* Timeline Track (connecting line) */
@@ -89,6 +94,7 @@
   position: relative;
   z-index: 2;
   padding: 0 5%;
+  width: 100%;
 }
 
 /* Individual Timeline Node */
@@ -153,7 +159,7 @@
 /* Hover State */
 .timeline-node:hover .node-circle {
   transform: scale(1.1);
-  box-shadow: var(--glow-accent);
+  box-shadow: var(--shadow-md);
 }
 
 .timeline-node:hover .node-label {
@@ -164,7 +170,7 @@
 .timeline-node.active .node-circle {
   transform: scale(1.15);
   border-color: var(--color-accent-primary);
-  box-shadow: var(--glow-accent);
+  box-shadow: var(--shadow-md);
 }
 
 .timeline-node.active .node-label {
@@ -194,13 +200,27 @@
    ============================================ */
 
 .epic-modal {
-  max-width: 900px;
-  width: 90%;
-  max-height: 85vh;
+  max-width: 1200px;
+  width: 95%;
+  max-height: 90vh;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
 }
 
 .modal-header-content {
   flex: 1;
+  min-width: 0;
+}
+
+.modal-header-right {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
 }
 
 .modal-tagline {
@@ -208,6 +228,160 @@
   color: var(--color-text-tertiary);
   font-style: italic;
   margin-top: var(--spacing-xs);
+}
+
+/* Compact Stats in Header */
+.modal-stats-compact {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xs);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.stat-compact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 50px;
+}
+
+.stat-compact-value {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-primary);
+  line-height: 1;
+}
+
+.stat-compact-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Sidebar Sections */
+.sidebar-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.sidebar-section:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.sidebar-title::before {
+  content: '';
+  width: 3px;
+  height: 1em;
+  background: var(--color-accent-primary);
+  border-radius: var(--radius-sm);
+}
+
+/* Epic Timeline List in Sidebar */
+.epic-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.epic-timeline-item {
+  padding: var(--spacing-sm);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.epic-timeline-item:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent-primary);
+  transform: translateX(2px);
+}
+
+.epic-timeline-item.current {
+  background: rgba(255, 107, 53, 0.1);
+  border-color: var(--color-accent-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.epic-timeline-item.current::after {
+  content: '→';
+  margin-left: auto;
+  color: var(--color-accent-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.epic-timeline-number {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-primary);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.epic-timeline-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-tight);
+}
+
+.epic-timeline-item.current .epic-timeline-text {
+  color: var(--color-text-primary);
+}
+
+/* Epic Todo List in Sidebar */
+.epic-todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.epic-todo-item {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-relaxed);
+  position: relative;
+  padding-left: var(--spacing-lg);
+}
+
+.epic-todo-item::before {
+  content: '✓';
+  position: absolute;
+  left: var(--spacing-xs);
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
 }
 
 /* ============================================
@@ -528,7 +702,7 @@
 
 @media (max-width: 640px) {
   .page-title {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-4xl);
   }
 
   .page-subtitle {
@@ -536,6 +710,12 @@
   }
 
   /* Vertical Timeline Layout */
+  .timeline-wrapper {
+    display: block; /* Reset flex layout */
+    align-items: initial;
+    min-height: auto;
+  }
+
   .timeline-track {
     top: 0;
     left: 30px;
@@ -579,6 +759,25 @@
 
   .modal-header {
     padding: var(--spacing-md);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .modal-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .modal-stats-compact {
+    gap: var(--spacing-sm);
+  }
+
+  .stat-compact-item {
+    min-width: 40px;
+  }
+
+  .stat-compact-value {
+    font-size: var(--font-size-lg);
   }
 
   .modal-title {
@@ -602,10 +801,6 @@
     padding: var(--spacing-md);
   }
 
-  .modal-footer {
-    padding: var(--spacing-md);
-  }
-
   .section-title {
     font-size: var(--font-size-base);
   }
@@ -614,8 +809,33 @@
     font-size: var(--font-size-sm);
   }
 
-  .metrics-container {
-    gap: var(--spacing-md);
+  /* Sidebar moves below content on mobile */
+  .modal-body-with-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-sidebar {
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .sidebar-title {
+    font-size: var(--font-size-xs);
+  }
+
+  .epic-timeline-item {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .epic-timeline-number {
+    width: 20px;
+    height: 20px;
+  }
+
+  .epic-todo-item {
+    font-size: 11px;
   }
 }
 
@@ -625,7 +845,7 @@
 
 @media (min-width: 641px) and (max-width: 1024px) {
   .page-title {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-4xl);
   }
 
   .epic-modal {

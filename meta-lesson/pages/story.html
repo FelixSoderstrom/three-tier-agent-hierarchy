@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience the agents' story: 8 epic developments built through automated agentic workflows">
+    <title>Story - Building with Agentic Workflows</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/timeline.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="story-header" role="banner">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="../index.html" class="breadcrumb-link">Home</a>
+                    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                    <span class="breadcrumb-current" aria-current="page">Story</span>
+                </nav>
+                <h1 class="page-title">Agent's Story</h1>
+                <p class="page-subtitle">Experience how autonomous AI agents built this interactive lesson through 8 epic automated workflows</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content" class="main-content" role="main">
+            <div class="container">
+                <!-- Timeline Container -->
+                <div class="timeline-section" role="region" aria-label="Project timeline">
+                    <div class="timeline-wrapper">
+                        <div class="timeline-track" aria-hidden="true"></div>
+                        <div class="timeline-nodes" id="timelineNodes" role="list">
+                            <!-- Timeline nodes will be dynamically inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingState" class="loading-state" role="status" aria-live="polite">
+                    <div class="spinner"></div>
+                    <p>Loading epic data...</p>
+                </div>
+
+                <!-- Error State -->
+                <div id="errorState" class="error-state d-none" role="alert" aria-live="assertive">
+                    <div class="alert alert-error">
+                        <span class="alert-icon" aria-hidden="true">⚠</span>
+                        <div class="alert-content">
+                            <strong class="alert-title">Error Loading Data</strong>
+                            <p id="errorMessage">Failed to load epic data. Please try again later.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="container">
+                <p>Built with automated agentic workflows | <a href="../index.html" class="footer-link">Back to Home</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Epic Detail Modal -->
+    <div id="epicModal" class="modal-overlay d-none" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+        <div class="modal-container epic-modal modal-xl" role="document">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div class="modal-header-content">
+                    <h2 id="modalTitle" class="modal-title">Epic Title</h2>
+                    <p id="modalTagline" class="modal-tagline">Epic tagline</p>
+                </div>
+                <div class="modal-header-right">
+                    <div class="modal-stats-compact">
+                        <div class="stat-compact-item">
+                            <span class="stat-compact-value" id="metricFilesHeader">0</span>
+                            <span class="stat-compact-label">Files</span>
+                        </div>
+                        <div class="stat-compact-item">
+                            <span class="stat-compact-value" id="metricLinesHeader">0</span>
+                            <span class="stat-compact-label">Lines</span>
+                        </div>
+                    </div>
+                    <button
+                        id="closeModalBtn"
+                        class="modal-close"
+                        type="button"
+                        aria-label="Close modal"
+                        title="Close (Esc)">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="modal-tabs" role="tablist" aria-label="Epic perspectives">
+                <button
+                    id="tabProductManager"
+                    class="tab-button active"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="panelProductManager"
+                    tabindex="0">
+                    Product Manager
+                </button>
+                <button
+                    id="tabTeamLead"
+                    class="tab-button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="panelTeamLead"
+                    tabindex="-1">
+                    Team Lead
+                </button>
+                <div id="specialistTabs">
+                    <!-- Specialist tabs will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body modal-body-with-sidebar">
+                <!-- Main Content Area -->
+                <div class="modal-main-content">
+                    <!-- Product Manager Panel -->
+                    <div
+                        id="panelProductManager"
+                        class="tab-panel active"
+                        role="tabpanel"
+                        aria-labelledby="tabProductManager"
+                        tabindex="0">
+                        <div class="perspective-content">
+                            <div class="narrative-section">
+                                <h3 class="section-title">Narrative</h3>
+                                <p id="pmNarrative" class="narrative-text"></p>
+                            </div>
+                            <div id="pmQuotesSection" class="quotes-section">
+                                <h3 class="section-title">Felix's Quotes</h3>
+                                <div id="pmQuotes" class="quotes-container"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Lead Panel -->
+                    <div
+                        id="panelTeamLead"
+                        class="tab-panel"
+                        role="tabpanel"
+                        aria-labelledby="tabTeamLead"
+                        tabindex="0">
+                        <div class="perspective-content">
+                            <div class="narrative-section">
+                                <h3 class="section-title">Narrative</h3>
+                                <p id="tlNarrative" class="narrative-text"></p>
+                            </div>
+                            <div id="tlDecisionsSection" class="decisions-section">
+                                <h3 class="section-title">Key Decisions</h3>
+                                <ul id="tlDecisions" class="decisions-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Specialist Panels (dynamically created) -->
+                    <div id="specialistPanels">
+                        <!-- Specialist panels will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="modal-sidebar">
+                    <!-- Epic Timeline Navigation -->
+                    <div class="sidebar-section">
+                        <h4 class="sidebar-title">Epic Timeline</h4>
+                        <div id="epicTimelineList" class="epic-timeline-list">
+                            <!-- Timeline items will be dynamically inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Todo List -->
+                    <div class="sidebar-section">
+                        <h4 class="sidebar-title">Key Deliverables</h4>
+                        <ul id="epicTodoList" class="epic-todo-list">
+                            <!-- Todo items will be dynamically inserted here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/timeline.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore 15 diverse workflow examples demonstrating agentic development patterns across multiple domains">
+    <title>Workflow Gallery - Building with Agentic Workflows</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/gallery.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="gallery-header" role="banner">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-text">
+                        <nav class="breadcrumb" aria-label="Breadcrumb">
+                            <a href="../index.html" class="breadcrumb-link">Home</a>
+                            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                            <span class="breadcrumb-current" aria-current="page">Gallery</span>
+                        </nav>
+                        <h1 class="page-title">Workflow Gallery</h1>
+                        <p class="page-subtitle">Explore diverse examples of 2-epic agentic workflows across multiple domains</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Main Content -->
+        <main id="main-content" class="gallery-main" role="main">
+            <div class="container">
+                <!-- Loading State -->
+                <div id="loading-state" class="loading-state" aria-live="polite">
+                    <div class="spinner spinner-lg"></div>
+                    <p>Loading workflow examples...</p>
+                </div>
+
+                <!-- Error State -->
+                <div id="error-state" class="error-state d-none" role="alert">
+                    <div class="alert alert-error">
+                        <div class="alert-content">
+                            <p class="alert-title">Unable to Load Examples</p>
+                            <p>There was an error loading the workflow examples. Please try refreshing the page.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div id="gallery-grid" class="gallery-grid" role="list">
+                    <!-- Cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="container">
+                <p>
+                    <a href="../index.html" class="footer-link">Home</a> |
+                    <a href="builder.html" class="footer-link">Build Your Own</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Workflow Detail Modal -->
+    <div id="workflowModal" class="modal-overlay d-none" role="dialog" aria-modal="true" aria-labelledby="workflowModalTitle" aria-describedby="workflowModalBody">
+        <div class="modal-container modal-lg" role="document">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div class="modal-header-content">
+                    <h2 id="workflowModalTitle" class="modal-title">Workflow Name</h2>
+                    <p id="workflowModalSubtitle" class="modal-subtitle">Domain - Complexity Level</p>
+                </div>
+                <button
+                    id="closeWorkflowModalBtn"
+                    class="modal-close"
+                    type="button"
+                    aria-label="Close modal"
+                    title="Close (Esc)">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body" id="workflowModalBody">
+                <!-- Description Section -->
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Description</h3>
+                    <div class="modal-section-content" id="workflowDescription"></div>
+                </div>
+
+                <!-- Epic Flow Section -->
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Epic Flow</h3>
+                    <div id="workflowEpicFlow"></div>
+                </div>
+
+                <!-- Agents Section -->
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Suggested Agents</h3>
+                    <div id="workflowAgents"></div>
+                </div>
+
+                <!-- Use Cases Section -->
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Use Cases</h3>
+                    <div id="workflowUseCases"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/modal.js"></script>
+    <script src="../js/gallery.js"></script>
+</body>
+</html>

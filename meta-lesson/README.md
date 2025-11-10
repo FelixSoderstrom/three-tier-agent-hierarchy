@@ -27,7 +27,7 @@ An interactive web-based educational platform that teaches AI/ML students how to
 
 ## Overview
 
-**Building with Agentic Workflows** is an educational platform that teaches students how to leverage AI agents to build complex software projects. Instead of traditional tutorials, students learn by exploring a real-world case study (Felix's journey building an attention mechanism lesson) and then create their own custom workflow templates.
+**Building with Agentic Workflows** is an educational platform that teaches students how to leverage AI agents to build complex software projects. Instead of traditional tutorials, students learn by exploring a real-world case study (how agents built an attention mechanism lesson through autonomous workflows) and then create their own custom workflow templates.
 
 ### What Makes This Unique
 
@@ -59,7 +59,7 @@ By completing this lesson, students will:
 - Fully responsive design
 
 ### 2. Story Timeline
-- Interactive timeline of Felix's 8-epic development journey
+- Interactive timeline of the agents' 8-epic development journey
 - Modal dialogs with three perspectives:
   - Product Manager: Strategic overview
   - Team Lead: Technical decisions

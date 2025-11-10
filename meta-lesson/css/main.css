@@ -7,6 +7,41 @@
  */
 
 /* ============================================
+   INTERACTION PATTERN GUIDELINES
+   ============================================
+
+   This project follows consistent interaction patterns to avoid user confusion.
+
+   CLICKABLE/INTERACTIVE ELEMENTS:
+   - Must have: cursor: pointer
+   - Should have: Hover effects (transform, color change, shadow)
+   - Should have: Focus states for keyboard navigation
+   - Examples:
+     * Navigation cards (.nav-card in landing.css)
+     * Workflow cards (.workflow-card in gallery.css)
+     * Buttons (.btn in components.css)
+     * Links (a elements)
+
+   NON-CLICKABLE/DISPLAY ELEMENTS:
+   - Must have: cursor: default
+   - Should NOT have: Hover effects that suggest interactivity
+   - May have: Subtle visual feedback that doesn't imply clickability
+   - Examples:
+     * Stat cards (.stat-card in landing.css)
+     * Action grid items (.action-item in builder.css)
+     * Informational badges
+     * Static content cards
+
+   TESTING CHECKLIST:
+   1. Does cursor change to pointer on hover? → Element should be clickable
+   2. Do elements transform/lift on hover? → Element should be clickable
+   3. Does border/shadow change dramatically? → Element should be clickable
+   4. Is there an onclick handler or href? → Add cursor:pointer and hover effects
+   5. Is it just displaying information? → Use cursor:default, no hover effects
+
+   ============================================ */
+
+/* ============================================
    CSS RESET & NORMALIZATION
    ============================================ */
 
@@ -103,34 +138,44 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-md);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 h1 {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tighter);
+  line-height: var(--line-height-tight);
 }
 
 h2 {
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
 }
 
 h3 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
 }
 
 h4 {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
 }
 
 h5 {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
 }
 
 h6 {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
 }
 
 p {

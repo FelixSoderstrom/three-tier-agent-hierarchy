@@ -243,6 +243,12 @@ function populateModalContent(epic) {
   // Populate metrics
   populateMetrics(epic.completionMetrics);
 
+  // Populate timeline sidebar
+  populateTimelineSidebar(currentEpicIndex);
+
+  // Populate todo list
+  populateTodoList(epic);
+
   // Reset to first tab
   switchTab(0);
 }
@@ -330,8 +336,89 @@ function populateMetrics(metrics) {
   const filesCreated = metrics.filesCreated || 0;
   const linesOfCode = metrics.linesOfCode || 0;
 
-  document.getElementById('metricFiles').textContent = filesCreated;
-  document.getElementById('metricLines').textContent = linesOfCode;
+  // Update header stats (always visible)
+  document.getElementById('metricFilesHeader').textContent = filesCreated;
+  document.getElementById('metricLinesHeader').textContent = linesOfCode;
+}
+
+function populateTimelineSidebar(currentEpicIndex) {
+  const timelineContainer = document.getElementById('epicTimelineList');
+
+  if (!timelineContainer) {
+    console.error('Timeline sidebar container not found');
+    return;
+  }
+
+  timelineContainer.innerHTML = '';
+
+  epicsData.forEach((epic, index) => {
+    const timelineItem = document.createElement('div');
+    timelineItem.className = 'epic-timeline-item';
+
+    if (index === currentEpicIndex) {
+      timelineItem.classList.add('current');
+    }
+
+    timelineItem.setAttribute('role', 'button');
+    timelineItem.setAttribute('tabindex', '0');
+    timelineItem.setAttribute('aria-label', `Navigate to ${epic.title}`);
+
+    const number = document.createElement('div');
+    number.className = 'epic-timeline-number';
+    number.textContent = epic.epicNumber;
+
+    const text = document.createElement('div');
+    text.className = 'epic-timeline-text';
+    text.textContent = `Epic ${epic.epicNumber}`;
+
+    timelineItem.appendChild(number);
+    timelineItem.appendChild(text);
+
+    // Click handler for navigation
+    timelineItem.addEventListener('click', () => {
+      if (index !== currentEpicIndex) {
+        openModal(index);
+      }
+    });
+
+    // Keyboard navigation
+    timelineItem.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (index !== currentEpicIndex) {
+          openModal(index);
+        }
+      }
+    });
+
+    timelineContainer.appendChild(timelineItem);
+  });
+}
+
+function populateTodoList(epic) {
+  const todoContainer = document.getElementById('epicTodoList');
+
+  if (!todoContainer) {
+    console.error('Todo list container not found');
+    return;
+  }
+
+  todoContainer.innerHTML = '';
+
+  // Get deliverables from handoffInfo
+  const deliverables = epic.handoffInfo?.keyDeliverables || [];
+
+  if (deliverables.length === 0) {
+    todoContainer.innerHTML = '<li class="epic-todo-item">No deliverables documented</li>';
+    return;
+  }
+
+  deliverables.forEach(deliverable => {
+    const todoItem = document.createElement('li');
+    todoItem.className = 'epic-todo-item';
+    todoItem.textContent = deliverable;
+    todoContainer.appendChild(todoItem);
+  });
 }
 
 // ============================================
