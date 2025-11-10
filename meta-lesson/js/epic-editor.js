@@ -23,7 +23,7 @@ class EpicEditor {
    */
   async loadTemplate() {
     try {
-      const response = await fetch('/meta-lesson/templates/epic-definition.md');
+      const response = await fetch('../templates/epic-definition.md');
       this.template = await response.text();
     } catch (error) {
       console.error('Error loading epic template:', error);

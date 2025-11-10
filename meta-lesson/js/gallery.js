@@ -45,7 +45,7 @@ function cacheElements() {
  */
 async function loadExamples() {
   try {
-    const response = await fetch('content/gallery/examples.json');
+    const response = await fetch('../content/gallery/examples.json');
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

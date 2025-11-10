@@ -109,7 +109,7 @@ async function generateZipExport() {
  */
 async function loadTemplate(filename) {
   try {
-    const response = await fetch(`/meta-lesson/templates/${filename}`);
+    const response = await fetch(`../templates/${filename}`);
     if (!response.ok) {
       throw new Error(`Failed to load template: ${filename}`);
     }

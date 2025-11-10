@@ -65,7 +65,7 @@ async function loadAllEpicData() {
 
 async function fetchEpicData(epicNumber) {
   try {
-    const response = await fetch(`content/story/epic${epicNumber}.json`);
+    const response = await fetch(`../content/story/epic${epicNumber}.json`);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch epic${epicNumber}.json: ${response.statusText}`);

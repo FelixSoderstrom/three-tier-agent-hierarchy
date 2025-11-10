@@ -33,7 +33,7 @@ class AgentEditor {
    */
   async loadTemplate() {
     try {
-      const response = await fetch('/meta-lesson/templates/specialized-agent.md');
+      const response = await fetch('../templates/specialized-agent.md');
       this.template = await response.text();
     } catch (error) {
       console.error('Error loading agent template:', error);
